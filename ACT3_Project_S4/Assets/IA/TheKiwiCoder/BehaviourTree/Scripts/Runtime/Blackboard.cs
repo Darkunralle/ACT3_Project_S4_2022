@@ -12,6 +12,6 @@ namespace TheKiwiCoder {
     [System.Serializable]
     public class Blackboard {
         public Vector3 moveToPosition;
-        public SphereCollider Sc;
+        public GameObject Agent;
     }
 }

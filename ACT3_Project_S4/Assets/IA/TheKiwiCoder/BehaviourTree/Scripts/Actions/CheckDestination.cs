@@ -18,7 +18,7 @@ public class CheckDestination: ActionNode
     protected SphereCollider destinationCheck;
     protected override void OnStart() {
         context.agent.destination = blackboard.moveToPosition;
-        destinationCheck = blackboard.Sc;
+        //destinationCheck = blackboard.Sc;
 
     }
 
