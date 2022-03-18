@@ -18,6 +18,7 @@ MonoBehaviour:
   position: {x: -22, y: -26}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: 
   drawGizmos: 0
   child: {fileID: -5660333016957678146}
@@ -41,11 +42,11 @@ MonoBehaviour:
   position: {x: -22, y: 62}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: 
   drawGizmos: 0
   children:
   - {fileID: 6402316061889451186}
-  - {fileID: -2931064767184071021}
   - {fileID: -2247863421084346560}
   - {fileID: -4755641854017797634}
 --- !u!114 &-4755641854017797634
@@ -63,34 +64,13 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: d654e6bf449ef0a4e9d4228651cef97e
-  position: {x: 148, y: 191}
+  position: {x: 128, y: 191}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: Patiente
   drawGizmos: 1
   duration: 4
---- !u!114 &-2931064767184071021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6625a302eabaf50458630f685360d7c2, type: 3}
-  m_Name: CheckDestination
-  m_EditorClassIdentifier: 
-  state: 0
-  started: 0
-  guid: bd430bec3d35a9042a95e5c2f5b76cbb
-  position: {x: -171, y: 192}
-  blackboard:
-    moveToPosition: {x: 0, y: 0, z: 0}
-  description: "Verifie si un autre agent a une destination a proximit\xE9 de la
-    position g\xE9n\xE9rer au pr\xE9alable.\n\nSi true : une nouvelle destination
-    est g\xE9n\xE9rer.\n\nSi false : la destination est conserver."
-  drawGizmos: 0
 --- !u!114 &-2247863421084346560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,6 +89,7 @@ MonoBehaviour:
   position: {x: -22, y: 191}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: "Ce d\xE9place vers la position d\xE9signer."
   drawGizmos: 1
   speed: 5
@@ -137,9 +118,9 @@ MonoBehaviour:
   - {fileID: -4755641854017797634}
   - {fileID: 6402316061889451186}
   - {fileID: -2247863421084346560}
-  - {fileID: -2931064767184071021}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
 --- !u!114 &4300890025194573056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +139,7 @@ MonoBehaviour:
   position: {x: -22, y: -110}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: 
   drawGizmos: 0
   child: {fileID: -8754077107127582826}
@@ -176,10 +158,11 @@ MonoBehaviour:
   state: 0
   started: 0
   guid: e8b7b3236babb5b45a8c128a30261cab
-  position: {x: -321, y: 191}
+  position: {x: -172, y: 191}
   blackboard:
     moveToPosition: {x: 0, y: 0, z: 0}
+    Sc: {fileID: 0}
   description: "G\xE9n\xE8re une position al\xE9atoire."
   drawGizmos: 1
-  min: {x: -20, y: -20}
-  max: {x: 20, y: 20}
+  min: {x: -100, y: -100}
+  max: {x: 100, y: 100}

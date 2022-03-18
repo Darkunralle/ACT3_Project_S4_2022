@@ -5,20 +5,18 @@ using UnityEngine;
 namespace TheKiwiCoder {
     public class BehaviourTreeRunner : MonoBehaviour {
 
-        // The main behaviour tree asset
+        // Principal BehaviourTree
         public BehaviourTree tree;
 
-        // Storage container object to hold game object subsystems
+        // Stockage des sous systeme du GameObject
         Context context;
 
-        // Start is called before the first frame update
         void Start() {
             context = CreateBehaviourTreeContext();
             tree = tree.Clone();
             tree.Bind(context);
         }
 
-        // Update is called once per frame
         void Update() {
             if (tree) {
                 tree.Update();

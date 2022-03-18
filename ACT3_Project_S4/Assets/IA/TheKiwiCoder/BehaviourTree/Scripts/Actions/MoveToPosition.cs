@@ -5,6 +5,10 @@ using TheKiwiCoder;
 
 public class MoveToPosition : ActionNode
 {
+    /// <summary>
+    /// Déplacement de l'agent vers sa destination.
+    /// </summary>
+    
     public float speed = 5;
     public float stoppingDistance = 0.1f;
     public bool updateRotation = true;

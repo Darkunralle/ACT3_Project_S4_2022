@@ -5,6 +5,11 @@ using TheKiwiCoder;
 
 public class RandomPosition : ActionNode
 {
+    /// <summary>
+    /// 
+    /// Generation d'une destination de facon aléatoire.
+    /// 
+    /// </summary>
     public Vector2 min = Vector2.one * -10;
     public Vector2 max = Vector2.one * 10;
 
