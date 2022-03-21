@@ -98,3 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
   m_camOffset: {x: -10, y: -10, z: 0}
+  m_camera: {fileID: 0}
+  m_blockAngleY: 30
+  m_blockAngleX: 80
+  m_sensitivity: 0.8
+  m_smoothing: 10

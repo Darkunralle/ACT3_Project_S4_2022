@@ -188,5 +188,5 @@ MonoBehaviour:
     Agent: {fileID: 0}
   description: "G\xE9n\xE8re une position al\xE9atoire."
   drawGizmos: 1
-  min: {x: -10, y: -10}
-  max: {x: 10, y: 10}
+  min: {x: -100, y: -100}
+  max: {x: 100, y: 100}
