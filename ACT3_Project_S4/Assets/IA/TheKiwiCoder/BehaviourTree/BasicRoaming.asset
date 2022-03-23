@@ -46,6 +46,7 @@ MonoBehaviour:
   description: 
   drawGizmos: 0
   duration: 1
+  updateRotation: 1
 --- !u!114 &-5660333016957678146
 MonoBehaviour:
   m_ObjectHideFlags: 0

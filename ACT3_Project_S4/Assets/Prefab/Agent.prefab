@@ -121,7 +121,7 @@ Transform:
   m_GameObject: {fileID: 3818885295907068008}
   m_LocalRotation: {x: 0.003126567, y: -0, z: -0, w: 0.9999951}
   m_LocalPosition: {x: 0.467, y: 0.147, z: 0.3}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 3.87205}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.39715615}
   m_Children:
   - {fileID: 9213021556924049907}
   m_Father: {fileID: 4660273087047720168}
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 4660273087047720165}
   - component: {fileID: 4660273087047720164}
   - component: {fileID: 4660273087047720163}
-  - component: {fileID: -7573284576787310394}
+  - component: {fileID: 2113683978285881132}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -218,7 +218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4660273087047720162}
-  m_LocalRotation: {x: -0, y: -0.45956048, z: -0, w: -0.8881465}
+  m_LocalRotation: {x: 0, y: -0.79167444, z: 0, w: -0.6109432}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -324,19 +324,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 11400000, guid: 5613f57763d5942479943035b460390c, type: 2}
---- !u!54 &-7573284576787310394
-Rigidbody:
+--- !u!143 &2113683978285881132
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4660273087047720162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
