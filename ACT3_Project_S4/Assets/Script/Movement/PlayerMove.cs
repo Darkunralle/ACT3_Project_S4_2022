@@ -2,26 +2,32 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField, Tooltip("Camera du joueur")]
+    private PlayerCam m_playerCam;
+
     [SerializeField, Tooltip("Charactère controleur du joueur")] 
     private CharacterController m_characterController;
 
     [SerializeField, Tooltip("Vitesse max m/s")]
-    private float m_speedmax = 5f;
+    private float m_speedMax = 5f;
 
     [SerializeField, Tooltip("Vitesse minimal m/s")] 
-    private float m_speedmin = 2f;
+    private float m_speedMin = 2f;
 
     [SerializeField, Tooltip("Temps avant d'atteindre la vitesse maxium en seconde")]
     private float m_timeForSpeedMax = 2f;
 
     //Speed acutelle du joueur
-    private float m_speed = 5f;
+    private float m_speed;
 
     [SerializeField, Tooltip("La gravité gravité terrestre : -9,8 m/s²")]
     private float m_gravity = -9.8f;
 
     [SerializeField, Tooltip("Hauteur du saut en m")]
     private float m_jumpHeight = 2.5f;
+
+    [SerializeField, Tooltip("Coût du saut en stamina")]
+    private float m_jumpCost = 25;
 
     [SerializeField, Tooltip("Rotation degré par seconde")]
     private float m_rotateSpeed = 45;
@@ -32,8 +38,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Multiplicateur de vitesse pour la marche arrière (1 = vitesse de base // 0.5 = 50% de la vitesse de base) Float ")]
     private float m_speedBackReduce = 0.5f;
 
-    [SerializeField, Tooltip("Barre d'endurance Float ")]
-    private float m_stamBarre = 100f;
+    [SerializeField, Tooltip("Quantité d'endurance Float ")]
+    private float m_stam = 100f;
 
     [SerializeField, Tooltip("Sphere invisible pour détecter la collision avec le bloc (Mettre l'empty Groundcheck)")]
     private Transform m_groundCheck;
@@ -61,6 +67,19 @@ public class PlayerMove : MonoBehaviour
 
     private float m_timePassed = 0;
 
+    //Pour évité la surdépense de stam pour le saut
+    private bool m_jumped = false;
+
+    //Détermine l'augmentation de la vitesse chaque seconde;
+    private float m_speedAugmentPerSec ;
+
+
+    [SerializeField, Tooltip("Barre de stamina")]
+    private StamBarre m_stamBarre;
+
+    [SerializeField, Tooltip("Active/Désactive le recadrage de la caméra lors du mouvement ou pas l'utilisation du clic droit")]
+    private bool m_activateCameraRedirection = false;
+
     // Class contenant les input du joueur
     private PlayerInput playerInput;
 
@@ -81,6 +100,12 @@ public class PlayerMove : MonoBehaviour
 
     private void Start()
     {
+        m_stamBarre.setMaxStam((int)Mathf.Round(m_stam));
+
+        m_speed = m_speedMin;
+
+        m_speedAugmentPerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMax;
+
         if (m_characterController == null)
         {
             m_characterController = GetComponent<CharacterController>();
@@ -117,13 +142,18 @@ public class PlayerMove : MonoBehaviour
             m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);         
 
             //activaction si input.pressed et stam sup à 0
-            if (playerInput.Player.Sprint.IsPressed() && m_stamBarre > 0)
+            if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
             {
                 
                 if(move.y != -1)
                 {
-                    m_stamBarre -= 5 * Time.deltaTime;
+                    m_stam -= 5 * Time.deltaTime;
                     movement = transform.forward * move.y * (m_speed * m_speedMulti);
+
+                    if (!playerInput.Player.RightClick.IsPressed() && m_activateCameraRedirection)
+                    {
+                        m_playerCam.cameraResetAngle();
+                    }
                 }
 
             }
@@ -147,7 +177,7 @@ public class PlayerMove : MonoBehaviour
             }*/
 
             //Ajoute une force opposé via une equation pour sauter quand le jouer est au sol
-            if (playerInput.Player.Jump.IsPressed())
+            if (playerInput.Player.Jump.IsPressed() && m_stam >= m_jumpCost)
             {
                 if (move.y != -1)
                 {
@@ -159,42 +189,57 @@ public class PlayerMove : MonoBehaviour
                     move.y = 0;
                     m_gravityEffect.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
                 }
+
+                if (!m_jumped)
+                {
+                    m_stam -= m_jumpCost;
+                    m_jumped = true;
+                }
+                
                 
             }
 
-            //Si on bouge pas regen stam ou bout de x temp
+            //Si on bouge pas regen stam ou bout de x temps
             if (move.x == 0 && move.y == 0)
             {
-                if (m_stamBarre < m_pourcentageRegStam)
+                if (m_stam < m_pourcentageRegStam)
                 {
                     m_timePassed += Time.deltaTime;
                     if (m_timePassed >= m_secondeBeforeRegen)
                     {
-                        m_stamBarre += m_stamPerSec * Time.deltaTime;
+                        m_stam += m_stamPerSec * Time.deltaTime;
                     }
                 }
-                
+
+                m_speed = m_speedMin;
             }
             else
-            {
+            {   
                 m_timePassed = 0;
-
+                if(m_speed < m_speedMax)
+                {
+                    m_speed += m_speedAugmentPerSec * Time.deltaTime;
+                }
+                else if (m_speed > m_speedMax)
+                {
+                    m_speed = m_speedMax;
+                }
             }
         }
         else
         {
             // applique la gravité quand le joueur n'est pas au sol
             m_gravityEffect.y += m_gravity * Time.deltaTime;
+            m_jumped = false;
         }
 
-        // Arrondie de la stam a l'unité
-        Mathf.Round(m_stamBarre);
-
-        Debug.Log(move.y);
+        m_stamBarre.setStam((int)Mathf.Round(m_stam));
 
         //Application du mouvement
         m_characterController.Move(movement * Time.deltaTime);
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
     }
+
+    
 }

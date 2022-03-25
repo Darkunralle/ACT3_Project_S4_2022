@@ -129,7 +129,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh36998
+  m_Name: pb_Mesh37000
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -668,7 +668,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37020
+  m_Name: pb_Mesh37022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2126,7 +2126,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37066
+  m_Name: pb_Mesh37068
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2544,6 +2544,10 @@ PrefabInstance:
       value: -9.8
       objectReference: {fileID: 0}
     - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_speedMax
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
       propertyPath: m_jumpHeight
       value: 2.5
       objectReference: {fileID: 0}
@@ -2554,6 +2558,18 @@ PrefabInstance:
     - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
       propertyPath: m_rotateSpeed
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_pourcentageRegStam
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285647487107911835, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4285647487107911835, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
