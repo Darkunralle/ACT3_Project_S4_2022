@@ -149,6 +149,7 @@ MonoBehaviour:
   m_characterController: {fileID: 4554088483994974035}
   m_speed: 5
   m_gravity: -9.8
+  m_jumpHeight: 5
   m_rotateSpeed: 45
   m_speedMulti: 1.5
   m_stamBarre: 100
@@ -273,7 +274,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8704755350580190563, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.359
+      value: -0.09
       objectReference: {fileID: 0}
     - target: {fileID: 8704755350580190563, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_LocalPosition.z

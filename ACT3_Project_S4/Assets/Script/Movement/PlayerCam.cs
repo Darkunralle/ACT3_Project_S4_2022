@@ -1,15 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
-    [SerializeField, Tooltip("Transform du joueur")]
-    private Transform m_player;
-
-    [SerializeField, Tooltip("Offset de la caméra par rapport au joueur")]
-    private Vector3 m_camOffset;
-
     [SerializeField, Tooltip("Camera")]
     private Camera m_camera;
 
@@ -44,6 +36,16 @@ public class PlayerCam : MonoBehaviour
 
     void Start()
     {
+        if (m_camera == null)
+        {
+            m_camera = GetComponent<Camera>();
+            if (m_camera == null)
+            {
+                Debug.Log("Tardos il manque la camera MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
         // Bloque la souris dans la fenêtre
         Cursor.lockState = CursorLockMode.Locked;
     }
