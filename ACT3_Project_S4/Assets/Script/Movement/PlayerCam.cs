@@ -64,4 +64,9 @@ public class PlayerCam : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(-m_velocity.y, m_velocity.x, 0);
     }
+
+    public void cameraResetAngle()
+    {
+        transform.localRotation = Quaternion.Euler(0,0,0);
+    }
 }
