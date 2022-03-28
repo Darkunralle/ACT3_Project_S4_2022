@@ -10,7 +10,7 @@ public class Rotate : ActionNode
     public float duration = 1;
     float startTime;
 
-    public bool updateRotation = false;
+    public bool updateRotation = true;
 
     protected override void OnStart() {
         startTime = Time.time;
@@ -25,8 +25,13 @@ public class Rotate : ActionNode
 
     protected override State OnUpdate() {
 
-        transform.Rotate(0,+90f,0);
+        rotate();
 
-        return State.Running;
+        return State.Success;
+    }
+
+    void rotate()
+    {
+        agent.transform.Rotate(0, 90, 0);
     }
 }
