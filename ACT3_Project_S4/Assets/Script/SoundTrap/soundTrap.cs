@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class soundTrap : MonoBehaviour
 {
-    private void Awake()
-    {
-    
-    }
+    [SerializeField, Tooltip("Radius de détection en mètre")]
+    private float m_trapRadius = 15;
+
+    private PlayerMove m_collider;
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Crack");
+
+        if (other.name != "Agent")
+        {
+            m_collider = other.GetComponent<PlayerMove>();
+            m_collider.sphereRadiusModify(true, m_trapRadius, 0.5f);
+            
+        }
+        
     }
 }

@@ -1660,6 +1660,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1958ca264d3ba9d43a5486e7bca8afce, type: 3}
+--- !u!135 &1564412486 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 7081235145240353678, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+  m_PrefabInstance: {fileID: 8691965686053648855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1663709058
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,6 +2563,18 @@ PrefabInstance:
     - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
       propertyPath: m_rotateSpeed
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_sphereBruit
+      value: 
+      objectReference: {fileID: 1564412486}
+    - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_sphereRadRun
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_sphereRadWalk
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3980290748013647845, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
       propertyPath: m_pourcentageRegStam

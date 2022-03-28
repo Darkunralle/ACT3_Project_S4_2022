@@ -8,6 +8,15 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Charactère controleur du joueur")] 
     private CharacterController m_characterController;
 
+    [SerializeField, Tooltip("Sphere de détection des bruits du joueurs")]
+    private SphereCollider m_sphereBruit;
+
+    [SerializeField, Tooltip("Sphere radius marche")]
+    private float m_sphereRadWalk;
+
+    [SerializeField, Tooltip("Sphere radius course")]
+    private float m_sphereRadRun;
+
     [SerializeField, Tooltip("Vitesse max m/s")]
     private float m_speedMax = 5f;
 
@@ -80,6 +89,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Active/Désactive le recadrage de la caméra lors du mouvement ou pas l'utilisation du clic droit")]
     private bool m_activateCameraRedirection = false;
 
+    private float m_timer = 0;
+
     // Class contenant les input du joueur
     private PlayerInput playerInput;
 
@@ -105,6 +116,16 @@ public class PlayerMove : MonoBehaviour
         m_speed = m_speedMin;
 
         m_speedAugmentPerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMax;
+
+        if (m_characterController == null)
+        {
+            m_characterController = GetComponent<CharacterController>();
+            if (m_characterController == null)
+            {
+                Debug.Log("Tardos il manque le CharactereController MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
 
         if (m_characterController == null)
         {
@@ -145,10 +166,12 @@ public class PlayerMove : MonoBehaviour
             if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
             {
                 
-                if(move.y != -1)
+                if(move.y > 0)
                 {
                     m_stam -= 5 * Time.deltaTime;
                     movement = transform.forward * move.y * (m_speed * m_speedMulti);
+                    sphereRadiusModify(false, m_sphereRadRun, 0);
+                    //m_sphereBruit.radius = m_sphereRadRun;
 
                     if (!playerInput.Player.RightClick.IsPressed() && m_activateCameraRedirection)
                     {
@@ -167,14 +190,10 @@ public class PlayerMove : MonoBehaviour
                 {
                     movement = transform.forward * move.y * (m_speed * m_speedBackReduce);
                 }
-                
+                sphereRadiusModify(false, m_sphereRadWalk, 0);
+                //m_sphereBruit.radius = m_sphereRadWalk;
+
             }
-            /*
-            //activation si !input.pressed = rechargement de la stam /!\ Temporaire en attendant la mécanique de MANGER /!\
-            if (!playerInput.Player.Sprint.IsPressed() && m_stamBarre < 20)
-            {
-                m_stamBarre += 5 * Time.deltaTime;
-            }*/
 
             //Ajoute une force opposé via une equation pour sauter quand le jouer est au sol
             if (playerInput.Player.Jump.IsPressed() && m_stam >= m_jumpCost)
@@ -241,5 +260,25 @@ public class PlayerMove : MonoBehaviour
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
     }
 
+    public void sphereRadiusModify(bool p_type, float p_radius, float p_timer)
+    {
+        
+        Debug.Log(m_timer);
+        if (p_type)
+        {
+            m_sphereBruit.radius = p_radius;
+            m_timer = p_timer;
+            Debug.Log("Trap");
+        }
+        else if (m_timer <= 0)
+        {
+            m_sphereBruit.radius = p_radius;
+        }
+        else
+        {
+            m_timer -= Time.deltaTime;
+        }
+        
+    }
     
 }
