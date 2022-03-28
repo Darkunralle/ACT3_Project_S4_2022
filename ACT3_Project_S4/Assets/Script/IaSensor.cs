@@ -59,6 +59,7 @@ public class IaSensor : MonoBehaviour
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
+
         if(direction.y < 0 || direction.y > height)
         {
             return false;
@@ -66,7 +67,7 @@ public class IaSensor : MonoBehaviour
 
         direction.y = 0;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
-        if(deltaAngle < angle)
+        if(deltaAngle > angle)
         {
             return false;
         }
