@@ -6,16 +6,19 @@ Unity : 2020.3.30f1 (URP)
 Prototype avancement :
 
 	Ajout : 
-		Gestion de la stamina
-		Barre de stamina UI
-		Beta controle de la caméra
-		Blocage de certain mouvement
-		Accélération
+		Début commentaire et rangement du code
+		Séparation de différent bloc de l'update dans des fonctions
+		Fonction de modification du calcule de Décélaration et Accélération
+		Décélaration
+	
+	Wip :
+		Rangement et comment du code PlayerMove
 
 	Todo :
-		Déccélération 
-		Jump arrière
+		Retiré le plus de liaison possible (opti)
 		Progress dans le control de la cam via le déplacement
 		(Smouth de celle-ci)
-		Consommation du sprint
+		
+Idée :
+	du bruit pendant la regen de stam ?
 		

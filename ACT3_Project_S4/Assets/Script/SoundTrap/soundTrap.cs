@@ -13,7 +13,7 @@ public class soundTrap : MonoBehaviour
     {
         Debug.Log("Crack");
 
-        if (other.name != "Agent")
+        if (other.name == "Player")
         {
             m_collider = other.GetComponent<PlayerMove>();
             m_collider.sphereRadiusModify(true, m_trapRadius, 0.5f);

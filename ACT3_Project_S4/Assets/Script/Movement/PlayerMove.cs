@@ -26,7 +26,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Temps avant d'atteindre la vitesse maxium en seconde")]
     private float m_timeForSpeedMax = 2f;
 
-    //Speed acutelle du joueur
+    [SerializeField, Tooltip("Temps avant de revenir a la vitesse minimal")]
+    private float m_timeForSpeedMin = 0.5f;
+
+    //Speed atuelle du joueur
     private float m_speed;
 
     [SerializeField, Tooltip("La gravité gravité terrestre : -9,8 m/s²")]
@@ -44,6 +47,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Multiplicateur de vitesse pour le sprint (1 = vitesse de base) Float ")]
     private float m_speedMulti = 1.5f;
 
+    [SerializeField, Tooltip("Coût par seconde du sprint")]
+    private float m_sprintCost = 5f;
+
     [SerializeField, Tooltip("Multiplicateur de vitesse pour la marche arrière (1 = vitesse de base // 0.5 = 50% de la vitesse de base) Float ")]
     private float m_speedBackReduce = 0.5f;
 
@@ -58,8 +64,6 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField, Tooltip("LayerMask du sol")]
     private LayerMask m_groundMask;
-
-    private bool m_isGrounded;
 
     private Vector3 m_gravityEffect;
 
@@ -82,6 +86,9 @@ public class PlayerMove : MonoBehaviour
     //Détermine l'augmentation de la vitesse chaque seconde;
     private float m_speedAugmentPerSec ;
 
+    //Détermine la diminution de la vitesse chaque seconde;
+    private float m_speedReducePerSec;
+
 
     [SerializeField, Tooltip("Barre de stamina")]
     private StamBarre m_stamBarre;
@@ -90,6 +97,8 @@ public class PlayerMove : MonoBehaviour
     private bool m_activateCameraRedirection = false;
 
     private float m_timer = 0;
+
+    private bool m_forward;
 
     // Class contenant les input du joueur
     private PlayerInput playerInput;
@@ -116,7 +125,10 @@ public class PlayerMove : MonoBehaviour
         m_speed = m_speedMin;
 
         m_speedAugmentPerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMax;
+        m_speedReducePerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMin;
 
+
+        //Vérif
         if (m_characterController == null)
         {
             m_characterController = GetComponent<CharacterController>();
@@ -127,123 +139,205 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (m_characterController == null)
+        if (m_sphereBruit == null)
         {
-            m_characterController = GetComponent<CharacterController>();
-            if (m_characterController == null)
+            m_sphereBruit = GetComponent<SphereCollider>();
+            if (m_sphereBruit == null)
             {
-                Debug.Log("Tardos il manque le CharactereController MERCI");
+                Debug.Log("Tardos il manque la sphère  MERCI");
                 throw new System.ArgumentNullException();
             }
         }
     }
 
 
+    private void refreshSpeedAugmentOrReduce(bool p_augment)
+    {
+        if (p_augment)
+        {
+            m_speedAugmentPerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMax;
+        }
+        else
+        {
+            m_speedReducePerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMin;
+        }
+    }
 
-
-    void Update()
+    /// <summary>
+    /// #_Détection du sol
+    /// </summary>
+    /// 
+    /// Crée une sphere invisible qui détecte le sol (Dans le layer "Ground") 
+    /// Applique une gravité de -1 en permanence quand on est pour évité des problème pendant le déplacement et une cumlation infinie de celle-ci
+    /// <returns>Retourne true si un sol a était détecté et sinon false</returns>
+    private bool isGrounded()
     {
         // Crée une sphere invisible et check si elle colide avec un layer "Ground"
-        m_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
+        bool p_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
 
-        // Reset de la force de gravité au sol (Pour ne pas qu'elle augmente de manière idiote une fois au sol)
-        // -1 pour être sur qu'il reste au sol
-        if (m_isGrounded && m_gravityEffect.y < 0)
+        // Force reset de la gravité a -1
+        if (p_isGrounded && m_gravityEffect.y < 0)
         {
 
             m_gravityEffect.y = -1f;
         }
 
-        Vector2 move = playerInput.Player.Move.ReadValue<Vector2>();
+        return p_isGrounded;
+    }
 
-        // Vérifie si le joueur est au sol pour empecher l'air control et pouvoir suater
-        if (m_isGrounded)
+    /// <summary>
+    /// #_Mouvement avant & arrière
+    /// </summary>
+    /// 
+    /// Sprint
+    /// 
+    /// Quand le joueur presse la touche de Sprint, se dirige en avant et possède de l'endurance supérieur au coût du sprint par seconde ajoute un multiplicateur a sa vitesse
+    /// Enregistre aussi la dernière direction prise (Utilisé dans la décélération)
+    /// Augmente la portée a la quelle le joueur est entendu
+    /// 
+    /// WIP : Caméra controle
+    /// 
+    /// Walk
+    /// 
+    /// Selon la touche Avancer ou Reculer calcule le déplacement du joueur
+    /// En avant vitesse normal en arrière un multiplicateur et ajouter pour ralentir le joueur
+    /// 
+    /// Enregistre aussi la direction pour la décélération
+    /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
+    private void movementY(Vector2 p_move)
+    {
+        if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
         {
-            // Rotation du joueur
-            m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);         
-
-            //activaction si input.pressed et stam sup à 0
-            if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
+            if (p_move.y > 0)
             {
-                
-                if(move.y > 0)
-                {
-                    m_stam -= 5 * Time.deltaTime;
-                    movement = transform.forward * move.y * (m_speed * m_speedMulti);
-                    sphereRadiusModify(false, m_sphereRadRun, 0);
-                    //m_sphereBruit.radius = m_sphereRadRun;
+                m_stam -= m_sprintCost * Time.deltaTime;
+                movement = transform.forward * p_move.y * (m_speed * m_speedMulti);
 
-                    if (!playerInput.Player.RightClick.IsPressed() && m_activateCameraRedirection)
-                    {
-                        m_playerCam.cameraResetAngle();
-                    }
+                // Modification de la portée du son
+                sphereRadiusModify(false, m_sphereRadRun, 0);
+                // enregistre la direction "Avant"
+                m_forward = true;
+
+                //Wip controle caméra
+                if (!playerInput.Player.RightClick.IsPressed() && m_activateCameraRedirection)
+                {
+                    m_playerCam.cameraResetAngle();
                 }
-
             }
-            else
+
+        }
+        else
+        {
+            if (p_move.y == 1)
             {
-                if (move.y != -1)
+                movement = transform.forward * p_move.y * m_speed;
+                m_forward = true;
+            }
+            else if (p_move.y == -1)
+            {
+                movement = transform.forward * p_move.y * (m_speed * m_speedBackReduce);
+                m_forward = false;
+            }
+            sphereRadiusModify(false, m_sphereRadWalk, 0);
+        }
+    }
+
+    /// <summary>
+    /// #_Fonction de saut
+    /// </summary>
+    /// 
+    /// Si le joueur possède assez d'endurance (supérieur ou égal a celle du coût du saut) effectue un saut
+    /// Calcule : Hauteur * la gravité * -2 (Gravité *-2 pour inversé la gravité)
+    /// 
+    /// Aucun air controle
+    /// m_jumped permet de faire un seul saut (évite la dépense inutile d'endurance) et retire l'endurance
+    /// 
+    /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
+    private void jump(Vector2 p_move)
+    {
+        if (playerInput.Player.Jump.IsPressed() && m_stam >= m_jumpCost)
+        {
+            m_gravityEffect.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
+
+            if (!m_jumped)
+            {
+                m_stam -= m_jumpCost;
+                m_jumped = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// #_Gestion de l'endurance et de la vitesse
+    /// </summary>
+    /// 
+    /// Quand le joueur ne bouge plus regen de l'endurance jusqu'a une certaine valeur quand il bouge pas pendant X Seconde
+    /// 
+    /// ~WIP
+    /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
+
+    private void stamAndSpeedControl(Vector2 p_move)
+    {
+        if (p_move.x == 0 && p_move.y == 0)
+        {
+            //Stam regen
+            if (m_stam < m_pourcentageRegStam)
+            {
+                m_timePassed += Time.deltaTime;
+                if (m_timePassed >= m_secondeBeforeRegen)
                 {
-                    movement = transform.forward * move.y * m_speed;
+                    m_stam += m_stamPerSec * Time.deltaTime;
+                }
+            }
+
+            if (m_speed > m_speedMin)
+            {
+                m_speed -= m_speedReducePerSec * Time.deltaTime;
+                if (m_forward)
+                {
+                    movement = transform.forward * 1 * (m_speed);
                 }
                 else
                 {
-                    movement = transform.forward * move.y * (m_speed * m_speedBackReduce);
+                    movement = transform.forward * -1 * (m_speed * m_speedBackReduce);
                 }
-                sphereRadiusModify(false, m_sphereRadWalk, 0);
-                //m_sphereBruit.radius = m_sphereRadWalk;
+
 
             }
-
-            //Ajoute une force opposé via une equation pour sauter quand le jouer est au sol
-            if (playerInput.Player.Jump.IsPressed() && m_stam >= m_jumpCost)
+            else if (m_speed < m_speedMin)
             {
-                if (move.y != -1)
-                {
-                    m_gravityEffect.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
-                }
-                // en travaux
-                else
-                {
-                    move.y = 0;
-                    m_gravityEffect.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
-                }
-
-                if (!m_jumped)
-                {
-                    m_stam -= m_jumpCost;
-                    m_jumped = true;
-                }
-                
-                
-            }
-
-            //Si on bouge pas regen stam ou bout de x temps
-            if (move.x == 0 && move.y == 0)
-            {
-                if (m_stam < m_pourcentageRegStam)
-                {
-                    m_timePassed += Time.deltaTime;
-                    if (m_timePassed >= m_secondeBeforeRegen)
-                    {
-                        m_stam += m_stamPerSec * Time.deltaTime;
-                    }
-                }
-
+                movement = transform.forward * 0 * (m_speed * m_speedMulti);
                 m_speed = m_speedMin;
             }
-            else
-            {   
-                m_timePassed = 0;
-                if(m_speed < m_speedMax)
-                {
-                    m_speed += m_speedAugmentPerSec * Time.deltaTime;
-                }
-                else if (m_speed > m_speedMax)
-                {
-                    m_speed = m_speedMax;
-                }
+
+        }
+        else
+        {
+            m_timePassed = 0;
+            if (m_speed < m_speedMax)
+            {
+                m_speed += m_speedAugmentPerSec * Time.deltaTime;
             }
+            else if (m_speed > m_speedMax)
+            {
+                m_speed = m_speedMax;
+            }
+        }
+    }
+    void Update()
+    {
+        Vector2 move = playerInput.Player.Move.ReadValue<Vector2>();
+
+        if (isGrounded())
+        {
+            // Rotation du joueur
+            m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
+
+
+            movementY(move);
+            jump(move);
+            stamAndSpeedControl(move);
+
         }
         else
         {
@@ -262,13 +356,10 @@ public class PlayerMove : MonoBehaviour
 
     public void sphereRadiusModify(bool p_type, float p_radius, float p_timer)
     {
-        
-        Debug.Log(m_timer);
         if (p_type)
         {
             m_sphereBruit.radius = p_radius;
             m_timer = p_timer;
-            Debug.Log("Trap");
         }
         else if (m_timer <= 0)
         {
@@ -277,6 +368,11 @@ public class PlayerMove : MonoBehaviour
         else
         {
             m_timer -= Time.deltaTime;
+        }
+
+        if (m_timer < 0)
+        {
+            m_timer = 0;
         }
         
     }
