@@ -2,13 +2,10 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField, Tooltip("Camera du joueur")]
     private PlayerCam m_playerCam;
 
-    [SerializeField, Tooltip("Charactère controleur du joueur")] 
     private CharacterController m_characterController;
 
-    [SerializeField, Tooltip("Sphere de détection des bruits du joueurs")]
     private SphereCollider m_sphereBruit;
 
     [SerializeField, Tooltip("Sphere radius marche")]
@@ -56,7 +53,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Quantité d'endurance Float ")]
     private float m_stam = 100f;
 
-    [SerializeField, Tooltip("Sphere invisible pour détecter la collision avec le bloc (Mettre l'empty Groundcheck)")]
     private Transform m_groundCheck;
 
     [SerializeField, Tooltip("Float gerant le radius de la sphere GroundCheck")]
@@ -148,6 +144,40 @@ public class PlayerMove : MonoBehaviour
                 throw new System.ArgumentNullException();
             }
         }
+        if (m_playerCam == null)
+        {
+            m_playerCam = GetComponentInChildren<PlayerCam>();
+            if (m_playerCam == null)
+            {
+                Debug.Log("Tardos il manque la m_playerCam  MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
+        // Don't work
+        /*
+        if (m_stamBarre == null)
+        {
+            Debug.Log("Récup Stam barre");
+            m_stamBarre = GetComponentInChildren<StamBarre>();
+            if (m_stamBarre == null)
+            {
+                Debug.Log("Tardos il manque la m_stamBarre  MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }*/
+
+        if (m_groundCheck == null)
+        {
+            Debug.Log("Récup Ground check");
+            m_groundCheck = this.gameObject.transform.GetChild(2);
+            if (m_groundCheck == null)
+            {
+                Debug.Log("Tardos il manque la m_groundCheck  MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+        
     }
 
 
@@ -228,12 +258,13 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            if (p_move.y == 1)
+            Debug.Log($"Move X : {p_move.x} Move Y {p_move.y}");
+            if (p_move.y >= 0.6f)
             {
                 movement = transform.forward * p_move.y * m_speed;
                 m_forward = true;
             }
-            else if (p_move.y == -1)
+            else if (p_move.y <= -0.6f)
             {
                 movement = transform.forward * p_move.y * (m_speed * m_speedBackReduce);
                 m_forward = false;
@@ -295,11 +326,26 @@ public class PlayerMove : MonoBehaviour
                 m_speed -= m_speedReducePerSec * Time.deltaTime;
                 if (m_forward)
                 {
-                    movement = transform.forward * 1 * (m_speed);
+                    if (p_move.x >= 0.6f || p_move.x <= -0.6f)
+                    {
+                        movement = transform.forward * 1 * m_speed * 0.7f;
+                    }
+                    else
+                    {
+                        movement = transform.forward * 1 * m_speed;
+                    }
+                    
                 }
                 else
                 {
-                    movement = transform.forward * -1 * (m_speed * m_speedBackReduce);
+                    if (p_move.x >= 0.6f || p_move.x <= -0.6f)
+                    {
+                        movement = transform.forward * -1 * (m_speed * m_speedBackReduce) * 0.7f;
+                    }else
+                    {
+                        movement = transform.forward * -1 * (m_speed * m_speedBackReduce);
+                    }
+                    
                 }
 
 
@@ -314,7 +360,7 @@ public class PlayerMove : MonoBehaviour
         else
         {
             m_timePassed = 0;
-            if (m_speed < m_speedMax)
+            if (m_speed < m_speedMax && p_move.y != 0 )
             {
                 m_speed += m_speedAugmentPerSec * Time.deltaTime;
             }
@@ -347,6 +393,8 @@ public class PlayerMove : MonoBehaviour
         }
 
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
+
+        //Debug.Log(m_speed);
 
         //Application du mouvement
         m_characterController.Move(movement * Time.deltaTime);
