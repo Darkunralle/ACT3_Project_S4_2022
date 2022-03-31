@@ -12,13 +12,13 @@ public class PlayerMove : MonoBehaviour
     private SphereCollider m_sphereBruit;
 
     [SerializeField, Tooltip("Sphere radius marche")]
-    private float m_sphereRadWalk;
+    private float m_sphereRadWalk = 2f;
 
     [SerializeField, Tooltip("Sphere radius course")]
-    private float m_sphereRadRun;
+    private float m_sphereRadRun = 8f;
 
     [SerializeField, Tooltip("Vitesse max m/s")]
-    private float m_speedMax = 5f;
+    private float m_speedMax = 8f;
 
     [SerializeField, Tooltip("Vitesse minimal m/s")] 
     private float m_speedMin = 2f;
@@ -27,13 +27,13 @@ public class PlayerMove : MonoBehaviour
     private float m_timeForSpeedMax = 2f;
 
     [SerializeField, Tooltip("Temps avant de revenir a la vitesse minimal")]
-    private float m_timeForSpeedMin = 0.5f;
+    private float m_timeForSpeedMin = 0.4f;
 
     //Speed atuelle du joueur
     private float m_speed;
 
     [SerializeField, Tooltip("La gravité gravité terrestre : -9,8 m/s²")]
-    private float m_gravity = -9.8f;
+    private float m_gravity = -9.81f;
 
     [SerializeField, Tooltip("Hauteur du saut en m")]
     private float m_jumpHeight = 2.5f;
@@ -42,10 +42,10 @@ public class PlayerMove : MonoBehaviour
     private float m_jumpCost = 25;
 
     [SerializeField, Tooltip("Rotation degré par seconde")]
-    private float m_rotateSpeed = 45;
+    private float m_rotateSpeed = 90;
 
     [SerializeField, Tooltip("Multiplicateur de vitesse pour le sprint (1 = vitesse de base) Float ")]
-    private float m_speedMulti = 1.5f;
+    private float m_speedMulti = 2f;
 
     [SerializeField, Tooltip("Coût par seconde du sprint")]
     private float m_sprintCost = 5f;
@@ -73,10 +73,10 @@ public class PlayerMove : MonoBehaviour
     private float m_secondeBeforeRegen = 2f;
 
     [SerializeField, Tooltip("Pourcentage de regen naturelle de la stamina quand on ne bouge pas en pourcentage")]
-    private float m_pourcentageRegStam = 20f;
+    private float m_pourcentageRegStam = 25f;
 
     [SerializeField, Tooltip("Quantité de stamina regen par seconde quand on ne bouge pas")]
-    private float m_stamPerSec = 2f;
+    private float m_stamPerSec = 5f;
 
     private float m_timePassed = 0;
 

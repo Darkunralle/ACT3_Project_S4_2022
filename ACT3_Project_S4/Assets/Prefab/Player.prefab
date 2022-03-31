@@ -444,17 +444,19 @@ MonoBehaviour:
   m_playerCam: {fileID: 1521606977869514553}
   m_characterController: {fileID: 4554088483994974035}
   m_sphereBruit: {fileID: 8775471672968345070}
-  m_sphereRadWalk: 0
-  m_sphereRadRun: 0
-  m_speedMax: 5
+  m_sphereRadWalk: 2
+  m_sphereRadRun: 8
+  m_speedMax: 8
   m_speedMin: 2
   m_timeForSpeedMax: 2
-  m_gravity: -9.8
-  m_jumpHeight: 5
+  m_timeForSpeedMin: 0.4
+  m_gravity: -9.81
+  m_jumpHeight: 2.5
   m_jumpCost: 25
   m_rotateSpeed: 45
-  m_speedMulti: 1.5
-  m_speedBackReduce: 0.5
+  m_speedMulti: 2
+  m_sprintCost: 5
+  m_speedBackReduce: 0.4
   m_stam: 100
   m_groundCheck: {fileID: 5964738063928963827}
   m_groundCheckRange: 0.4
@@ -462,8 +464,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   m_secondeBeforeRegen: 2
-  m_pourcentageRegStam: 20
-  m_stamPerSec: 2
+  m_pourcentageRegStam: 25
+  m_stamPerSec: 5
   m_stamBarre: {fileID: 7835595488281509391}
   m_activateCameraRedirection: 0
 --- !u!135 &8775471672968345070
