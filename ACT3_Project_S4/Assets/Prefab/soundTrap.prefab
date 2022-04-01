@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4043864670340403252}
   - component: {fileID: 4043864670340403251}
   - component: {fileID: 4043864670340403250}
-  - component: {fileID: 4043864670340403249}
   - component: {fileID: 4043864670340403248}
+  - component: {fileID: 936792472649122414}
   m_Layer: 0
   m_Name: soundTrap
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4043864670340403249
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4043864670340403263}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4043864670340403248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,3 +95,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697f73fb6c9350e4f8f09b1d80d8d9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_trapRadius: 15
+--- !u!65 &936792472649122414
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4043864670340403263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
