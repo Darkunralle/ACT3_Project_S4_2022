@@ -24,21 +24,5 @@ public class Loco : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-
-        if (timer < 0f)
-        {
-            float distance = (playerTransform.position - agent.destination).sqrMagnitude;
-            
-            if(distance > maxDistance * maxDistance)
-            {
-                agent.destination = playerTransform.position;
-            }
-
-            timer = maxTime;
-            
-            agent.destination = playerTransform.position;
-        }
-
     }
 }

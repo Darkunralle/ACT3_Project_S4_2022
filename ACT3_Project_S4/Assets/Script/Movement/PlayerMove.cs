@@ -395,7 +395,7 @@ public class PlayerMove : MonoBehaviour
 
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
 
-        Debug.Log($"Move X : {move.x} Move Y : {move.y} et la vitesse : {m_speed}");
+        //Debug.Log($"Move X : {move.x} Move Y : {move.y} et la vitesse : {m_speed}");
 
         //Application du mouvement
         m_characterController.Move(movement * Time.deltaTime);

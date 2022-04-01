@@ -52,10 +52,10 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        Vector2 delta = playerInput.Player.Look.ReadValue<Vector2>();
+        //Vector2 delta = playerInput.Player.Look.ReadValue<Vector2>();
 
-        Vector2 rawFrameVelocity = Vector2.Scale(delta, Vector2.one * m_sensitivity);
-        m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
+        //Vector2 rawFrameVelocity = Vector2.Scale(delta, Vector2.one * m_sensitivity);
+        //m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
         m_velocity += m_frameVelocity;
 
         //Lock de la caméra
