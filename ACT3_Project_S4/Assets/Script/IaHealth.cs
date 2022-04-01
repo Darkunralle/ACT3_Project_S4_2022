@@ -7,6 +7,8 @@ public class IaHealth : MonoBehaviour
 {
 
     public float maxHealth;
+    
+    [HideInInspector]
     public float currentHealth;
     
     void Start()

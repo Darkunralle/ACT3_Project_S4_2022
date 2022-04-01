@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     private SphereCollider m_sphereBruit;
 
     [SerializeField, Tooltip("Sphere radius marche")]
-    private float m_sphereRadWalk = 2f;
+    private float m_sphereRadWalk = 1f;
 
     [SerializeField, Tooltip("Sphere radius course")]
     private float m_sphereRadRun = 8f;
@@ -144,6 +144,7 @@ public class PlayerMove : MonoBehaviour
                 throw new System.ArgumentNullException();
             }
         }
+
         if (m_playerCam == null)
         {
             m_playerCam = GetComponentInChildren<PlayerCam>();
@@ -200,19 +201,19 @@ public class PlayerMove : MonoBehaviour
     /// Crée une sphere invisible qui détecte le sol (Dans le layer "Ground") 
     /// Applique une gravité de -1 en permanence quand on est pour évité des problème pendant le déplacement et une cumlation infinie de celle-ci
     /// <returns>Retourne true si un sol a était détecté et sinon false</returns>
-    private bool isGrounded()
+    public bool isGrounded()
     {
         // Crée une sphere invisible et check si elle colide avec un layer "Ground"
-        bool p_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
+        bool isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
 
         // Force reset de la gravité a -1
-        if (p_isGrounded && m_gravityEffect.y < 0)
+        if (isGrounded && m_gravityEffect.y < 0)
         {
 
             m_gravityEffect.y = -1f;
         }
 
-        return p_isGrounded;
+        return isGrounded;
     }
 
     /// <summary>
@@ -422,7 +423,10 @@ public class PlayerMove : MonoBehaviour
         {
             m_timer = 0;
         }
-        
     }
-    
+
+    public static void attackPrey()
+    {
+        //Debug.Log("a l'aide, je me fait bouffer le cul");
+    }
 }

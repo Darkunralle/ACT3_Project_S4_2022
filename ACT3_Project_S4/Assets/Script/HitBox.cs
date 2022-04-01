@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class HitBox : MonoBehaviour
 {
-    public IaHealth health;
-
-    public void OntriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("avant j'etais un aventurier. Et puis j'ai pris une fleche dans le genou");
+        //Debug.Log("avant j'etais un aventurier. Et puis j'ai pris une fleche dans le genou");
+        PlayerMove.attackPrey();
     }
 }
