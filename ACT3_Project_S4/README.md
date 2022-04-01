@@ -18,6 +18,7 @@ Prototype avancement :
 		Retiré le plus de liaison possible (opti)
 		Progress dans le control de la cam via le déplacement
 		(Smouth de celle-ci)
+		Problème de direction quand on tourne et qu'on relache la touche avancer
 		
 Idée :
 	du bruit pendant la regen de stam ?

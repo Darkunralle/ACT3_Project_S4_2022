@@ -258,7 +258,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            Debug.Log($"Move X : {p_move.x} Move Y {p_move.y}");
+            
             if (p_move.y >= 0.6f)
             {
                 movement = transform.forward * p_move.y * m_speed;
@@ -309,7 +309,7 @@ public class PlayerMove : MonoBehaviour
 
     private void stamAndSpeedControl(Vector2 p_move)
     {
-        if (p_move.x == 0 && p_move.y == 0)
+        if ((p_move.x == 0 && p_move.y == 0) || (p_move.x != 0 && p_move.y == 0))
         {
             //Stam regen
             if (m_stam < m_pourcentageRegStam)
@@ -394,7 +394,7 @@ public class PlayerMove : MonoBehaviour
 
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
 
-        //Debug.Log(m_speed);
+        Debug.Log($"Move X : {move.x} Move Y : {move.y} et la vitesse : {m_speed}");
 
         //Application du mouvement
         m_characterController.Move(movement * Time.deltaTime);
