@@ -6,7 +6,8 @@ public enum AiStateId
 {
     ChasePlayer,
     Patrol,
-    Warned
+    Warned,
+    Death,
 }
 
 public interface AiState
