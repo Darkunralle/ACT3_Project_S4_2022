@@ -15,16 +15,21 @@ public class AiAgent : MonoBehaviour
 
     public Transform playerTransform;
 
+    public AiSensor sensor;
+
 
     // Start is called before the first frame update
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
         stateMachine = new AiStateMachine(this);
+
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiPatrol());
+        stateMachine.RegisterState(new AiWarned());
         stateMachine.RegisterState(new AiDeath());
-        //stateMachine.RegisterState(new AiPatrol());
+
         stateMachine.ChangeState(initialState);
     }
 
