@@ -16,7 +16,7 @@ public class soundTrap : MonoBehaviour
         if (other.name == "Player")
         {
             m_collider = other.GetComponent<PlayerMove>();
-            m_collider.sphereRadiusModify(true, m_trapRadius, 0.5f);
+            m_collider.sphereRadiusModify(m_trapRadius, 0.5f);
         }  
     }
 }

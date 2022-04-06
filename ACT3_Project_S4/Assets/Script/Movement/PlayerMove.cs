@@ -3,9 +3,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private PlayerCam m_playerCam;
-
     private CharacterController m_characterController;
-
     private SphereCollider m_sphereBruit;
 
     [SerializeField, Tooltip("Sphere radius marche")]
@@ -61,8 +59,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("LayerMask du sol")]
     private LayerMask m_groundMask;
 
+    // Calcule l'effet de la gravité dans un nouveau vecteur
     private Vector3 m_gravityEffect;
 
+    // Initialise la variable de mouvement
     private Vector3 movement = new Vector3(0, 0, 0);
 
     [SerializeField, Tooltip("Temps en seconde avant de commencer a regen de la stamina sans bouger")]
@@ -74,10 +74,11 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Quantité de stamina regen par seconde quand on ne bouge pas")]
     private float m_stamPerSec = 5f;
 
+    // temps passer immobile initialiser a 0 car bah voila
     private float m_timePassed = 0;
 
     //Pour évité la surdépense de stam pour le saut
-    private bool m_jumped = false;
+    private static bool m_jumped = false;
 
     //Détermine l'augmentation de la vitesse chaque seconde;
     private float m_speedAugmentPerSec ;
@@ -92,8 +93,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Active/Désactive le recadrage de la caméra lors du mouvement ou pas l'utilisation du clic droit")]
     private bool m_activateCameraRedirection = false;
 
+    // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
 
+    // Si le dernier mouvement du joueur est avant ou arrière
     private bool m_forward;
 
     // Class contenant les input du joueur
@@ -114,6 +117,15 @@ public class PlayerMove : MonoBehaviour
         playerInput.Disable();
     }
 
+    /// <summary>
+    /// #_Start
+    /// </summary>
+    /// 
+    /// Initialisation du max de la barre de stamina avec le max actuelle (a changé si on commence pas avec le maximum)
+    /// Initialisation de la vitesse de base sur la minimal
+    /// Calcule de la décélération selon la différence entre le min et le max et la période de temps necessaire
+    ///
+    /// Vérification de la présence des gameobject et leur récupération
     private void Start()
     {
         m_stamBarre.setMaxStam((int)Mathf.Round(m_stam));
@@ -245,7 +257,7 @@ public class PlayerMove : MonoBehaviour
                 movement = transform.forward * p_move.y * (m_speed * m_speedMulti);
 
                 // Modification de la portée du son
-                sphereRadiusModify(false, m_sphereRadRun, 0);
+                sphereRadiusModify(m_sphereRadRun);
                 // enregistre la direction "Avant"
                 m_forward = true;
 
@@ -254,12 +266,17 @@ public class PlayerMove : MonoBehaviour
                 {
                     m_playerCam.cameraResetAngle();
                 }
+                else
+                {
+                    m_playerCam.resetOnRedirect();
+                }
             }
 
         }
         else
         {
-            
+            m_playerCam.resetOnRedirect();
+
             if (p_move.y >= 0.6f)
             {
                 movement = transform.forward * p_move.y * m_speed;
@@ -270,7 +287,7 @@ public class PlayerMove : MonoBehaviour
                 movement = transform.forward * p_move.y * (m_speed * m_speedBackReduce);
                 m_forward = false;
             }
-            sphereRadiusModify(false, m_sphereRadWalk, 0);
+            sphereRadiusModify(m_sphereRadWalk);
         }
     }
 
@@ -305,7 +322,12 @@ public class PlayerMove : MonoBehaviour
     /// 
     /// Quand le joueur ne bouge plus regen de l'endurance jusqu'a une certaine valeur quand il bouge pas pendant X Seconde
     /// 
-    /// ~WIP
+    /// Accélération du joueur lors de son déplacement (peut être passer sur u nsystème de vélocité plus tard a voir) 
+    /// 
+    /// Quand le joueur arrête de se déplacer sa vitesse freine en X m par seconde (calculé dans le start ou avec une fonction a part) permettant un petit moment ou le joueur dérape 
+    /// Si le dernier mouvement du joueur et de reculer ou avancer change la formule du déplacement : ici dans movement = transform.forward * 1 * m_speed; le 1 remplace p_move.y et le -1 en cas de marche arrière
+    /// Si le joueur fait une rotation en même temps applique le même calcule mais en réduisant la vitesse 
+    /// 
     /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
 
     private void stamAndSpeedControl(Vector2 p_move)
@@ -322,6 +344,7 @@ public class PlayerMove : MonoBehaviour
                 }
             }
 
+            // Déccélération du joueur par seconde selon sont dernier déplacement et/ou sa rotation
             if (m_speed > m_speedMin)
             {
                 m_speed -= m_speedReducePerSec * Time.deltaTime;
@@ -351,6 +374,7 @@ public class PlayerMove : MonoBehaviour
 
 
             }
+            // Arrondie
             else if (m_speed < m_speedMin)
             {
                 movement = transform.forward * 0 * (m_speed * m_speedMulti);
@@ -358,6 +382,7 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
+        // Augmentation de la vitesse
         else
         {
             m_timePassed = 0;
@@ -365,12 +390,26 @@ public class PlayerMove : MonoBehaviour
             {
                 m_speed += m_speedAugmentPerSec * Time.deltaTime;
             }
+            // Arrondie
             else if (m_speed > m_speedMax)
             {
                 m_speed = m_speedMax;
             }
         }
     }
+
+    /// <summary>
+    /// #_Update
+    /// </summary>
+    /// 
+    /// Récupération des déplacement en ZQSD de la classe PlayerInput
+    /// 
+    /// Si le joueur est bien sur un props dans le layer Ground active la rotation et appelle les 3 fonction lié au mouvement
+    /// Sinon applique la gravité et reset le "compteur" de saut
+    /// 
+    /// Arrondie la valeur de l'endurance a l'entier le plus proche et l'envoi dans la barre d'endurance (Temporaire)
+    /// 
+    /// Déplacement du joueur et ensuite applique la gravité (séparé pour évité quelque problème de compréhension ou autre)
     void Update()
     {
         Vector2 move = playerInput.Player.Move.ReadValue<Vector2>();
@@ -383,6 +422,7 @@ public class PlayerMove : MonoBehaviour
 
             movementY(move);
             jump(move);
+            // Gestion de l'endurance et des accélération déccélération
             stamAndSpeedControl(move);
 
         }
@@ -402,15 +442,20 @@ public class PlayerMove : MonoBehaviour
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
     }
-
-    public void sphereRadiusModify(bool p_type, float p_radius, float p_timer)
+    /// <summary>
+    /// #_IdBoxSon fonction (private)
+    /// </summary>
+    /// 
+    /// Actualise le radius de la sphere de détection du son
+    /// 
+    /// Si un timer est actuellement init empèche le son de s'actualiser et fait baisser le timer
+    /// 
+    /// Le timer est défini dans la surcharge public de cette fonction
+    /// 
+    /// <param name="p_radius">float définissant le radius de la sphère de détection</param>
+    private void sphereRadiusModify(float p_radius)
     {
-        if (p_type)
-        {
-            m_sphereBruit.radius = p_radius;
-            m_timer = p_timer;
-        }
-        else if (m_timer <= 0)
+        if (m_timer <= 0)
         {
             m_sphereBruit.radius = p_radius;
         }
@@ -424,9 +469,37 @@ public class PlayerMove : MonoBehaviour
             m_timer = 0;
         }
     }
-
-    public static void attackPrey()
+    /// <summary>
+    /// #_IdBoxSon fonction (public) Surcharge
+    /// </summary>
+    /// 
+    /// Surcharge public de la fonction pour le bruit
+    /// 
+    /// Un timer et la pour faire en sorte que le bruit ne osit pas directement écraser, merci de mettre une valeur supérieur a zéro
+    /// 
+    /// <param name="p_radius">float définissant le radius de la sphère de détection</param>
+    /// <param name="p_timer">float temps pendant laquel la bruit est audible (en seconde)</param>
+    public void sphereRadiusModify(float p_radius, float p_timer)
     {
-        //Debug.Log("a l'aide, je me fait bouffer le cul");
+        m_sphereBruit.radius = p_radius;
+        m_timer = p_timer;
+    }
+
+    /// <summary>
+    /// #_Attaque du joueur
+    /// </summary>
+    /// 
+    /// Si la condition pour tuer est validé alors on renvoi l'information
+    /// 
+    /// Condition actuellement "Être en saut"
+    /// 
+    /// <returns>Bool qui renvoi si oui ou non l'attaque est autorisé</returns>
+    public static bool attackPrey()
+    {
+        if (m_jumped)
+        {
+            return true;
+        }
+        return false;
     }
 }

@@ -2470,6 +2470,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1521606977869514553, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
+      propertyPath: m_camera
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1521606977869514553, guid: d0f2fe08a0e93fc43ad456cb4e027040, type: 3}
       propertyPath: m_blockAngleX
       value: 60
       objectReference: {fileID: 0}
