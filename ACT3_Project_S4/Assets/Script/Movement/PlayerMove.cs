@@ -34,7 +34,7 @@ public class PlayerMove : MonoBehaviour
     private float m_jumpHeight = 2.5f;
 
     [SerializeField, Tooltip("Coût du saut en stamina")]
-    private float m_jumpCost = 25;
+    private float m_jumpCost = 10;
 
     [SerializeField, Tooltip("Rotation degré par seconde")]
     private float m_rotateSpeed = 90;
@@ -48,7 +48,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Multiplicateur de vitesse pour la marche arrière (1 = vitesse de base // 0.5 = 50% de la vitesse de base) Float ")]
     private float m_speedBackReduce = 0.5f;
 
-    [SerializeField, Tooltip("Quantité d'endurance Float ")]
+    [SerializeField, Tooltip("Quantité d'endurance maximal")]
+    private float m_stamMax = 100f;
+
+    [SerializeField, Tooltip("Quantité d'endurance Float au start")]
     private float m_stam = 100f;
 
     private Transform m_groundCheck;
@@ -69,7 +72,7 @@ public class PlayerMove : MonoBehaviour
     private float m_secondeBeforeRegen = 2f;
 
     [SerializeField, Tooltip("Pourcentage de regen naturelle de la stamina quand on ne bouge pas en pourcentage")]
-    private float m_pourcentageRegStam = 25f;
+    private float m_pourcentageRegStam = 20f;
 
     [SerializeField, Tooltip("Quantité de stamina regen par seconde quand on ne bouge pas")]
     private float m_stamPerSec = 5f;
@@ -92,6 +95,9 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField, Tooltip("Active/Désactive le recadrage de la caméra lors du mouvement ou pas l'utilisation du clic droit")]
     private bool m_activateCameraRedirection = false;
+
+    [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
+    private float m_regenOnKill = 100;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -121,14 +127,14 @@ public class PlayerMove : MonoBehaviour
     /// #_Start
     /// </summary>
     /// 
-    /// Initialisation du max de la barre de stamina avec le max actuelle (a changé si on commence pas avec le maximum)
+    /// Initialisation du max de la barre de stamina avec le max
     /// Initialisation de la vitesse de base sur la minimal
     /// Calcule de la décélération selon la différence entre le min et le max et la période de temps necessaire
     ///
     /// Vérification de la présence des gameobject et leur récupération
     private void Start()
     {
-        m_stamBarre.setMaxStam((int)Mathf.Round(m_stam));
+        m_stamBarre.setMaxStam((int)Mathf.Round(m_stamMax));
 
         m_speed = m_speedMin;
 
@@ -501,5 +507,17 @@ public class PlayerMove : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void stamRegen()
+    {
+        m_stam += m_regenOnKill;
+        if (m_stam > m_stamMax)
+        {
+            m_stam = m_stamMax;
+        }
+
+        m_stamBarre.setStam((int)Mathf.Round(m_stam));
+
     }
 }
