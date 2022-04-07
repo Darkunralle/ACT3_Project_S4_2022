@@ -36,6 +36,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(stateMachine.currentState);
         stateMachine.Update();
     }
 }

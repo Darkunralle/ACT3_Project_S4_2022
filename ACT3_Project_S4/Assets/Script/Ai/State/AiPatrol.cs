@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AiPatrol : AiState
 {
+    public bool hold = false;
+    public float holdTime = 10;
+
     public float minDistance;
     public float maxDistance;
 
@@ -19,6 +22,17 @@ public class AiPatrol : AiState
     }
     public void Update(AiAgent agent)
     {
+        //if(hold == false)
+        //{
+        //    Debug.Log("is false");
+        //    holdTime -= 1 * Time.deltaTime;
+        //    if (holdTime <= 0)
+        //    {
+        //        Debug.Log("is 0");
+        //        hold = true;
+        //    }
+        //}
+  
         if (!agent.navMeshAgent.hasPath)
         {
             WorldBound worldBounds = GameObject.FindObjectOfType<WorldBound>();
@@ -28,20 +42,30 @@ public class AiPatrol : AiState
             randomPosition = new Vector3(
                 Random.Range(min.x, max.x),
                 Random.Range(min.y, max.y),
-                Random.Range(min.z, max.z)
+                Random.Range(min.z, max.z)  
                 );
-
-            agent.navMeshAgent.destination = randomPosition;
+            
+            //if (hold == true)
+            //{
+                //Debug.Log("is true");
+                agent.navMeshAgent.destination = randomPosition;
+            //}
         }
+        
+        //if (agent.transform.up == randomPosition)
+        //{
+        //    holdTime = 10;
+        //    Debug.Log("rebbot");
+        //    hold = false;
+        //}
 
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {
             if (agent.sensor.Objects.Count > 0)
             {
-                agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+                    agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
             }
-        }
-        
+        }        
     }
 
     public void Exit(AiAgent agent)
