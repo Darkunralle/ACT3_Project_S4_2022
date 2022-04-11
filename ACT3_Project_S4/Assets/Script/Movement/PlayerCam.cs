@@ -24,8 +24,8 @@ public class PlayerCam : MonoBehaviour
 
     private float m_moveYPerSec;
 
-    [SerializeField, Tooltip("Active les mouvement spécial de la caméra comme les léger mouvement quand on cour")]
-    private bool m_specialCamMovement = false;
+    //[SerializeField, Tooltip("Active les mouvement spécial de la caméra comme les léger mouvement quand on cour")]
+    //private bool m_specialCamMovement = false;
 
     private bool m_inReset = false;
 
@@ -89,7 +89,7 @@ public class PlayerCam : MonoBehaviour
             look(delta);
         }
         
-        Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
+        //Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
     }
 
     public void cameraResetAngle()

@@ -507,4 +507,18 @@ public class PlayerMove : MonoBehaviour
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
 
     }
+
+    public float getStam()
+    {
+        return m_stam;
+    }
+    public float setStam(float p_stam)
+    {
+        m_stam += p_stam;
+        if (m_stam > m_stamMax)
+        {
+            m_stam = m_stamMax;
+        }
+        return m_stam;
+    }
 }

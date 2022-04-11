@@ -13,8 +13,6 @@ public class Loco : MonoBehaviour
     public float maxTime = 1f;
     public float maxDistance = 1f;
 
-    float timer = 0f;
-
     // Start is called before the first frame update
     void Start()
     {
