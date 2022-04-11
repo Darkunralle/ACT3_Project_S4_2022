@@ -232,7 +232,7 @@ RectTransform:
   m_GameObject: {fileID: 4126583532965669850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.529349, y: 2.306326, z: 5.4739}
+  m_LocalScale: {x: 19.390331, y: 4.2198844, z: 5.4739}
   m_Children:
   - {fileID: 3525773366323354355}
   - {fileID: 6651825842271073405}
@@ -241,7 +241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 124.7}
+  m_AnchoredPosition: {x: 0, y: 451}
   m_SizeDelta: {x: 52, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7935734142239116796
@@ -337,7 +337,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4575381162466029795}
-  m_LocalRotation: {x: -0, y: -0.40915522, z: -0, w: 0.91246486}
+  m_LocalRotation: {x: 0, y: -0.4091588, z: 0, w: 0.9124632}
   m_LocalPosition: {x: 102.406, y: 22.693, z: 51.379}
   m_LocalScale: {x: 0.47919, y: 0.26665717, z: 1.1665063}
   m_Children:
@@ -443,27 +443,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_sphereRadWalk: 2
   m_sphereRadRun: 8
-  m_speedMax: 8
+  m_speedMax: 6
   m_speedMin: 2
   m_timeForSpeedMax: 2
   m_timeForSpeedMin: 0.4
   m_gravity: -9.81
-  m_jumpHeight: 2.5
-  m_jumpCost: 25
-  m_rotateSpeed: 45
-  m_speedMulti: 2
+  m_jumpHeight: 2
+  m_jumpCost: 20
+  m_rotateSpeed: 65
+  m_speedMulti: 1.5
   m_sprintCost: 5
   m_speedBackReduce: 0.4
+  m_stamMax: 100
   m_stam: 100
   m_groundCheckRange: 0.4
   m_groundMask:
     serializedVersion: 2
     m_Bits: 128
   m_secondeBeforeRegen: 2
-  m_pourcentageRegStam: 25
-  m_stamPerSec: 5
+  m_pourcentageRegStam: 50
+  m_stamPerSec: 10
   m_stamBarre: {fileID: 7433786056552248423}
   m_activateCameraRedirection: 0
+  m_regenOnKill: 100
 --- !u!135 &8241307360785055622
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -654,6 +656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054417342110304235}
     m_Modifications:
+    - target: {fileID: 3178559220323789833, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
+      propertyPath: m_sensitivity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_Name
       value: PlayerCam
