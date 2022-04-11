@@ -173,19 +173,6 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        // Don't work
-        /*
-        if (m_stamBarre == null)
-        {
-            Debug.Log("Récup Stam barre");
-            m_stamBarre = GetComponentInChildren<StamBarre>();
-            if (m_stamBarre == null)
-            {
-                Debug.Log("Tardos il manque la m_stamBarre  MERCI");
-                throw new System.ArgumentNullException();
-            }
-        }*/
-
         if (m_groundCheck == null)
         {
             Debug.Log("Récup Ground check");

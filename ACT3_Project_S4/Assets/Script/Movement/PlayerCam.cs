@@ -82,11 +82,13 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
+        
         if (!m_onRedirect)
         {
             Vector2 delta = playerInput.Player.Look.ReadValue<Vector2>();
             look(delta);
         }
+        
         Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
     }
 
