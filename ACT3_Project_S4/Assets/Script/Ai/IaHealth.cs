@@ -10,9 +10,12 @@ public class IaHealth : MonoBehaviour
     
     [HideInInspector]
     public float currentHealth;
+
+    AiAgent agent;
     
     void Start()
     {
+        agent = GetComponent<AiAgent>();
         currentHealth = maxHealth;
     }
 
@@ -27,6 +30,7 @@ public class IaHealth : MonoBehaviour
 
     private void Die()
     {
-        throw new NotImplementedException();
+        AiDeath deathState = agent.stateMachine.GetState(AiStateId.Death) as AiDeath;
+        agent.stateMachine.ChangeState(AiStateId.Death);
     }
 }

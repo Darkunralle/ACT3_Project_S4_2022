@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [ExecuteInEditMode]
-public class IaSensor : MonoBehaviour
+public class AiSensor : MonoBehaviour
 {
 
     public float distance = 10;
@@ -97,8 +97,8 @@ public class IaSensor : MonoBehaviour
         Vector3 bottomRight = Quaternion.Euler(0, angle, 0) * Vector3.forward * distance;
 
         Vector3 topCenter = bottomCenter + Vector3.up * height;
-        Vector3 topRight = bottomRight + Vector3.up * height;
-        Vector3 topLeft = bottomLeft + Vector3.up * height;
+        Vector3 topRight = bottomRight + Vector3.up * (height * 3);
+        Vector3 topLeft = bottomLeft + Vector3.up * (height * 3);
 
         int vert = 0;
 
@@ -127,8 +127,8 @@ public class IaSensor : MonoBehaviour
             bottomLeft = Quaternion.Euler(0, currentAngle, 0) * Vector3.forward * distance;
             bottomRight = Quaternion.Euler(0, currentAngle + deltaAngle, 0) * Vector3.forward * distance;
 
-            topRight = bottomRight + Vector3.up * height;
-            topLeft = bottomLeft + Vector3.up * height;
+            topRight = bottomRight + Vector3.up * (height * 3);
+            topLeft = bottomLeft + Vector3.up * (height * 3);
             
             //far side
             vertices[vert++] = bottomLeft;
