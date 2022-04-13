@@ -5,9 +5,23 @@ Unity : 2020.3.30f1 (URP)
 
 Prototype avancement :
 
-	Todo
-		"Mur de poursuite" -> Set colision joueur
-		Joueur -> Définir quoi bouger
+	Bug :
+		Pbm :
+			La caméra retourne dans les extrémitée
+		Quand :
+			Lors de la course (recentrage)
+		Cause :
+			Spam de la touche de sprint ou coup trop violent de souris
+		Conclusion :
+			Le problème se situe dans la fonction "Look" de la caméra
+				La valeur est Clamp a son max
+
+	Todo :
+		Retiré le plus de liaison possible (opti)
+		Rangement du code de la Caméra
 		
-	Do
-		Avancer du mur
+		
+		
+Idée :
+	du bruit pendant la regen de stam ?
+		

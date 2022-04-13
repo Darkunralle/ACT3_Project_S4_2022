@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
     private Transform m_groundCheck;
 
     [SerializeField, Tooltip("Float gerant le radius de la sphere GroundCheck")]
-    private float m_groundCheckRange = 0.4f;
+    private float m_groundCheckRange = 0.5f;
 
     [SerializeField, Tooltip("LayerMask du sol")]
     private LayerMask m_groundMask;
@@ -215,7 +215,7 @@ public class PlayerMove : MonoBehaviour
         if (isGrounded && m_gravityEffect.y < 0)
         {
 
-            m_gravityEffect.y = -1f;
+            m_gravityEffect.y = -2f;
         }
 
         return isGrounded;
