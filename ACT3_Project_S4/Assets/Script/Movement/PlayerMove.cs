@@ -155,7 +155,7 @@ public class PlayerMove : MonoBehaviour
 
         if (m_sphereBruit == null)
         {
-            m_sphereBruit = GetComponent<SphereCollider>();
+            m_sphereBruit = GetComponentInChildren<SphereCollider>();
             if (m_sphereBruit == null)
             {
                 Debug.Log("Tardos il manque la sphère  MERCI");
@@ -176,7 +176,7 @@ public class PlayerMove : MonoBehaviour
         if (m_groundCheck == null)
         {
             Debug.Log("Récup Ground check");
-            m_groundCheck = this.gameObject.transform.GetChild(2);
+            m_groundCheck = this.gameObject.transform.GetChild(3);
             if (m_groundCheck == null)
             {
                 Debug.Log("Tardos il manque la m_groundCheck  MERCI");
