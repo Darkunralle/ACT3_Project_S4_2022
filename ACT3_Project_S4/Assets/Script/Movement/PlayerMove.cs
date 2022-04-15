@@ -77,6 +77,9 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Quantité de stamina regen par seconde quand on ne bouge pas")]
     private float m_stamPerSec = 5f;
 
+    [SerializeField, Tooltip("Pourcentage de stamina regen en marche 0.5 = 50 %")]
+    private float m_stamPercentWalk = 0.5f;
+
     // temps passer immobile initialiser a 0 car bah voila
     private float m_timePassed = 0;
 
@@ -246,6 +249,8 @@ public class PlayerMove : MonoBehaviour
         {
             if (p_move.y > 0)
             {
+                m_timePassed = 0;
+
                 m_stam -= m_sprintCost * Time.deltaTime;
                 movement = transform.forward * p_move.y * (m_speed * m_speedMulti);
 
@@ -299,6 +304,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerInput.Player.Jump.IsPressed() && m_stam >= m_jumpCost)
         {
+            m_timePassed = 0;
+
             m_gravityEffect.y = Mathf.Sqrt(m_jumpHeight * -2f * m_gravity);
 
             if (!m_jumped)
@@ -325,16 +332,15 @@ public class PlayerMove : MonoBehaviour
 
     private void stamAndSpeedControl(Vector2 p_move)
     {
+        //Stam regen
+        if (m_stam < m_pourcentageRegStam) m_timePassed += Time.deltaTime;
+
         if ((p_move.x == 0 && p_move.y == 0) || (p_move.x != 0 && p_move.y == 0))
         {
-            //Stam regen
-            if (m_stam < m_pourcentageRegStam)
+
+            if (m_timePassed >= m_secondeBeforeRegen)
             {
-                m_timePassed += Time.deltaTime;
-                if (m_timePassed >= m_secondeBeforeRegen)
-                {
-                    m_stam += m_stamPerSec * Time.deltaTime;
-                }
+                m_stam += m_stamPerSec * Time.deltaTime;
             }
 
             // Déccélération du joueur par seconde selon sont dernier déplacement et/ou sa rotation
@@ -378,7 +384,11 @@ public class PlayerMove : MonoBehaviour
         // Augmentation de la vitesse
         else
         {
-            m_timePassed = 0;
+            if (m_timePassed >= m_secondeBeforeRegen)
+            {
+                m_stam += m_stamPerSec * m_stamPercentWalk * Time.deltaTime;
+            }
+
             if (m_speed < m_speedMax && p_move.y != 0 )
             {
                 m_speed += m_speedAugmentPerSec * Time.deltaTime;
@@ -427,8 +437,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
-
-        //Debug.Log($"Move X : {move.x} Move Y : {move.y} et la vitesse : {m_speed}");
 
         //Application du mouvement
         m_characterController.Move(movement * Time.deltaTime);
@@ -496,18 +504,6 @@ public class PlayerMove : MonoBehaviour
         return false;
     }
 
-    public void stamRegen()
-    {
-        m_stam += m_regenOnKill;
-        if (m_stam > m_stamMax)
-        {
-            m_stam = m_stamMax;
-        }
-
-        m_stamBarre.setStam((int)Mathf.Round(m_stam));
-
-    }
-
     public float getStam()
     {
         return m_stam;
@@ -519,6 +515,7 @@ public class PlayerMove : MonoBehaviour
         {
             m_stam = m_stamMax;
         }
+        m_stamBarre.setStam((int)Mathf.Round(m_stam));
         return m_stam;
     }
 }

@@ -72,14 +72,15 @@ public class PlayerCam : MonoBehaviour
     private void look(Vector2 p_delta)
     {
         p_delta.y = -p_delta.y;
+        
         Vector2 rawFrameVelocity = Vector2.Scale(p_delta, Vector2.one * m_sensitivity);
         m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
         m_velocity += m_frameVelocity;
-
+        //Debug.Log($"Before clamp : X {m_velocity.y} Y {m_velocity.x}");
         //Lock de la caméra
         m_velocity.y = Mathf.Clamp(m_velocity.y, -m_blockAngleY, m_blockAngleY);
         m_velocity.x = Mathf.Clamp(m_velocity.x, -m_blockAngleX, m_blockAngleX);
-
+        //Debug.Log($"After clamp : X {m_velocity.y} Y {m_velocity.x}");
         transform.localRotation = Quaternion.Euler(m_velocity.y, m_velocity.x, 0);
         //Debug.Log(new Vector2 (m_velocity.y, m_velocity.x));
         
@@ -96,7 +97,8 @@ public class PlayerCam : MonoBehaviour
         }
         else
         {
-            Vector2 newVelocity = new Vector2(m_camera.transform.rotation.eulerAngles.x, m_camera.transform.rotation.eulerAngles.y);
+            Vector2 newVelocity = new Vector2(m_camera.transform.localRotation.eulerAngles.x, m_camera.transform.localRotation.eulerAngles.y);
+            Debug.Log($"Raw : X {newVelocity.y} Y {newVelocity.x}");
             if (newVelocity.x > m_blockAngleY)
             {
                 newVelocity.x -= 360;
@@ -106,6 +108,8 @@ public class PlayerCam : MonoBehaviour
                 newVelocity.y -= 360;
             }
             m_velocity = new Vector2(newVelocity.y , newVelocity.x);
+            Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
+            Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
             //Debug.Log(new Vector2(m_velocity.y, m_velocity.x));
         }
         //Debug.Log(transform.localRotation);
