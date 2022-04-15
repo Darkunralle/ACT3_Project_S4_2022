@@ -19,20 +19,10 @@ public class AiPatrol : AiState
 
     public void Enter(AiAgent agent)
     {
+        Debug.Log("balade time");
     }
     public void Update(AiAgent agent)
-    {
-        //if(hold == false)
-        //{
-        //    Debug.Log("is false");
-        //    holdTime -= 1 * Time.deltaTime;
-        //    if (holdTime <= 0)
-        //    {
-        //        Debug.Log("is 0");
-        //        hold = true;
-        //    }
-        //}
-  
+    {  
         if (!agent.navMeshAgent.hasPath)
         {
             WorldBound worldBounds = GameObject.FindObjectOfType<WorldBound>();
@@ -45,19 +35,8 @@ public class AiPatrol : AiState
                 Random.Range(min.z, max.z)  
                 );
             
-            //if (hold == true)
-            //{
-                //Debug.Log("is true");
                 agent.navMeshAgent.destination = randomPosition;
-            //}
         }
-        
-        //if (agent.transform.up == randomPosition)
-        //{
-        //    holdTime = 10;
-        //    Debug.Log("rebbot");
-        //    hold = false;
-        //}
 
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {

@@ -16,7 +16,7 @@ public class AiChasePlayerState : AiState
 
     public void Enter(AiAgent agent)
     {
-        
+        Debug.Log("a grougrou");
     }
     public void Update(AiAgent agent)
     {
@@ -50,11 +50,12 @@ public class AiChasePlayerState : AiState
         }
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {
-            if (agent.sensor.Objects.Count == 0)
+            if (agent.sensor.Objects.Count <= 0)
             {
                 countDown -= 1 * Time.deltaTime;
                 if(countDown <= 0)
                 {
+                    Debug.Log("sa me gonfle");
                     agent.stateMachine.ChangeState(AiStateId.Patrol);
                 }
             }

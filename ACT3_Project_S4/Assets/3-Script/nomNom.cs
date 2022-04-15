@@ -10,6 +10,7 @@ public class nomNom : MonoBehaviour
     private PlayerMove m_player;
     public void OnTriggerEnter(Collider player)
     {
+        //check les layers
         Debug.Log("fdd");
         parent.SetActive(false);
 
