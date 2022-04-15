@@ -36,6 +36,8 @@ public class PlayerCam : MonoBehaviour
 
     private bool m_onRedirect = false;
 
+    private Vector2 delta = new Vector2(0, 0);
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -50,7 +52,7 @@ public class PlayerCam : MonoBehaviour
     {
         playerInput.Disable();
     }
-    
+
     void Start()
     {
         if (m_camera == null)
@@ -69,26 +71,48 @@ public class PlayerCam : MonoBehaviour
 
     private void look(Vector2 p_delta)
     {
+        p_delta.y = -p_delta.y;
+
         Vector2 rawFrameVelocity = Vector2.Scale(p_delta, Vector2.one * m_sensitivity);
         m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
         m_velocity += m_frameVelocity;
-
+        //Debug.Log($"Before clamp : X {m_velocity.y} Y {m_velocity.x}");
         //Lock de la caméra
         m_velocity.y = Mathf.Clamp(m_velocity.y, -m_blockAngleY, m_blockAngleY);
         m_velocity.x = Mathf.Clamp(m_velocity.x, -m_blockAngleX, m_blockAngleX);
+        //Debug.Log($"After clamp : X {m_velocity.y} Y {m_velocity.x}");
+        transform.localRotation = Quaternion.Euler(m_velocity.y, m_velocity.x, 0);
+        //Debug.Log(new Vector2 (m_velocity.y, m_velocity.x));
 
-        transform.localRotation = Quaternion.Euler(-m_velocity.y, m_velocity.x, 0);
+
     }
 
     private void Update()
     {
-        
+
         if (!m_onRedirect)
         {
-            Vector2 delta = playerInput.Player.Look.ReadValue<Vector2>();
+            delta = playerInput.Player.Look.ReadValue<Vector2>();
             look(delta);
         }
-        
+        else
+        {
+            Vector2 newVelocity = new Vector2(m_camera.transform.localRotation.eulerAngles.x, m_camera.transform.localRotation.eulerAngles.y);
+            Debug.Log($"Raw : X {newVelocity.y} Y {newVelocity.x}");
+            if (newVelocity.x > m_blockAngleY)
+            {
+                newVelocity.x -= 360;
+            }
+            if (newVelocity.y > m_blockAngleX)
+            {
+                newVelocity.y -= 360;
+            }
+            m_velocity = new Vector2(newVelocity.y, newVelocity.x);
+            Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
+            Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
+            //Debug.Log(new Vector2(m_velocity.y, m_velocity.x));
+        }
+        //Debug.Log(transform.localRotation);
         //Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
     }
 
@@ -101,8 +125,8 @@ public class PlayerCam : MonoBehaviour
             m_inReset = true;
         }
         Vector3 newRotate = transform.localRotation.eulerAngles;
-        
-        if (newRotate.x != 0 )
+
+        if (newRotate.x != 0)
         {
             if (newRotate.x > 180)
             {
@@ -156,7 +180,7 @@ public class PlayerCam : MonoBehaviour
     {
         if (transform.localRotation.eulerAngles.y > 180)
         {
-            m_moveXPerSec = (360 - transform.localRotation.eulerAngles.y)/ m_redirecTime;
+            m_moveXPerSec = (360 - transform.localRotation.eulerAngles.y) / m_redirecTime;
         }
         else
         {
@@ -174,6 +198,7 @@ public class PlayerCam : MonoBehaviour
 
     }
 
-    private void camSpecialMovement() { 
+    private void camSpecialMovement()
+    {
     }
 }
