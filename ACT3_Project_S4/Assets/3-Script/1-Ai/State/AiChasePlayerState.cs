@@ -48,12 +48,8 @@ public class AiChasePlayerState : AiState
         }
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {
-<<<<<<< Updated upstream:ACT3_Project_S4/Assets/3-Script/1-Ai/State/AiChasePlayerState.cs
-            if (agent.sensor.Objects.Count == 0)
-=======
 
             if (agent.sensor.Objects.Count <= 0)
->>>>>>> Stashed changes:ACT3_Project_S4/Assets/Script/Ai/State/AiChasePlayerState.cs
             {
                 countDown -= 1 * Time.deltaTime;
                 if(countDown <= 0)

@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCam : MonoBehaviour
 {
     private Camera m_camera;
+
+    private PauseButton m_pause;
 
     [SerializeField, Tooltip("Blocage camaré Vertical en Degré")]
     private int m_blockAngleY = 30;
@@ -12,7 +15,7 @@ public class PlayerCam : MonoBehaviour
     private int m_blockAngleX = 60;
 
     [SerializeField, Tooltip("Réglage de la sensibilité du regard")]
-    private float m_sensitivity = 0.8f;
+    private float m_sensitivity = 0.5f;
 
     [SerializeField, Tooltip("Réglage rendant la caméra plus lisse et évité les acoups")]
     private float m_smoothing = 1.5f;
@@ -55,6 +58,17 @@ public class PlayerCam : MonoBehaviour
 
     void Start()
     {
+
+        if (m_pause == null)
+        {
+            m_pause = GetComponentInParent(typeof(PauseButton)) as PauseButton;
+            if (m_pause == null)
+            {
+                Debug.Log("Tardos il manque le script de pause MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
         if (m_camera == null)
         {
             m_camera = GetComponent<Camera>();
@@ -64,6 +78,16 @@ public class PlayerCam : MonoBehaviour
                 throw new System.ArgumentNullException();
             }
         }
+
+        if (PlayerPrefs.HasKey("sensitive"))
+        {
+            m_sensitivity = PlayerPrefs.GetFloat("sensitive");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("sensitive", m_sensitivity);
+        }
+
 
         // Bloque la souris dans la fenêtre
         Cursor.lockState = CursorLockMode.Locked;
@@ -89,31 +113,42 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
+        if (!PauseButton.getGameIsPaused())
+        {
+            if (!m_onRedirect)
+            {
+                delta = playerInput.Player.Look.ReadValue<Vector2>();
+                look(delta);
+            }
+            else
+            {
+                Vector2 newVelocity = new Vector2(m_camera.transform.localRotation.eulerAngles.x, m_camera.transform.localRotation.eulerAngles.y);
+                Debug.Log($"Raw : X {newVelocity.y} Y {newVelocity.x}");
+                if (newVelocity.x > m_blockAngleY)
+                {
+                    newVelocity.x -= 360;
+                }
+                if (newVelocity.y > m_blockAngleX)
+                {
+                    newVelocity.y -= 360;
+                }
+                m_velocity = new Vector2(newVelocity.y, newVelocity.x);
+                Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
+                Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
+                //Debug.Log(new Vector2(m_velocity.y, m_velocity.x));
+            }
+            //Debug.Log(transform.localRotation);
+            //Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
 
-        if (!m_onRedirect)
-        {
-            delta = playerInput.Player.Look.ReadValue<Vector2>();
-            look(delta);
-        }
-        else
-        {
-            Vector2 newVelocity = new Vector2(m_camera.transform.localRotation.eulerAngles.x, m_camera.transform.localRotation.eulerAngles.y);
-            Debug.Log($"Raw : X {newVelocity.y} Y {newVelocity.x}");
-            if (newVelocity.x > m_blockAngleY)
+            if (PlayerPrefs.HasKey("sensitive"))
             {
-                newVelocity.x -= 360;
+                m_sensitivity = PlayerPrefs.GetFloat("sensitive");
             }
-            if (newVelocity.y > m_blockAngleX)
+            else
             {
-                newVelocity.y -= 360;
+                Debug.Log("Impossible de trouver les playerprefs lié a la sensibilité ",this);
             }
-            m_velocity = new Vector2(newVelocity.y, newVelocity.x);
-            Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
-            Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
-            //Debug.Log(new Vector2(m_velocity.y, m_velocity.x));
         }
-        //Debug.Log(transform.localRotation);
-        //Debug.Log(playerInput.Player.Look.ReadValue<Vector2>());
     }
 
     public void cameraResetAngle()
