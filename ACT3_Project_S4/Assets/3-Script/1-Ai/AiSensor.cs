@@ -14,6 +14,9 @@ public class AiSensor : MonoBehaviour
     public int scanFrequency = 30;
     public LayerMask Player;
     public LayerMask occlusionLayers;
+    public Transform target;
+
+    public GameObject cannon;
 
     public List<GameObject> Objects = new List<GameObject>();
 
@@ -32,6 +35,8 @@ public class AiSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
         scanTimer -= Time.deltaTime;
         if (scanTimer < 0)
         {
@@ -56,12 +61,15 @@ public class AiSensor : MonoBehaviour
 
     public bool IsInSight(GameObject obj)
     {
+        cannon.transform.forward = target.transform.localPosition;
+        
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
 
-        if(direction.y < 0 || direction.y > height)
+        if (direction.y < 0 || direction.y > height)
         {
+            
             return false;
         }
 
@@ -170,6 +178,11 @@ public class AiSensor : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+
+        Debug.DrawLine(cannon.transform.position, cannon.transform.position + cannon.transform.forward * 50, Color.yellow);
+
+
+
         if (mesh)
         {
             Gizmos.color = meshColor;
