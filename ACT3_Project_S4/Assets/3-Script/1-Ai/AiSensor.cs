@@ -10,7 +10,7 @@ public class AiSensor : MonoBehaviour
     public float distance = 10;
     public float angle = 30;
     public float height = 1.0f;
-    public Color meshColor = Color.red;
+    public Color meshColor;
     public int scanFrequency = 30;
     public LayerMask Player;
     public LayerMask occlusionLayers;
@@ -18,6 +18,8 @@ public class AiSensor : MonoBehaviour
     public Transform target;
 
     public GameObject cannon;
+
+    public Vector3 offset;
 
     public List<GameObject> Objects = new List<GameObject>();
 
@@ -36,7 +38,8 @@ public class AiSensor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        offset = transform.position - target.transform.position;
+        //Debug.Log(offset.sqrMagnitude);
 
         scanTimer -= Time.deltaTime;
         if (scanTimer < 0)
@@ -55,6 +58,7 @@ public class AiSensor : MonoBehaviour
             GameObject obj = colliders[i].gameObject;
             if (IsInSight(obj))
             {
+                IsInRange();
                 cannon.transform.LookAt(target);
                 Objects.Add(obj);
             }
@@ -90,6 +94,25 @@ public class AiSensor : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    public void IsInRange(AiAgent agent)
+    {
+        if (offset.sqrMagnitude < 25)
+        {
+            Debug.Log("SUDDEN DEATH");
+        }
+
+        else if(offset.sqrMagnitude < 900)
+        {
+            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+            Debug.Log("engager");
+        }
+
+        else if (offset.sqrMagnitude < 1900)
+        {
+            Debug.Log("piou piou si engager, sinon follow");
+        }
     }
 
     Mesh CreatWedgeMesh()
@@ -182,7 +205,7 @@ public class AiSensor : MonoBehaviour
     private void OnDrawGizmos()
     {
 
-        Debug.DrawLine(cannon.transform.position, cannon.transform.position + cannon.transform.forward * 50, Color.yellow);
+        Debug.DrawLine(cannon.transform.position, cannon.transform.position + cannon.transform.forward * 50, Color.magenta);
 
         if (mesh)
         {
