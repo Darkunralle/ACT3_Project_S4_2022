@@ -58,6 +58,10 @@ public class AiChasePlayerState : AiState
                 }
             }
         }
+        if (agent.sensor.playerInEngagmentRange)
+        {
+            agent.stateMachine.ChangeState(AiStateId.Firing);
+        }
     }
 
         

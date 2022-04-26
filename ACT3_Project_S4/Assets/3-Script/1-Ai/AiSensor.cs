@@ -6,21 +6,29 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AiSensor : MonoBehaviour
 {
-
+    [Header("Agent FOV")]
     public float distance = 10;
     public float angle = 30;
     public float height = 1.0f;
     public Color meshColor;
     public int scanFrequency = 30;
+
+    [Header("Layer de scan & cible")]
     public LayerMask Player;
     public LayerMask occlusionLayers;
-    
     public Transform target;
-
     public GameObject cannon;
-
     public Vector3 offset;
 
+    [Header("Zone de detection pour definir le statut de l'agent")]
+    [Range(0.0f, 1.0f)]
+    public float engagmentZone;
+    public bool playerInEngagmentRange;
+    [Range(0.0f, 0.10f)]
+    public float deathZone;
+    public bool playerInDeathRange;
+
+    [Header("Liste des élément present dans le champ")]
     public List<GameObject> Objects = new List<GameObject>();
 
     Collider[] colliders = new Collider[50];
@@ -39,7 +47,6 @@ public class AiSensor : MonoBehaviour
     void Update()
     {
         offset = transform.position - target.transform.position;
-        //Debug.Log(offset.sqrMagnitude);
 
         scanTimer -= Time.deltaTime;
         if (scanTimer < 0)
@@ -51,25 +58,40 @@ public class AiSensor : MonoBehaviour
 
     private void Scan()
     {
+        playerInEngagmentRange = Physics.CheckSphere(transform.position, engagmentZone * 100, Player);
+        playerInDeathRange = Physics.CheckSphere(transform.position, deathZone * 100, Player);
+        
         count = Physics.OverlapSphereNonAlloc(transform.position, distance, colliders, Player, QueryTriggerInteraction.Collide);
+        
         Objects.Clear();
+
         for(int i = 0; i < count; ++i)
         {
             GameObject obj = colliders[i].gameObject;
             if (IsInSight(obj))
             {
-                IsInRange();
+                if (playerInEngagmentRange && !playerInDeathRange) 
+                { 
+                    //Debug.Log("piou piou");
+                    meshColor = new Color(0f, 0f, 1f, 0.25f);
+                }
+
+                else if (playerInDeathRange)
+                {
+                    //Debug.Log("death piou piou");
+                    meshColor = new Color(1f, 0f, 0f, 0.25f);
+                }
+                else meshColor = new Color(1f, 1f, 1f, 0.25f);
+
                 cannon.transform.LookAt(target);
                 Objects.Add(obj);
+                
             }
         }
     }
 
     public bool IsInSight(GameObject obj)
-    {
-        //cannon.transform.forward = target.transform.position;
-        
-
+    {        
         Vector3 origin = transform.position;
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest - origin;
@@ -82,6 +104,7 @@ public class AiSensor : MonoBehaviour
 
         direction.y = 0;
         float deltaAngle = Vector3.Angle(direction, transform.forward);
+
         if(deltaAngle > angle)
         {
             return false;
@@ -89,30 +112,13 @@ public class AiSensor : MonoBehaviour
 
         origin.y += height / 2;
         dest.y = origin.y;
+
         if (Physics.Linecast(origin, dest, occlusionLayers))
         {
             return false;
         }
+
         return true;
-    }
-
-    public void IsInRange(AiAgent agent)
-    {
-        if (offset.sqrMagnitude < 25)
-        {
-            Debug.Log("SUDDEN DEATH");
-        }
-
-        else if(offset.sqrMagnitude < 900)
-        {
-            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-            Debug.Log("engager");
-        }
-
-        else if (offset.sqrMagnitude < 1900)
-        {
-            Debug.Log("piou piou si engager, sinon follow");
-        }
     }
 
     Mesh CreatWedgeMesh()
