@@ -64,7 +64,7 @@ public class PlayerCam : MonoBehaviour
             m_pause = GetComponentInParent(typeof(PauseButton)) as PauseButton;
             if (m_pause == null)
             {
-                Debug.Log("Tardos il manque le script de pause MERCI");
+                //Debug.Log("Tardos il manque le script de pause MERCI");
                 throw new System.ArgumentNullException();
             }
         }
@@ -74,7 +74,7 @@ public class PlayerCam : MonoBehaviour
             m_camera = GetComponent<Camera>();
             if (m_camera == null)
             {
-                Debug.Log("Tardos il manque la camera MERCI");
+                //Debug.Log("Tardos il manque la camera MERCI");
                 throw new System.ArgumentNullException();
             }
         }
@@ -133,8 +133,8 @@ public class PlayerCam : MonoBehaviour
                     newVelocity.y -= 360;
                 }
                 m_velocity = new Vector2(newVelocity.y, newVelocity.x);
-                Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
-                Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
+                //Debug.Log($"Before Correctif : X {newVelocity.y} Y {newVelocity.x}");
+                //Debug.Log($"Correctif : X {m_velocity.y} Y {m_velocity.x}");
                 //Debug.Log(new Vector2(m_velocity.y, m_velocity.x));
             }
             //Debug.Log(transform.localRotation);
@@ -146,7 +146,7 @@ public class PlayerCam : MonoBehaviour
             }
             else
             {
-                Debug.Log("Impossible de trouver les playerprefs lié a la sensibilité ",this);
+                //Debug.Log("Impossible de trouver les playerprefs lié a la sensibilité ",this);
             }
         }
     }

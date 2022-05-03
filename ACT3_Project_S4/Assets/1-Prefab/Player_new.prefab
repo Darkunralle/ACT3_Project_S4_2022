@@ -4176,7 +4176,7 @@ MonoBehaviour:
   m_stamPercentWalk: 0.5
   m_stamBarre: {fileID: 7433786056552248423}
   m_activateCameraRedirection: 1
-  m_regenOnKill: 100
+  m_timer: 0
 --- !u!114 &835344735906211651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4412,7 +4412,6 @@ GameObject:
   - component: {fileID: 3650362704216404232}
   - component: {fileID: 8798602472169277975}
   - component: {fileID: 3760234755776761486}
-  - component: {fileID: 5600514301793625315}
   m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
@@ -4483,19 +4482,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5600514301793625315
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8096856959215026115}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3645358395268686168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4565,14 +4551,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
---- !u!1 &5944237121792688103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
-  m_PrefabInstance: {fileID: 3645358395268686168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5357993806429502523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8704755350580190563, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
+  m_PrefabInstance: {fileID: 3645358395268686168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5944237121792688103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
   m_PrefabInstance: {fileID: 3645358395268686168}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1625251760

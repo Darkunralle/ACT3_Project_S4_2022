@@ -73,7 +73,7 @@ public class AiSensor : MonoBehaviour
                 if (playerInEngagmentRange && !playerInDeathRange) 
                 { 
                     //Debug.Log("piou piou");
-                    meshColor = new Color(0f, 0f, 1f, 0.25f);
+                    meshColor = new Color(1f, 0.5f, 0f, 0.25f);
                 }
 
                 else if (playerInDeathRange)
@@ -81,7 +81,7 @@ public class AiSensor : MonoBehaviour
                     //Debug.Log("death piou piou");
                     meshColor = new Color(1f, 0f, 0f, 0.25f);
                 }
-                else meshColor = new Color(1f, 1f, 1f, 0.25f);
+                else meshColor = new Color(0f, 1f, 0f, 0.25f);
 
                 cannon.transform.LookAt(target);
                 Objects.Add(obj);

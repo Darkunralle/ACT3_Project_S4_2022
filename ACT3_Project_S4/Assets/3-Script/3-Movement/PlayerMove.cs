@@ -100,7 +100,7 @@ public class PlayerMove : MonoBehaviour
     private bool m_activateCameraRedirection = false;
 
     [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
-    private float m_regenOnKill = 100;
+    //private float m_regenOnKill = 100;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -178,7 +178,7 @@ public class PlayerMove : MonoBehaviour
 
         if (m_groundCheck == null)
         {
-            Debug.Log("Récup Ground check");
+            //Debug.Log("Récup Ground check");
             m_groundCheck = this.gameObject.transform.GetChild(3);
             if (m_groundCheck == null)
             {
