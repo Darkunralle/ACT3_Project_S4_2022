@@ -84,7 +84,7 @@ public class PlayerMove : MonoBehaviour
     private float m_timePassed = 0;
 
     //Pour évité la surdépense de stam pour le saut
-    private static bool m_jumped = false;
+    private bool m_jumped = false;
 
     //Détermine l'augmentation de la vitesse chaque seconde;
     private float m_speedAugmentPerSec;
@@ -100,7 +100,7 @@ public class PlayerMove : MonoBehaviour
     private bool m_activateCameraRedirection = false;
 
     [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
-    private float m_regenOnKill = 100;
+    //private float m_regenOnKill = 100;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -178,7 +178,7 @@ public class PlayerMove : MonoBehaviour
 
         if (m_groundCheck == null)
         {
-            Debug.Log("Récup Ground check");
+            //Debug.Log("Récup Ground check");
             m_groundCheck = this.gameObject.transform.GetChild(3);
             if (m_groundCheck == null)
             {
@@ -338,7 +338,7 @@ public class PlayerMove : MonoBehaviour
         if ((p_move.x == 0 && p_move.y == 0) || (p_move.x != 0 && p_move.y == 0))
         {
 
-            if (m_timePassed >= m_secondeBeforeRegen)
+            if (m_timePassed >= m_secondeBeforeRegen && m_stam <= m_pourcentageRegStam)
             {
                 m_stam += m_stamPerSec * Time.deltaTime;
             }
@@ -385,7 +385,7 @@ public class PlayerMove : MonoBehaviour
         // Augmentation de la vitesse
         else
         {
-            if (m_timePassed >= m_secondeBeforeRegen)
+            if (m_timePassed >= m_secondeBeforeRegen && m_stam <= m_pourcentageRegStam)
             {
                 m_stam += m_stamPerSec * m_stamPercentWalk * Time.deltaTime;
             }
@@ -443,6 +443,8 @@ public class PlayerMove : MonoBehaviour
         m_characterController.Move(movement * Time.deltaTime);
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
+
+        //Debug.Log(m_stam);
     }
     /// <summary>
     /// #_IdBoxSon fonction (private)
@@ -496,10 +498,17 @@ public class PlayerMove : MonoBehaviour
     /// Condition actuellement "Être en saut"
     /// 
     /// <returns>Bool qui renvoi si oui ou non l'attaque est autorisé</returns>
-    public static bool attackPrey()
+    public bool attackPrey(float p_regen)
     {
         if (m_jumped)
         {
+            m_stam += p_regen;
+            if (m_stam > m_stamMax)
+            {
+                m_stam = m_stamMax;
+            }
+            m_stamBarre.setStam((int)Mathf.Round(m_stam));
+
             return true;
         }
         return false;

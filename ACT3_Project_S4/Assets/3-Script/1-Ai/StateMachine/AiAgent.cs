@@ -27,7 +27,7 @@ public class AiAgent : MonoBehaviour
 
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiPatrol());
-        stateMachine.RegisterState(new AiWarned());
+        stateMachine.RegisterState(new AiFiring());
         stateMachine.RegisterState(new AiDeath());
 
         stateMachine.ChangeState(initialState);
@@ -36,7 +36,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stateMachine.currentState);
+        //Debug.Log(stateMachine.currentState);
         stateMachine.Update();
     }
 }

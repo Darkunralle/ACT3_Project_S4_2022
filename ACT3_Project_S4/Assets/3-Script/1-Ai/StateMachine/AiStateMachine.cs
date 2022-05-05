@@ -30,6 +30,7 @@ public class AiStateMachine
     public void Update()
     {
         GetState(currentState)?.Update(agent);
+
     }
 
     public void ChangeState(AiStateId newState)
