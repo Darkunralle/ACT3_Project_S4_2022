@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class PlayerCollider : MonoBehaviour
 {
+    private AiAgent m_agent;
+
     private void OnTriggerStay(Collider foe)
     {
-        Debug.Log("Alerte");
-    }
-
-    private void OnTriggerEnter(Collider foe)
-    {
-        Debug.Log("Alerte");
+        if (foe.name == "Agent")
+        {
+            Debug.Log("Alerte");
+            m_agent = foe.GetComponent<AiAgent>();
+            m_agent.stateMachine.ChangeState(AiStateId.Sond);
+            m_agent.navMeshAgent.SetDestination(transform.position);
+        }
+        else if (foe.name == "Ennemi")
+        {
+            Debug.Log("mob tuto");
+        }
+        
     }
 }

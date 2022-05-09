@@ -19,6 +19,7 @@ public class AiPatrol : AiState
 
     public void Enter(AiAgent agent)
     {
+        agent.navMeshAgent.speed = 2.5f;
     }
     public void Update(AiAgent agent)
     {  

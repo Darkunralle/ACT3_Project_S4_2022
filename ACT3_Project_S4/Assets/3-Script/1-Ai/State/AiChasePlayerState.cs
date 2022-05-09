@@ -16,7 +16,7 @@ public class AiChasePlayerState : AiState
 
     public void Enter(AiAgent agent)
     {
-        
+        agent.navMeshAgent.speed = 4f;
     }
     public void Update(AiAgent agent)
     {
