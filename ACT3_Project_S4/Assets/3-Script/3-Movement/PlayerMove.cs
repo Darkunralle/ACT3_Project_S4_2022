@@ -55,12 +55,16 @@ public class PlayerMove : MonoBehaviour
     private float m_stam = 100f;
 
     private Transform m_groundCheck;
+    private Transform m_waterCheck;
 
     [SerializeField, Tooltip("Float gerant le radius de la sphere GroundCheck")]
     private float m_groundCheckRange = 0.5f;
 
     [SerializeField, Tooltip("LayerMask du sol")]
     private LayerMask m_groundMask;
+
+    [SerializeField, Tooltip("LayerMask de l'eau")]
+    private LayerMask m_waterMask;
 
     // Calcule l'effet de la gravité dans un nouveau vecteur
     private Vector3 m_gravityEffect;
@@ -110,6 +114,14 @@ public class PlayerMove : MonoBehaviour
 
     // Class contenant les input du joueur
     private PlayerInput playerInput;
+
+    // Si le joueur touche le layer ground
+    private bool m_isGrounded = false;
+
+    // Si le joueur touche le layer Water
+    private bool m_isWatered = false;
+
+    private bool m_haveJump = false;
 
     private void Awake()
     {
@@ -187,6 +199,17 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        if (m_waterCheck == null)
+        {
+            //Debug.Log("Récup Ground check");
+            m_waterCheck = this.gameObject.transform.GetChild(4);
+            if (m_waterCheck == null)
+            {
+                Debug.Log("Tardos il manque la m_waterCheck  MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
     }
 
 
@@ -209,19 +232,19 @@ public class PlayerMove : MonoBehaviour
     /// Crée une sphere invisible qui détecte le sol (Dans le layer "Ground") 
     /// Applique une gravité de -1 en permanence quand on est pour évité des problème pendant le déplacement et une cumlation infinie de celle-ci
     /// <returns>Retourne true si un sol a était détecté et sinon false</returns>
-    public bool isGrounded()
+    public void onFloor()
     {
         // Crée une sphere invisible et check si elle colide avec un layer "Ground"
-        bool isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
+        m_isGrounded = Physics.CheckSphere(m_groundCheck.position, m_groundCheckRange, m_groundMask);
+
+        m_isWatered = Physics.CheckSphere(m_waterCheck.position, m_groundCheckRange, m_waterMask);
 
         // Force reset de la gravité a -1
-        if (isGrounded && m_gravityEffect.y < 0)
+        if ((m_isGrounded || m_isWatered) && m_gravityEffect.y < 0)
         {
 
             m_gravityEffect.y = -2f;
         }
-
-        return isGrounded;
     }
 
     /// <summary>
@@ -255,7 +278,15 @@ public class PlayerMove : MonoBehaviour
                 movement = transform.forward * p_move.y * (m_speed * m_speedMulti);
 
                 // Modification de la portée du son
-                sphereRadiusModify(m_sphereRadRun);
+                if (!m_isWatered)
+                {
+                    sphereRadiusModify(m_sphereRadRun);
+                }
+                else
+                {
+                    sphereRadiusModify(m_sphereRadRun * 1.25f);
+                }
+                
                 // enregistre la direction "Avant"
                 m_forward = true;
 
@@ -285,7 +316,15 @@ public class PlayerMove : MonoBehaviour
                 movement = transform.forward * p_move.y * (m_speed * m_speedBackReduce);
                 m_forward = false;
             }
-            sphereRadiusModify(m_sphereRadWalk);
+            if (!m_isWatered)
+            {
+                sphereRadiusModify(m_sphereRadWalk);
+            }
+            else
+            {
+                sphereRadiusModify(m_sphereRadWalk * 1.25f, 0.5f);
+            }
+            
         }
     }
 
@@ -312,6 +351,10 @@ public class PlayerMove : MonoBehaviour
             {
                 m_stam -= m_jumpCost;
                 m_jumped = true;
+            }
+            if (!m_haveJump)
+            {
+                m_haveJump = true;
             }
         }
     }
@@ -418,8 +461,12 @@ public class PlayerMove : MonoBehaviour
     {
         Vector2 move = playerInput.Player.Move.ReadValue<Vector2>();
 
-        if (isGrounded())
+        onFloor();
+
+        if (m_isGrounded || m_isWatered)
         {
+            m_haveJump = false;
+
             // Rotation du joueur
             m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
 
@@ -443,8 +490,7 @@ public class PlayerMove : MonoBehaviour
         m_characterController.Move(movement * Time.deltaTime);
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
-
-        //Debug.Log(m_stam);
+        Debug.Log(m_haveJump);
     }
     /// <summary>
     /// #_IdBoxSon fonction (private)
@@ -500,7 +546,7 @@ public class PlayerMove : MonoBehaviour
     /// <returns>Bool qui renvoi si oui ou non l'attaque est autorisé</returns>
     public bool attackPrey(float p_regen)
     {
-        if (m_jumped)
+        if (m_haveJump)
         {
             m_stam += p_regen;
             if (m_stam > m_stamMax)

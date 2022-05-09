@@ -10,13 +10,15 @@ public class nomNom : MonoBehaviour
     private PlayerMove m_player;
     public void OnTriggerEnter(Collider player)
     {
-        Debug.Log("fdd");
-        parent.SetActive(false);
-
+        Debug.Log("Joueur dans la zone");
         if (player.name == "Player")
         {
             m_player = player.GetComponent<PlayerMove>();
-            m_player.setStam(20);
+            if (m_player.attackPrey(20))
+            {
+                Debug.Log("Grailled");
+                parent.SetActive(false);
+            }
         }
     }
 } 
