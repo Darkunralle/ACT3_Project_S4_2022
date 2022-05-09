@@ -3640,6 +3640,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7792140625798510601}
   - component: {fileID: 3959685829292940632}
+  - component: {fileID: 8917803272480410798}
   m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
@@ -3674,6 +3675,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8917803272480410798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434165225825046718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98562797d35b1b84bb76aff8027caba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073950944761414539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4173,7 +4186,7 @@ MonoBehaviour:
     m_Bits: 128
   m_waterMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_secondeBeforeRegen: 2
   m_pourcentageRegStam: 50
   m_stamPerSec: 10
@@ -4585,14 +4598,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
---- !u!1 &5944237121792688103 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
-  m_PrefabInstance: {fileID: 3645358395268686168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5357993806429502523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8704755350580190563, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
+  m_PrefabInstance: {fileID: 3645358395268686168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5944237121792688103 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
   m_PrefabInstance: {fileID: 3645358395268686168}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1625251760
