@@ -490,7 +490,7 @@ public class PlayerMove : MonoBehaviour
         m_characterController.Move(movement * Time.deltaTime);
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
-        Debug.Log(m_haveJump);
+        //Debug.Log(m_haveJump);
     }
     /// <summary>
     /// #_IdBoxSon fonction (private)

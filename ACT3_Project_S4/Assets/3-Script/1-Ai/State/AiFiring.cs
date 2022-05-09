@@ -18,19 +18,20 @@ public class AiFiring : AiState
         {
             //agent.sensor.raycastTarget.transform.localPosition += Random.insideUnitSphere * agent.config.inacuracy;
             agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
-            Debug.Log(agent.config.currentTimeRecovery);
+            //Debug.Log(agent.config.currentTimeRecovery);
             agent.navMeshAgent.isStopped = true;
             //agent.config.currentTimeRecovery = 0.25f;
             
             if (agent.config.currentTimeRecovery >= 0)
             {
-                agent.config.currentTimeRecovery -= 1f;
+                agent.config.currentTimeRecovery -= 1f * Time.deltaTime;
             }
 
             if (agent.config.currentTimeRecovery <= 0)
             {
                 agent.config.currentTimeRecovery = agent.config.maxTimeRecovery;
                 Shoot(agent);
+                Debug.Log("l'agent tir");
             }
         }
 
