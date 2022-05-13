@@ -6,6 +6,7 @@ public class AiDeath : AiState
 {
     public AiStateId GetId()
     {
+        //retourne l'état actuel de l'agent
         return AiStateId.Death;
     }
 
@@ -15,11 +16,9 @@ public class AiDeath : AiState
     }
     public void Update(AiAgent agent)
     {
-        throw new System.NotImplementedException();
     }
 
     public void Exit(AiAgent agent)
     {
-        throw new System.NotImplementedException();
     }
 }

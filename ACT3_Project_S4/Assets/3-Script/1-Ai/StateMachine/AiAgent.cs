@@ -21,10 +21,12 @@ public class AiAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //récupere le navmesh générer
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);
 
+        //enregistre les states disponible
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiPatrol());
         stateMachine.RegisterState(new AiSondDetection());
@@ -34,7 +36,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.ChangeState(initialState);
     }
 
-    // Update is called once per frame
+    // Update le state actuel de l'agent
     void Update()
     {
         //Debug.Log(stateMachine.currentState);

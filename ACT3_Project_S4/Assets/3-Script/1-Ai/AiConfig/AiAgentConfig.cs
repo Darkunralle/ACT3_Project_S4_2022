@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AiAgentConfig : ScriptableObject
 {
+    //configuration des élément basique de l'agent
     public float maxTime = 1f;
     public float maxDistance = 1f;
     public float maxViewDistance = 5.0f;

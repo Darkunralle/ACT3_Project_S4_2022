@@ -9,6 +9,7 @@ public class AiSondDetection : AiState
     private float m_timer = 0;
     public AiStateId GetId()
     {
+        //retourne l'état actuel de l'agent
         return AiStateId.Sond;
     }
 
@@ -21,10 +22,12 @@ public class AiSondDetection : AiState
         
         if (!agent.navMeshAgent.hasPath)
         {
+            //cooldown d'attente
             if (m_timer < m_waiting)
             {
                 m_timer += Time.deltaTime;
             }
+            //retourne en patrouille
             else
             {
                 agent.stateMachine.ChangeState(AiStateId.Patrol);
