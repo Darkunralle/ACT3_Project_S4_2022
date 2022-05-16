@@ -9,6 +9,7 @@ public enum AiStateId
     Firing,
     Waiting,
     Tutoriel,
+    WaitingForSwitch
 }
 
 public interface AiState

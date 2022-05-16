@@ -29,6 +29,7 @@ public class AiAgent : MonoBehaviour
         stateMachine.RegisterState(new AiPatrol());
         stateMachine.RegisterState(new AiFiring());
         stateMachine.RegisterState(new AiWaiting());
+        stateMachine.RegisterState(new AiWaitingForSwitch());
         stateMachine.RegisterState(new AiTutoriel());
 
         stateMachine.ChangeState(initialState);

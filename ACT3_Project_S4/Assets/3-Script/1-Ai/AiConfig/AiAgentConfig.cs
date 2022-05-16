@@ -16,4 +16,6 @@ public class AiAgentConfig : ScriptableObject
     public float maxTimeRecovery = 1.25f;
     [Range(0f,1f)]
     public float inacuracy;
+
+    public bool timeToGo = false;
 }
