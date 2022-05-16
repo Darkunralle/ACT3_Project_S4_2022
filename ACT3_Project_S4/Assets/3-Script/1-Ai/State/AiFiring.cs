@@ -16,11 +16,9 @@ public class AiFiring : AiState
 
         if (agent.sensor.offset.sqrMagnitude <= 1500)
         {
-            //agent.sensor.raycastTarget.transform.localPosition += Random.insideUnitSphere * agent.config.inacuracy;
             agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
-            Debug.Log(agent.config.currentTimeRecovery);
+            //Debug.Log(agent.config.currentTimeRecovery);
             agent.navMeshAgent.isStopped = true;
-            //agent.config.currentTimeRecovery = 0.25f;
             
             if (agent.config.currentTimeRecovery >= 0)
             {
@@ -50,7 +48,7 @@ public class AiFiring : AiState
         RaycastHit hit;
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
-            Debug.Log("je touche " + hit.transform.name);
+            //Debug.Log("je touche " + hit.transform.name);
         }
     }
 }

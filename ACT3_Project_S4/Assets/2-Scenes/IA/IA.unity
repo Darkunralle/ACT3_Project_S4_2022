@@ -29509,7 +29509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -63.1
+      value: -12.9
       objectReference: {fileID: 0}
     - target: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
       propertyPath: m_LocalPosition.y
@@ -29517,7 +29517,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.53
+      value: -27.9
       objectReference: {fileID: 0}
     - target: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
       propertyPath: m_LocalRotation.w
@@ -44167,11 +44167,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minBound: {fileID: 449894042}
   maxBound: {fileID: 1093096928}
---- !u!1 &800028961 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4575381162466029795, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
-  m_PrefabInstance: {fileID: 587211172}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &802035760
 Mesh:
   m_ObjectHideFlags: 0
@@ -92683,7 +92678,6 @@ GameObject:
   - component: {fileID: 4660273085197748954}
   - component: {fileID: 4660273085197748945}
   - component: {fileID: 1179840544}
-  - component: {fileID: 4660273085197748956}
   - component: {fileID: 4660273085197748955}
   m_Layer: 0
   m_Name: Agent
@@ -92717,25 +92711,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6260b785bb40705468805111b7799ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 1
+  initialState: 4
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: bb077b09c83166b4695848faf05fddab, type: 2}
   playerTransform: {fileID: 1800001128}
   sensor: {fileID: 8490064959489154889}
---- !u!114 &4660273085197748956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4660273085197748951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219b7c6b89977fc4bbf869d8c7d54083, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 1
-  currentHealth: 1
 --- !u!4 &4660273085197748957
 Transform:
   m_ObjectHideFlags: 0
@@ -92759,7 +92739,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3818885294066536029}
-  m_LocalRotation: {x: 0.012015985, y: -0.067472994, z: 0.00081266556, w: 0.9976484}
+  m_LocalRotation: {x: 0.012238024, y: 0.11711484, z: -0.0014432969, w: 0.99304193}
   m_LocalPosition: {x: 0.467, y: 0.13823, z: 0.22}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.47893387}
   m_Children:
@@ -92855,14 +92835,12 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 1800001128}
   cannon: {fileID: 3818885294066536029}
-  offset: {x: 3.0999985, y: -0.5, z: -26.47}
+  offset: {x: -47.1, y: -0.5, z: -2.1000004}
   engagmentZone: 0.45
   playerInEngagmentRange: 1
   deathZone: 0.06
   playerInDeathRange: 0
-  Objects:
-  - {fileID: 800028961}
-  - {fileID: 800028961}
+  Objects: []
 --- !u!33 &8872847334570409218
 MeshFilter:
   m_ObjectHideFlags: 0

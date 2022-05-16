@@ -7,7 +7,8 @@ public enum AiStateId
     ChasePlayer,
     Patrol,
     Firing,
-    Death,
+    Waiting,
+    Tutoriel,
 }
 
 public interface AiState
