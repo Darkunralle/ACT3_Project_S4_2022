@@ -13,13 +13,17 @@ public class AiFiring : AiState
     }
     public void Update(AiAgent agent)
     {
-
+        //si l'agent est a porter
         if (agent.sensor.offset.sqrMagnitude <= 1500)
         {
+            //check si le joueur est dans la sphere
             agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
             //Debug.Log(agent.config.currentTimeRecovery);
+
+            //l'agent s'arrète
             agent.navMeshAgent.isStopped = true;
             
+            //cooldown de chaque tir
             if (agent.config.currentTimeRecovery >= 0)
             {
                 agent.config.currentTimeRecovery -= 1f;
@@ -28,6 +32,7 @@ public class AiFiring : AiState
             if (agent.config.currentTimeRecovery <= 0)
             {
                 agent.config.currentTimeRecovery = agent.config.maxTimeRecovery;
+                //fonction de tier
                 Shoot(agent);
             }
         }
@@ -46,6 +51,7 @@ public class AiFiring : AiState
     void Shoot(AiAgent agent)
     {
         RaycastHit hit;
+        //implementer les dégats -- adapter les damage fonction de la check sphere (playerInEngagmentRange et/ou playerInDeathRange)
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
             //Debug.Log("je touche " + hit.transform.name);

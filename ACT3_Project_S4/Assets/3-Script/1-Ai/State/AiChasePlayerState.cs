@@ -58,6 +58,8 @@ public class AiChasePlayerState : AiState
                 }
             }
         }
+
+        //passage en etat de tire
         if (agent.sensor.playerInEngagmentRange == true)
         {
             agent.stateMachine.ChangeState(AiStateId.Firing);
