@@ -17,6 +17,8 @@ public class AiAgent : MonoBehaviour
 
     public AiSensor sensor;
 
+    public switchToPatrol switchstate;
+
 
     // Start is called before the first frame update
     void Start()

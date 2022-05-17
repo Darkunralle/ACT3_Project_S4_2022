@@ -17,5 +17,5 @@ public class AiAgentConfig : ScriptableObject
     [Range(0f,1f)]
     public float inacuracy;
 
-    public bool timeToGo = false;
+    public bool activeSwitch = false;
 }

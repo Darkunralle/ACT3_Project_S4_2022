@@ -13,7 +13,7 @@ public class AiWaitingForSwitch : AiState
     }
     public void Update(AiAgent agent)
     {
-        if (agent.config.timeToGo == true)
+        if (agent.switchstate.activeSwitch)
         {
             agent.stateMachine.ChangeState(AiStateId.Patrol);
         }
