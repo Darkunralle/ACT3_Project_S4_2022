@@ -452,5 +452,6 @@ MonoBehaviour:
   initialState: 5
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: bb077b09c83166b4695848faf05fddab, type: 2}
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
   sensor: {fileID: 4662733304146251640}
+  switchstate: {fileID: 0}
