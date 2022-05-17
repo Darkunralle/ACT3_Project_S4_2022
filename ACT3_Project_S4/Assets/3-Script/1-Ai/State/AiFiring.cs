@@ -55,6 +55,10 @@ public class AiFiring : AiState
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
             //Debug.Log("je touche " + hit.transform.name);
+            if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
+            {
+                PlayerMove.beHit(agent.sensor.playerInDeathRange);
+            }
         }
     }
 }

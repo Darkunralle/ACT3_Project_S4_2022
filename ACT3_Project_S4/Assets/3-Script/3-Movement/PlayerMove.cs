@@ -108,10 +108,10 @@ public class PlayerMove : MonoBehaviour
     private int m_lifeMax = 3;
 
     // vie actuelle du joueur
-    private int m_life;
+    static private int m_life;
 
     [SerializeField, Tooltip("Chance que le joueur a d'esquivé (30 = 30 % etc ...)")]
-    private int m_dodge = 30;
+    static private int m_dodge = 30;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -557,7 +557,7 @@ public class PlayerMove : MonoBehaviour
         return m_stam;
     }
 
-    public void beHit(bool p_deathRange)
+    public static void beHit(bool p_deathRange)
     {
         if (p_deathRange)
         {
