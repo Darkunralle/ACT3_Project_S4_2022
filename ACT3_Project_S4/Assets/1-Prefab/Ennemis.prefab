@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 32898607}
   - component: {fileID: 32898609}
   - component: {fileID: 32898608}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 2798973518342260039}
   - component: {fileID: 2798973518342260038}
   - component: {fileID: 2798973518342260041}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ennemis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 25a9fb42d361f46ad89221f6d301e96e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

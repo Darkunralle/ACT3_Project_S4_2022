@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:ACT3_Project_S4/Assets/4-Script/1-Ai/IaSpawner.cs.meta
+guid: 7d469d09947d57846b48ce1b22dfda23
+========
+guid: 108e07604914ade4aa3b918d53c54547
+>>>>>>>> Working:ACT3_Project_S4/Assets/4-Script/1-Ai/State/AiSondDetection.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

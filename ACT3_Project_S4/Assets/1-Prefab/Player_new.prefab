@@ -1296,7 +1296,7 @@ RectTransform:
   - {fileID: 40474691}
   - {fileID: 1513704793}
   m_Father: {fileID: 1054417342110304235}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1751,7 +1751,7 @@ Transform:
   m_LocalScale: {x: 2.0802226, y: 3.7501335, z: 0.85838485}
   m_Children: []
   m_Father: {fileID: 1054417342110304235}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &514492902
 MonoBehaviour:
@@ -3640,7 +3640,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7792140625798510601}
   - component: {fileID: 3959685829292940632}
-  m_Layer: 10
+  - component: {fileID: 8917803272480410798}
+  m_Layer: 11
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3674,6 +3675,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8917803272480410798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434165225825046718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98562797d35b1b84bb76aff8027caba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1073950944761414539
 GameObject:
   m_ObjectHideFlags: 0
@@ -4053,6 +4066,7 @@ Transform:
   - {fileID: 3650362704216404232}
   - {fileID: 5357993806429502523}
   - {fileID: 6435850807645370523}
+  - {fileID: 1935634355396135665}
   - {fileID: 364007661}
   - {fileID: 514492900}
   m_Father: {fileID: 0}
@@ -4170,6 +4184,9 @@ MonoBehaviour:
   m_groundMask:
     serializedVersion: 2
     m_Bits: 128
+  m_waterMask:
+    serializedVersion: 2
+    m_Bits: 1024
   m_secondeBeforeRegen: 2
   m_pourcentageRegStam: 50
   m_stamPerSec: 10
@@ -4401,6 +4418,36 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &7944537725697048477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1935634355396135665}
+  m_Layer: 8
+  m_Name: WaterCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1935634355396135665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944537725697048477}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.999, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1054417342110304235}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8096856959215026115
 GameObject:
   m_ObjectHideFlags: 0
