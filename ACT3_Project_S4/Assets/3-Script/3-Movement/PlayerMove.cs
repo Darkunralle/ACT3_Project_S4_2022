@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
     private PlayerCam m_playerCam;
     private CharacterController m_characterController;
     private SphereCollider m_sphereBruit;
+    private PauseButton m_zawarudo;
 
     [SerializeField, Tooltip("Sphere radius marche")]
     private float m_sphereRadWalk = 1f;
@@ -100,7 +102,16 @@ public class PlayerMove : MonoBehaviour
     private bool m_activateCameraRedirection = false;
 
     [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
-    //private float m_regenOnKill = 100;
+    private float m_regenOnKill = 100;
+
+    [SerializeField, Tooltip("Nombre de balle que le joueur peut encaisser sans mourir")]
+    private int m_lifeMax = 3;
+
+    // vie actuelle du joueur
+    private int m_life;
+
+    [SerializeField, Tooltip("Chance que le joueur a d'esquivé (30 = 30 % etc ...)")]
+    private int m_dodge = 30;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -110,6 +121,9 @@ public class PlayerMove : MonoBehaviour
 
     // Class contenant les input du joueur
     private PlayerInput playerInput;
+
+    public delegate void m_spawnDelegate();
+    public static event m_spawnDelegate m_spawnCp;
 
     private void Awake()
     {
@@ -143,6 +157,8 @@ public class PlayerMove : MonoBehaviour
 
         m_speedAugmentPerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMax;
         m_speedReducePerSec = (m_speedMax - m_speedMin) / m_timeForSpeedMin;
+
+        m_life = m_lifeMax;
 
 
         //Vérif
@@ -183,6 +199,16 @@ public class PlayerMove : MonoBehaviour
             if (m_groundCheck == null)
             {
                 Debug.Log("Tardos il manque la m_groundCheck  MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
+        if (m_zawarudo == null)
+        {
+            m_zawarudo = GetComponent<PauseButton>();
+            if (m_zawarudo == null)
+            {
+                Debug.Log("Tardos il manque le script Pause MERCI");
                 throw new System.ArgumentNullException();
             }
         }
@@ -509,6 +535,8 @@ public class PlayerMove : MonoBehaviour
             }
             m_stamBarre.setStam((int)Mathf.Round(m_stam));
 
+            m_spawnCp();
+
             return true;
         }
         return false;
@@ -520,12 +548,37 @@ public class PlayerMove : MonoBehaviour
     }
     public float setStam(float p_stam)
     {
-        m_stam += p_stam;
+        m_stam += m_regenOnKill;
         if (m_stam > m_stamMax)
         {
             m_stam = m_stamMax;
         }
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
         return m_stam;
+    }
+
+    public void beHit(bool p_deathRange)
+    {
+        if (p_deathRange)
+        {
+            m_life = 0;
+        }
+        else
+        {
+            if (Random.Range(0, 100) > m_dodge)
+            {
+                m_life--;
+            }
+        }
+
+        if (m_life == 0)
+        {
+            //m_zawarudo.isPaused();
+
+            // Temporaire
+            SceneManager.LoadScene(0);
+        }
+        
+        
     }
 }
