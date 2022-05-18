@@ -4013,7 +4013,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "673670415e744206989434160d5440bf",
     "m_Id": 0,
-    "m_DisplayName": "Mousse vitesse",
+    "m_DisplayName": "Mousse vitesse X",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
