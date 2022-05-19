@@ -10,6 +10,8 @@ public class PauseButton : MonoBehaviour
 
     public GameObject pause;
 
+    public GameObject resume;
+
     public GameObject panel;
 
     public GameObject stamina;
@@ -22,6 +24,15 @@ public class PauseButton : MonoBehaviour
         {
             isPaused();
         }
+    }
+
+    public void resuming()
+    {
+        Cursor.visible = false;
+        Time.timeScale = 0f;
+        pause.SetActive(false);
+        panel.SetActive(false);
+        gameIsPaused = false;
     }
 
     public void isPaused()
