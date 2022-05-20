@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 
     public AudioClip mainTheme;
     public AudioSource select;
+    public AudioSource selectBack;
 
     public void PlayGame()
     {
@@ -43,8 +44,12 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void soundEffect()
+    public void effectSelect()
     {
         select.Play(0);
+    }
+    public void effectSelectBack()
+    {
+        selectBack.Play(0);
     }
 }
