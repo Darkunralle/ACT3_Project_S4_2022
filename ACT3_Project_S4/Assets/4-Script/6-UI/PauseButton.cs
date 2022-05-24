@@ -26,6 +26,23 @@ public class PauseButton : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        gameIsPaused = false;
+
+        Time.timeScale = 1f;
+
+        Cursor.visible = false;
+        stamina.SetActive(true);
+        settings.SetActive(false);
+        pause.SetActive(false);
+        gameIsPaused = false;
+        panel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+
+
+    }
+    /*
     public void resuming()
     {
         Cursor.visible = false;
@@ -34,7 +51,7 @@ public class PauseButton : MonoBehaviour
         panel.SetActive(false);
         gameIsPaused = false;
     }
-
+    */
     public void isPaused()
     {
         gameIsPaused = !gameIsPaused;
