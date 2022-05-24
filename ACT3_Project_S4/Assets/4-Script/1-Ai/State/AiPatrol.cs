@@ -39,6 +39,7 @@ public class AiPatrol : AiState
 
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {
+            agent.detection.Play(0);
             if (agent.sensor.Objects.Count > 0)
             {
                 agent.stateMachine.ChangeState(AiStateId.ChasePlayer);

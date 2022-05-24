@@ -9,14 +9,13 @@ public class PauseButton : MonoBehaviour
     private static bool gameIsPaused = false;
 
     public GameObject pause;
-
     public GameObject resume;
-
     public GameObject panel;
-
     public GameObject stamina;
-
     public GameObject settings;
+
+    public AudioSource select;
+    public AudioSource selectBack;
 
     public void Update()
     {
@@ -106,5 +105,13 @@ public class PauseButton : MonoBehaviour
     public static bool getGameIsPaused()
     {
         return gameIsPaused;
+    }
+    public void effectSelect()
+    {
+        select.Play(0);
+    }
+    public void effectSelectBack()
+    {
+        selectBack.Play(0);
     }
 }
