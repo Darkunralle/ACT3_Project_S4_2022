@@ -25,7 +25,10 @@ public class AiAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //detection = FindObjectOfType<AudioSource>(GameObject.Find("Detected"));
+
         switchstate = FindObjectOfType<switchToPatrol>(switchstate);
+
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);

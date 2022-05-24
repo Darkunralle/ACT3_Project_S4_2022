@@ -42,7 +42,6 @@ public class AiPatrol : AiState
             if (agent.sensor.Objects.Count > 0)
             {
                 agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-                agent.detection.Play(0);
             }
         }        
     }
