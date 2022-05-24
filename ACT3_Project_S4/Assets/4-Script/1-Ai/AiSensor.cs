@@ -40,6 +40,7 @@ public class AiSensor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.Find("Player").transform;
         scanInterval = 1.0f / scanFrequency;
     }
 

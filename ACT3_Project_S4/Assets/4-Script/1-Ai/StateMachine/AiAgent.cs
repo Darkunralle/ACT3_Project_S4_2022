@@ -23,6 +23,7 @@ public class AiAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switchstate = FindObjectOfType<switchToPatrol>(switchstate);
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);
@@ -40,7 +41,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(stateMachine.currentState);
+        //Debug.Log(stateMachine.currentState);
         stateMachine.Update();
     }
 }
