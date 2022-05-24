@@ -19,6 +19,8 @@ public class AiAgent : MonoBehaviour
 
     public switchToPatrol switchstate;
 
+    public AudioSource detection;
+
 
     // Start is called before the first frame update
     void Start()
