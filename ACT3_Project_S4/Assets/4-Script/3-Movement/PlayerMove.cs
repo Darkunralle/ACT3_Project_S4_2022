@@ -3,10 +3,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    private PlayerCam m_playerCam;
     private CharacterController m_characterController;
     private SphereCollider m_sphereBruit;
     private PauseButton m_zawarudo;
+
+    [SerializeField, Tooltip("Camera du joueur")]
+    private GameObject m_camera;
 
     [SerializeField, Tooltip("Sphere radius marche")]
     private float m_sphereRadWalk = 1f;
@@ -125,6 +127,29 @@ public class PlayerMove : MonoBehaviour
     public delegate void m_spawnDelegate();
     public static event m_spawnDelegate m_spawnCp;
 
+
+    // *************************************************************** //
+
+    [SerializeField, Tooltip("Blocage camaré Vertical en Degré")]
+    private int m_blockAngleY = 30;
+
+    [SerializeField, Tooltip("Blocage camaré Horizontal en Degré")]
+    private int m_blockAngleX = 60;
+
+    [SerializeField, Tooltip("Réglage de la sensibilité du regard")]
+    private float m_sensitivity = 0.5f;
+
+    [SerializeField, Tooltip("Réglage rendant la caméra plus lisse et évité les acoups")]
+    private float m_smoothing = 1.5f;
+
+    private Vector2 m_velocity;
+    private Vector2 m_frameVelocity;
+
+
+    private Vector2 delta = new Vector2(0, 0);
+
+    // *************************************************************** //
+
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -182,16 +207,6 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (m_playerCam == null)
-        {
-            m_playerCam = GetComponentInChildren<PlayerCam>();
-            if (m_playerCam == null)
-            {
-                Debug.Log("Tardos il manque la m_playerCam  MERCI");
-                throw new System.ArgumentNullException();
-            }
-        }
-
         if (m_groundCheck == null)
         {
             //Debug.Log("Récup Ground check");
@@ -212,11 +227,10 @@ public class PlayerMove : MonoBehaviour
                 throw new System.ArgumentNullException();
             }
         }
-
     }
 
 
-    private void refreshSpeedAugmentOrReduce(bool p_augment)
+    public void refreshSpeedAugmentOrReduce(bool p_augment)
     {
         if (p_augment)
         {
@@ -271,6 +285,7 @@ public class PlayerMove : MonoBehaviour
     /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
     private void movementY(Vector2 p_move)
     {
+        //Sprint
         if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
         {
             if (p_move.y > 0)
@@ -285,21 +300,11 @@ public class PlayerMove : MonoBehaviour
                 // enregistre la direction "Avant"
                 m_forward = true;
 
-                //Wip controle caméra
-                if (!playerInput.Player.RightClick.IsPressed() && m_activateCameraRedirection)
-                {
-                    m_playerCam.cameraResetAngle();
-                }
-                else
-                {
-                    m_playerCam.resetOnRedirect();
-                }
             }
 
         }
         else
         {
-            m_playerCam.resetOnRedirect();
 
             if (p_move.y >= 0.6f)
             {
@@ -428,6 +433,30 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    private void look()
+    {
+        if (!PauseButton.getGameIsPaused())
+        {
+            delta = playerInput.Player.Look.ReadValue<Vector2>();
+
+            delta.y = -delta.y;
+
+            Vector2 rawFrameVelocity = Vector2.Scale(delta, Vector2.one * m_sensitivity);
+            m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
+            m_velocity += m_frameVelocity;
+
+            // Blocage axe Y
+            m_velocity.y = Mathf.Clamp(m_velocity.y, -m_blockAngleY, m_blockAngleY);
+
+            // NE pas appliquer l'axe Y ici sinon fait faire une rotation au joueur sur cette axe
+            // Rotation X du joueur
+            m_characterController.transform.localRotation = Quaternion.Euler(0, m_velocity.x, 0);
+
+            // Rotation X de la caméra
+            m_camera.transform.localRotation = Quaternion.Euler(m_velocity.y, 0, 0);
+        }
+    }
+
     /// <summary>
     /// #_Update
     /// </summary>
@@ -447,7 +476,8 @@ public class PlayerMove : MonoBehaviour
         if (isGrounded())
         {
             // Rotation du joueur
-            m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
+            //m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
+            look();
 
 
             movementY(move);
