@@ -40,9 +40,6 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Coût du saut en stamina")]
     private float m_jumpCost = 10;
 
-    [SerializeField, Tooltip("Rotation degré par seconde")]
-    private float m_rotateSpeed = 90;
-
     [SerializeField, Tooltip("Multiplicateur de vitesse pour le sprint (1 = vitesse de base) Float ")]
     private float m_speedMulti = 2f;
 
@@ -99,9 +96,6 @@ public class PlayerMove : MonoBehaviour
 
     [SerializeField, Tooltip("Barre de stamina")]
     private StamBarre m_stamBarre;
-
-    [SerializeField, Tooltip("Active/Désactive le recadrage de la caméra lors du mouvement ou pas l'utilisation du clic droit")]
-    private bool m_activateCameraRedirection = false;
 
     [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
     private float m_regenOnKill = 100;
@@ -283,11 +277,11 @@ public class PlayerMove : MonoBehaviour
     /// 
     /// Enregistre aussi la direction pour la décélération
     /// <param name="p_move"> Vector 2 du mouvement (ZQSD) venant de l'update </param>
-    private void movementY(Vector2 p_move)
+    private void movementCalc(Vector2 p_move)
     {
         //Sprint
         if (playerInput.Player.Sprint.IsPressed() && m_stam > 0)
-        {
+        { 
             if (p_move.y > 0)
             {
                 m_timePassed = 0;
@@ -299,25 +293,27 @@ public class PlayerMove : MonoBehaviour
                 sphereRadiusModify(m_sphereRadRun);
                 // enregistre la direction "Avant"
                 m_forward = true;
-
             }
-
         }
         else
         {
 
-            if (p_move.y >= 0.6f)
+            if (p_move.y == 1f)
             {
-                movement = transform.forward * p_move.y * m_speed;
+                movement = transform.right * p_move.x * m_speed + transform.forward * p_move.y * m_speed;
                 m_forward = true;
+
             }
-            else if (p_move.y <= -0.6f)
+            else if (p_move.y != 0f || p_move.x != 0f)
             {
-                movement = transform.forward * p_move.y * (m_speed * m_speedBackReduce);
+                movement = transform.right * p_move.x * (m_speed * m_speedBackReduce)  + transform.forward * p_move.y * (m_speed * m_speedBackReduce) ;
+
                 m_forward = false;
             }
             sphereRadiusModify(m_sphereRadWalk);
         }
+        Debug.Log($"{p_move} && {m_forward}");
+
     }
 
     /// <summary>
@@ -366,7 +362,7 @@ public class PlayerMove : MonoBehaviour
         //Stam regen
         if (m_stam < m_pourcentageRegStam) m_timePassed += Time.deltaTime;
 
-        if ((p_move.x == 0 && p_move.y == 0) || (p_move.x != 0 && p_move.y == 0))
+        if (p_move.x == 0 && p_move.y == 0)
         {
 
             if (m_timePassed >= m_secondeBeforeRegen && m_stam <= m_pourcentageRegStam)
@@ -380,30 +376,8 @@ public class PlayerMove : MonoBehaviour
                 m_speed -= m_speedReducePerSec * Time.deltaTime;
                 if (m_forward)
                 {
-                    if (p_move.x >= 0.6f || p_move.x <= -0.6f)
-                    {
-                        movement = transform.forward * 1 * m_speed * 0.7f;
-                    }
-                    else
-                    {
-                        movement = transform.forward * 1 * m_speed;
-                    }
-
+                    movement = transform.forward * 1 * m_speed;
                 }
-                else
-                {
-                    if (p_move.x >= 0.6f || p_move.x <= -0.6f)
-                    {
-                        movement = transform.forward * -1 * (m_speed * m_speedBackReduce) * 0.7f;
-                    }
-                    else
-                    {
-                        movement = transform.forward * -1 * (m_speed * m_speedBackReduce);
-                    }
-
-                }
-
-
             }
             // Arrondie
             else if (m_speed < m_speedMin)
@@ -420,8 +394,8 @@ public class PlayerMove : MonoBehaviour
             {
                 m_stam += m_stamPerSec * m_stamPercentWalk * Time.deltaTime;
             }
-
-            if (m_speed < m_speedMax && p_move.y != 0)
+            
+            if (m_speed < m_speedMax)
             {
                 m_speed += m_speedAugmentPerSec * Time.deltaTime;
             }
@@ -480,7 +454,7 @@ public class PlayerMove : MonoBehaviour
             look();
 
 
-            movementY(move);
+            movementCalc(move);
             jump(move);
             // Gestion de l'endurance et des accélération déccélération
             stamAndSpeedControl(move);

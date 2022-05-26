@@ -3813,10 +3813,9 @@ MonoBehaviour:
   m_gravity: -9.81
   m_jumpHeight: 2
   m_jumpCost: 20
-  m_rotateSpeed: 150
   m_speedMulti: 1.75
   m_sprintCost: 5
-  m_speedBackReduce: 0.4
+  m_speedBackReduce: 0.75
   m_stamMax: 100
   m_stam: 100
   m_groundCheckRange: 0.4
@@ -3828,7 +3827,6 @@ MonoBehaviour:
   m_stamPerSec: 10
   m_stamPercentWalk: 0.5
   m_stamBarre: {fileID: 7433786056552248423}
-  m_activateCameraRedirection: 1
   m_regenOnKill: 100
   m_lifeMax: 3
   m_blockAngleY: 30
