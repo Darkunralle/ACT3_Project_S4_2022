@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 8704755350580190563}
   - component: {fileID: 503620148913846941}
   - component: {fileID: 8746699168567797383}
-  - component: {fileID: 3178559220323789833}
-  - component: {fileID: 2498115810887528}
-  m_Layer: 0
+  - component: {fileID: 8186325742223212189}
+  m_Layer: 9
   m_Name: PlayerCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +56,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.05
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60.000004
   orthographic: 0
@@ -66,7 +65,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -85,24 +84,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983048988318424767}
   m_Enabled: 1
---- !u!114 &3178559220323789833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6983048988318424767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17380f3d6802d5f43bf717f39c2e1ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_blockAngleY: 30
-  m_blockAngleX: 80
-  m_sensitivity: 0.8
-  m_smoothing: 10
-  m_redirecTime: 2
---- !u!114 &2498115810887528
+--- !u!114 &8186325742223212189
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +107,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0

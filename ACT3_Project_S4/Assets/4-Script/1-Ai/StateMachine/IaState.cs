@@ -4,17 +4,16 @@ using UnityEngine;
 
 public enum AiStateId
 {
-    //determine les states possible
     ChasePlayer,
     Patrol,
-    Sond,
     Firing,
-    Death,
+    Waiting,
+    Tutoriel,
+    WaitingForSwitch
 }
 
 public interface AiState
 {
-    //création de l'interface utiliser dans les different state de l'agent
     AiStateId GetId();
     void Enter(AiAgent agent);
     void Update(AiAgent agent);

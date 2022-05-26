@@ -6,7 +6,6 @@ public class AiFiring : AiState
 {
     public AiStateId GetId()
     {
-        //retourne l'état actuel de l'agent
         return AiStateId.Firing;
     }
     public void Enter(AiAgent agent)
@@ -14,38 +13,33 @@ public class AiFiring : AiState
     }
     public void Update(AiAgent agent)
     {
-        //vérifie la distance entre l'agent et le player
+        //si l'agent est a porter
         if (agent.sensor.offset.sqrMagnitude <= 1500)
         {
-            //agent.sensor.raycastTarget.transform.localPosition += Random.insideUnitSphere * agent.config.inacuracy;
+            //check si le joueur est dans la sphere
             agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
             //Debug.Log(agent.config.currentTimeRecovery);
-            //stop l'agent
+
+            //l'agent s'arrète
             agent.navMeshAgent.isStopped = true;
-            //agent.config.currentTimeRecovery = 0.25f;
             
-            //cooldown entre chaque tire
+            //cooldown de chaque tir
             if (agent.config.currentTimeRecovery >= 0)
             {
-                agent.config.currentTimeRecovery -= 1f * Time.deltaTime;
+                agent.config.currentTimeRecovery -= 1f;
             }
 
-            //le cooldown est à 0
             if (agent.config.currentTimeRecovery <= 0)
             {
-                //la cooldown est réinitialisé 
                 agent.config.currentTimeRecovery = agent.config.maxTimeRecovery;
-                //l'agent tire
+                //fonction de tier
                 Shoot(agent);
-                Debug.Log("l'agent tir");
             }
         }
 
         if (agent.sensor.offset.sqrMagnitude >= 1900 || agent.sensor.Objects.Count <= 0)
         {
-            //change le state actuel de l'agent
             agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-            //l'agent n'est plus arreter
             agent.navMeshAgent.isStopped = false;
         }
     }
@@ -57,9 +51,14 @@ public class AiFiring : AiState
     void Shoot(AiAgent agent)
     {
         RaycastHit hit;
+        //implementer les dégats -- adapter les damage fonction de la check sphere (playerInEngagmentRange et/ou playerInDeathRange)
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
-            Debug.Log("je touche " + hit.transform.name);
+            //Debug.Log("je touche " + hit.transform.name);
+            if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
+            {
+                PlayerMove.beHit(agent.sensor.playerInDeathRange);
+            }
         }
     }
 }

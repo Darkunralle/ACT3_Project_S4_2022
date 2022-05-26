@@ -17,6 +17,6 @@ MonoBehaviour:
   maxViewDistance: 5
   damage: 10
   range: 100
-  currentTimeRecovery: 2.0306258
-  maxTimeRecovery: 3
-  inacuracy: 0.099
+  currentTimeRecovery: 36
+  maxTimeRecovery: 90
+  inacuracy: 1

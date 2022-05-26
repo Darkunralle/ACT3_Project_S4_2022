@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AiAgentConfig : ScriptableObject
 {
-    //configuration des élément basique de l'agent
     public float maxTime = 1f;
     public float maxDistance = 1f;
     public float maxViewDistance = 5.0f;
@@ -17,4 +16,6 @@ public class AiAgentConfig : ScriptableObject
     public float maxTimeRecovery = 1.25f;
     [Range(0f,1f)]
     public float inacuracy;
+
+    public bool activeSwitch = false;
 }

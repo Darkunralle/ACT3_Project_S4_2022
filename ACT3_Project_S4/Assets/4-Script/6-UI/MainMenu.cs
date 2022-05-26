@@ -10,6 +10,10 @@ public class MainMenu : MonoBehaviour
     public GameObject settings;
     public GameObject credits;
 
+    public AudioClip mainTheme;
+    public AudioSource select;
+    public AudioSource selectBack;
+
     public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -38,5 +42,14 @@ public class MainMenu : MonoBehaviour
     public void quit()
     {
         Application.Quit();
+    }
+
+    public void effectSelect()
+    {
+        select.Play(0);
+    }
+    public void effectSelectBack()
+    {
+        selectBack.Play(0);
     }
 }

@@ -1,0 +1,54 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AiTutoriel : AiState
+{
+    public AiStateId GetId()
+    {
+        return AiStateId.Tutoriel;
+    }
+    public void Enter(AiAgent agent)
+    {
+        
+    }
+    public void Update(AiAgent agent)
+    {
+        if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
+        {
+            if (agent.sensor.Objects.Count > 0)
+            {
+                    
+                agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
+                    //Debug.Log(agent.config.currentTimeRecovery);  
+                agent.navMeshAgent.isStopped = true;
+                    
+                if (agent.config.currentTimeRecovery >= 0)                
+                {
+                    agent.config.currentTimeRecovery -= 1f;
+                }
+                    
+                if (agent.config.currentTimeRecovery <= 0)
+                {
+                    agent.config.currentTimeRecovery = agent.config.maxTimeRecovery;
+                    Shoot(agent);
+                }
+            }
+        }
+        else
+            agent.stateMachine.ChangeState(AiStateId.Tutoriel);
+    }
+    public void Exit(AiAgent agent)
+    {
+    }
+
+    void Shoot(AiAgent agent)
+    {
+        Debug.Log("Poke");
+        RaycastHit hit;
+        if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
+        {
+            //Debug.Log("je touche " + hit.transform.name);
+        }
+    }
+}

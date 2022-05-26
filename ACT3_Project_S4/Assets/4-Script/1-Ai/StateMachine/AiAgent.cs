@@ -17,26 +17,33 @@ public class AiAgent : MonoBehaviour
 
     public AiSensor sensor;
 
+    public switchToPatrol switchstate;
+
+    public AudioSource detection;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //récupere le navmesh générer
+        //detection = FindObjectOfType<AudioSource>(GameObject.Find("Detected"));
+
+        switchstate = FindObjectOfType<switchToPatrol>(switchstate);
+
         navMeshAgent = GetComponent<NavMeshAgent>();
 
         stateMachine = new AiStateMachine(this);
 
-        //enregistre les states disponible
         stateMachine.RegisterState(new AiChasePlayerState());
         stateMachine.RegisterState(new AiPatrol());
-        stateMachine.RegisterState(new AiSondDetection());
         stateMachine.RegisterState(new AiFiring());
-        stateMachine.RegisterState(new AiDeath());
+        stateMachine.RegisterState(new AiWaiting());
+        stateMachine.RegisterState(new AiWaitingForSwitch());
+        stateMachine.RegisterState(new AiTutoriel());
 
         stateMachine.ChangeState(initialState);
     }
 
-    // Update le state actuel de l'agent
+    // Update is called once per frame
     void Update()
     {
         //Debug.Log(stateMachine.currentState);

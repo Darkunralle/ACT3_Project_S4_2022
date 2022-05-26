@@ -6,7 +6,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class AiSensor : MonoBehaviour
 {
-    //Sensor - fait office de champ de vision de l'agent
     [Header("Agent FOV")]
     public float distance = 10;
     public float angle = 30;
@@ -15,31 +14,21 @@ public class AiSensor : MonoBehaviour
     public int scanFrequency = 30;
 
     [Header("Layer de scan & cible")]
-    //determine le layer du jouer
     public LayerMask Player;
-    //determine le layer de l'environnement (mur, arbre, etc)
     public LayerMask occlusionLayers;
-    //determine la cible des agent
     public Transform target;
-    //determine le bout du fusil de l'agent
     public GameObject cannon;
-    //determine la position du joueur A L'INTERIEUR du sensor
     public Vector3 offset;
 
     [Header("Zone de detection pour definir le statut de l'agent")]
     [Range(0.0f, 1.0f)]
-    //le joueur est a porter de tire
     public float engagmentZone;
-    //depend de engagmentZone - set a true ou a false
     public bool playerInEngagmentRange;
     [Range(0.0f, 0.10f)]
-    //le joueur est au corp a corp
     public float deathZone;
-    //depend de deathZone - set a true ou a false
     public bool playerInDeathRange;
 
     [Header("Liste des élément present dans le champ")]
-    //etablie une liste des élément présent dans le sensor
     public List<GameObject> Objects = new List<GameObject>();
 
     Collider[] colliders = new Collider[50];
@@ -51,17 +40,15 @@ public class AiSensor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //interval entre chaque scan
+        target = GameObject.Find("Player").transform;
         scanInterval = 1.0f / scanFrequency;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //fait le calcul entre la position du joueur et la position du sensor pour definir l'offset
         offset = transform.position - target.transform.position;
 
-        //cooldown du scan
         scanTimer -= Time.deltaTime;
         if (scanTimer < 0)
         {
@@ -72,25 +59,18 @@ public class AiSensor : MonoBehaviour
 
     private void Scan()
     {
-        //sphere de detection de l'engagmentZone
         playerInEngagmentRange = Physics.CheckSphere(transform.position, engagmentZone * 100, Player);
-        //sphere de detection de l'deathZone
         playerInDeathRange = Physics.CheckSphere(transform.position, deathZone * 100, Player);
         
-        //compte les overlap du sensor
         count = Physics.OverlapSphereNonAlloc(transform.position, distance, colliders, Player, QueryTriggerInteraction.Collide);
         
-        //clear la liste des objet present dans le sensor
         Objects.Clear();
 
-        //check si des element sont dans le sensor
         for(int i = 0; i < count; ++i)
         {
             GameObject obj = colliders[i].gameObject;
-            //si le joueur entre dans le sensor
             if (IsInSight(obj))
             {
-                //verifie la distance du player si celui-ci est detecter - change la couleur et le state
                 if (playerInEngagmentRange && !playerInDeathRange) 
                 { 
                     //Debug.Log("piou piou");
@@ -104,16 +84,13 @@ public class AiSensor : MonoBehaviour
                 }
                 else meshColor = new Color(0f, 1f, 0f, 0.25f);
 
-                //adapte le transform du connon pour lui faire regarde le player
                 cannon.transform.LookAt(target);
-                //ajoute le player a la liste du sensor
                 Objects.Add(obj);
                 
             }
         }
     }
 
-    //verifie si le joueur entre dans le sensor
     public bool IsInSight(GameObject obj)
     {        
         Vector3 origin = transform.position;
@@ -145,7 +122,6 @@ public class AiSensor : MonoBehaviour
         return true;
     }
 
-    //crétion du mesh utiliser pour le sensor
     Mesh CreatWedgeMesh()
     {
         Mesh mesh = new Mesh();
