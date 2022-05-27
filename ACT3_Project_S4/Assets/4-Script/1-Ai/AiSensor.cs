@@ -37,6 +37,7 @@ public class AiSensor : MonoBehaviour
     int count;
     float scanInterval;
     float scanTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,8 +72,9 @@ public class AiSensor : MonoBehaviour
             GameObject obj = colliders[i].gameObject;
             if (IsInSight(obj))
             {
+                //Debug.Log("insight");
                 if (playerInEngagmentRange && !playerInDeathRange) 
-                { 
+                {
                     //Debug.Log("piou piou");
                     meshColor = new Color(1f, 0.5f, 0f, 0.25f);
                 }
@@ -82,7 +84,11 @@ public class AiSensor : MonoBehaviour
                     //Debug.Log("death piou piou");
                     meshColor = new Color(1f, 0f, 0f, 0.25f);
                 }
-                else meshColor = new Color(0f, 1f, 0f, 0.25f);
+                else if (!playerInDeathRange && !playerInEngagmentRange)
+                {
+                    meshColor = new Color(0f, 1f, 0f, 0.25f);
+                    //Debug.Log("out of piou piou");
+                }
 
                 cannon.transform.LookAt(target);
                 Objects.Add(obj);
@@ -99,7 +105,6 @@ public class AiSensor : MonoBehaviour
 
         if (direction.y < 0 || direction.y > height)
         {
-            
             return false;
         }
 

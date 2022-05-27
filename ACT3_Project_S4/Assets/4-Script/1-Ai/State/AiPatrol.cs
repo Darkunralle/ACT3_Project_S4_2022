@@ -21,7 +21,8 @@ public class AiPatrol : AiState
     {
     }
     public void Update(AiAgent agent)
-    {  
+    {
+        //Debug.Log(agent.sensor.Objects.Count);
         if (!agent.navMeshAgent.hasPath)
         {
             WorldBound worldBounds = GameObject.FindObjectOfType<WorldBound>();
@@ -36,15 +37,12 @@ public class AiPatrol : AiState
             
                 agent.navMeshAgent.destination = randomPosition;
         }
-
-        if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
+        
+        if (agent.sensor.Objects.Count > 0)
         {
-            agent.detection.Play(0);
-            if (agent.sensor.Objects.Count > 0)
-            {
-                agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
-            }
-        }        
+            //Debug.Log("gbfhjifbdbhnjk");
+            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+        }      
     }
 
     public void Exit(AiAgent agent)

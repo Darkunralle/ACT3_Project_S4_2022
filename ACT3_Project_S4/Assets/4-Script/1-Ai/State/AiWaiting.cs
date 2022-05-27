@@ -15,13 +15,17 @@ public class AiWaiting : AiState
     }
     public void Update(AiAgent agent)
     {
-        if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
+        if (agent.sensor.Objects.Count > 0)
         {
-            if (agent.sensor.Objects.Count > 0)
+            Debug.Log("njkvernyu");
+            agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+            
+            if (agent.sensor.playerInEngagmentRange == true)
             {
-                agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
+                agent.stateMachine.ChangeState(AiStateId.Firing);
             }
         }
+        
     }
 
     public void Exit(AiAgent agent)

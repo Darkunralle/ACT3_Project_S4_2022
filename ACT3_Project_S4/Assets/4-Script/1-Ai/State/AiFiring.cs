@@ -37,8 +37,9 @@ public class AiFiring : AiState
             }
         }
 
-        if (agent.sensor.offset.sqrMagnitude >= 1900 || agent.sensor.Objects.Count <= 0)
+        if (agent.sensor.Objects.Count == 0)
         {
+            Debug.Log("check aifiring");
             agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
             agent.navMeshAgent.isStopped = false;
         }

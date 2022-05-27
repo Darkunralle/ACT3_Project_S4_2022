@@ -25,6 +25,8 @@ public class AiAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerTransform = GameObject.Find("Player").transform;
+
         //detection = FindObjectOfType<AudioSource>(GameObject.Find("Detected"));
 
         switchstate = FindObjectOfType<switchToPatrol>(switchstate);
@@ -46,7 +48,7 @@ public class AiAgent : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(stateMachine.currentState);
+        Debug.Log(stateMachine.currentState);
         stateMachine.Update();
     }
 }

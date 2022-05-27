@@ -312,7 +312,7 @@ public class PlayerMove : MonoBehaviour
             }
             sphereRadiusModify(m_sphereRadWalk);
         }
-        Debug.Log($"{p_move} && {m_forward}");
+        //Debug.Log($"{p_move} && {m_forward}");
 
     }
 

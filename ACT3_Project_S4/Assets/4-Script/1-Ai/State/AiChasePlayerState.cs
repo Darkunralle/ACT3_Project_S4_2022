@@ -20,6 +20,7 @@ public class AiChasePlayerState : AiState
     }
     public void Update(AiAgent agent)
     {
+        //Debug.Log(timer);
         if (!agent.enabled)
         {
             return;
@@ -46,24 +47,12 @@ public class AiChasePlayerState : AiState
 
             timer = agent.config.maxTime;
         }
-        if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
-        {
-
-            if (agent.sensor.Objects.Count <= 0)
-            {
-                countDown -= 1 * Time.deltaTime;
-                if(countDown <= 0)
-                {
-                    agent.stateMachine.ChangeState(AiStateId.Patrol);
-                }
-            }
-        }
-
+    
         //passage en etat de tire
-        if (agent.sensor.playerInEngagmentRange == true)
-        {
-            agent.stateMachine.ChangeState(AiStateId.Firing);
-        }
+        if (agent.sensor.playerInEngagmentRange == true && agent.sensor.Objects.Count > 0)
+            {
+                agent.stateMachine.ChangeState(AiStateId.Firing);
+            }
     }
 
         

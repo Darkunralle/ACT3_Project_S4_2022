@@ -324,7 +324,7 @@ MonoBehaviour:
   distance: 23.41
   angle: 23.6
   height: 6.3
-  meshColor: {r: 1, g: 0.5, b: 0, a: 0.25}
+  meshColor: {r: 0, g: 1, b: 0, a: 0.25}
   scanFrequency: 10
   Player:
     serializedVersion: 2
@@ -334,8 +334,8 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -229.13, y: -30.571001, z: -36.94}
-  engagmentZone: 0.45
+  offset: {x: -7.32341, y: 0.7900009, z: 53.338676}
+  engagmentZone: 0.211
   playerInEngagmentRange: 0
   deathZone: 0.05
   playerInDeathRange: 0
@@ -355,6 +355,7 @@ GameObject:
   - component: {fileID: 8487881819550931680}
   - component: {fileID: 3848218288563691537}
   - component: {fileID: 8487881819550931690}
+  - component: {fileID: 3670804031079148497}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -492,10 +493,106 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6260b785bb40705468805111b7799ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 5
+  initialState: 4
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: bb077b09c83166b4695848faf05fddab, type: 2}
-  playerTransform: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
+  playerTransform: {fileID: 0}
   sensor: {fileID: 4662733304146251640}
   switchstate: {fileID: 0}
-  detection: {fileID: 0}
+  detection: {fileID: 3670804031079148497}
+--- !u!82 &3670804031079148497
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8487881819550931686}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 06dbc624e6113cd41975e0ca009f9b95, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 0
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 40
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.9963211
+      outSlope: -0.9963211
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -1.0256411
+      outSlope: -1.0256411
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
