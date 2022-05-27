@@ -198,7 +198,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.95830667, b: 0.4764151, a: 1}
-  m_Intensity: 35
+  m_Intensity: 50
   m_Range: 30
   m_SpotAngle: 35
   m_InnerSpotAngle: 1
@@ -240,7 +240,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 10
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -334,7 +334,7 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -100.83795, y: -4.5031643, z: 97.188675}
+  offset: {x: -229.13, y: -30.571001, z: -36.94}
   engagmentZone: 0.45
   playerInEngagmentRange: 0
   deathZone: 0.05
