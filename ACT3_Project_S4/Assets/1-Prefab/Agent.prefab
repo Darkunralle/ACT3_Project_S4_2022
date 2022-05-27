@@ -334,7 +334,7 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -7.32341, y: 0.7900009, z: 53.338676}
+  offset: {x: -99.38295, y: -9.797163, z: 51.739677}
   engagmentZone: 0.211
   playerInEngagmentRange: 0
   deathZone: 0.05
@@ -513,7 +513,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 06dbc624e6113cd41975e0ca009f9b95, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 2
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -521,7 +521,7 @@ AudioSource:
   Priority: 0
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 40
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -533,20 +533,20 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -0.9963211
-      outSlope: -0.9963211
+      inSlope: -2.9304028
+      outSlope: -2.9304028
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 1
+      outWeight: 0.0525
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.0256411
-      outSlope: -1.0256411
+      inSlope: -1.0511227
+      outSlope: -1.0511227
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.10500002
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

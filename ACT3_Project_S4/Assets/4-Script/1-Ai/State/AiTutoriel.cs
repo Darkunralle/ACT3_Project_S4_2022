@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class AiTutoriel : AiState
 {
+    private bool sound = false;
     public AiStateId GetId()
     {
         return AiStateId.Tutoriel;
     }
     public void Enter(AiAgent agent)
     {
-        
+        sound = false;
     }
     public void Update(AiAgent agent)
     {
@@ -18,7 +19,7 @@ public class AiTutoriel : AiState
         {
             if (agent.sensor.Objects.Count > 0)
             {
-                    
+                if (!sound) { agent.detection.Play(1); sound = true; }
                 agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
                     //Debug.Log(agent.config.currentTimeRecovery);  
                 agent.navMeshAgent.isStopped = true;

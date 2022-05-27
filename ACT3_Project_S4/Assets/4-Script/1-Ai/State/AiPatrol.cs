@@ -10,6 +10,8 @@ public class AiPatrol : AiState
     public float minDistance;
     public float maxDistance;
 
+    private bool sound = false;
+
     protected Vector3 randomPosition;
 
     public AiStateId GetId()
@@ -19,7 +21,9 @@ public class AiPatrol : AiState
 
     public void Enter(AiAgent agent)
     {
+        sound = false;
     }
+
     public void Update(AiAgent agent)
     {
         //Debug.Log(agent.sensor.Objects.Count);
@@ -40,6 +44,8 @@ public class AiPatrol : AiState
         
         if (agent.sensor.Objects.Count > 0)
         {
+            if (!sound) {agent.detection.Play(0);sound = true;}
+            
             //Debug.Log("gbfhjifbdbhnjk");
             agent.stateMachine.ChangeState(AiStateId.ChasePlayer);
         }      
