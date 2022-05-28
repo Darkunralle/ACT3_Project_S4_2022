@@ -55,9 +55,11 @@ public class AiFiring : AiState
         //implementer les dégats -- adapter les damage fonction de la check sphere (playerInEngagmentRange et/ou playerInDeathRange)
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
+            agent.arFiring.Play(0);
             //Debug.Log("je touche " + hit.transform.name);
             if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
             {
+                
                 PlayerMove.beHit(agent.sensor.playerInDeathRange);
             }
         }

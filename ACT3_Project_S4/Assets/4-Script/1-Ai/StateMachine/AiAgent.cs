@@ -21,6 +21,8 @@ public class AiAgent : MonoBehaviour
 
     public AudioSource detection;
 
+    public AudioSource arFiring;
+
 
     // Start is called before the first frame update
     void Start()
