@@ -19,7 +19,7 @@ public class AiTutoriel : AiState
         {
             if (agent.sensor.Objects.Count > 0)
             {
-                if (!sound) { agent.detection.Play(1); sound = true; }
+                if (!sound) { agent.detection.Play(0); sound = true; }
                 agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
                     //Debug.Log(agent.config.currentTimeRecovery);  
                 agent.navMeshAgent.isStopped = true;
@@ -50,6 +50,8 @@ public class AiTutoriel : AiState
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
             agent.arFiring.Play(0);
+            agent.arImpact.Play(0);
+            agent.muzzleFlash.Play();
             //Debug.Log("je touche " + hit.transform.name);
             if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
             {
