@@ -14,10 +14,10 @@ public class MainMenu : MonoBehaviour
     public AudioSource select;
     public AudioSource selectBack;
 
-    public void PlayGame()
+    public void PlayCinematique ()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Setting()
