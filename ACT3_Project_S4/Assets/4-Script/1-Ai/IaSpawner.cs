@@ -14,35 +14,23 @@ public class IaSpawner : MonoBehaviour
     [SerializeField, Tooltip("Prefab de l'agent")]
     private GameObject m_agentPrefab;
 
-    // Compteur du nombre d'agent mort
+    [SerializeField, Tooltip("le compteur du nb de mort")]
     private int m_deathCompter = 0;
 
     [SerializeField, Tooltip("Liste de spawn")]
-    private List<Transform> m_listeSpawnT;
+    private List<Transform> m_listeSpawnT = new List<Transform>();
 
     // Same mais les passe en vecteur3
-    private List<Vector3> m_listeSpawnV;
+    private List<Vector3> m_listeSpawnV = new List<Vector3>();
 
 
-    private void OnEnable()
-    {
-        PlayerMove.m_spawnCp += setDeathCompter;
-    }
-
-    private void OnDisable()
-    {
-        PlayerMove.m_spawnCp -= setDeathCompter;
-    }
     private void Start()
     {
 
-        if (m_listeSpawnT == null)
+        if (m_listeSpawnT.Count == 0)
         {
-            Debug.Log("Aucune position de spawn est renseignée, initialisatio nde valeur par défaut");
+            Debug.Log("Aucune position de spawn est renseignée, Merci d'en ajouté");
 
-            m_listeSpawnV.Add(new Vector3(-115, 0, 60));
-            m_listeSpawnV.Add(new Vector3(0, 5, 19));
-            m_listeSpawnV.Add(new Vector3(8, 1, -4));
         }
         else
         {
@@ -76,7 +64,7 @@ public class IaSpawner : MonoBehaviour
         return agentPos;
     }
 
-    void setDeathCompter()
+    public void setDeathCompter()
     {
         m_deathCompter++;
         Debug.Log("Kill");

@@ -49,16 +49,17 @@ public class AiTutoriel : AiState
         RaycastHit hit;
         if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
         {
+            
             agent.arFiring.Play(0);
             agent.arImpact.Play(0);
             agent.muzzleFlash.Play();
-            //Debug.Log("je touche " + hit.transform.name);
+            Debug.Log("je touche " + hit.transform.name);
             if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
             {
+                Debug.Log("Hited");
 
                 PlayerMove.beHit(agent.sensor.playerInDeathRange);
             }
-            //Debug.Log("je touche " + hit.transform.name);
         }
     }
 }

@@ -6,6 +6,7 @@ public class PlayerMove : MonoBehaviour
     private CharacterController m_characterController;
     private SphereCollider m_sphereBruit;
     private PauseButton m_zawarudo;
+    private IaSpawner m_spawner;
 
     [SerializeField, Tooltip("Camera du joueur")]
     private GameObject m_camera;
@@ -118,10 +119,6 @@ public class PlayerMove : MonoBehaviour
     // Class contenant les input du joueur
     private PlayerInput playerInput;
 
-    public delegate void m_spawnDelegate();
-    public static event m_spawnDelegate m_spawnCp;
-
-
     // *************************************************************** //
 
     [SerializeField, Tooltip("Blocage camaré Vertical en Degré")]
@@ -218,6 +215,16 @@ public class PlayerMove : MonoBehaviour
             if (m_zawarudo == null)
             {
                 Debug.Log("Tardos il manque le script Pause MERCI");
+                throw new System.ArgumentNullException();
+            }
+        }
+
+        if (m_spawner == null)
+        {
+            m_spawner = GetComponent<IaSpawner>();
+            if (m_spawner == null)
+            {
+                Debug.Log("Tardos il manque le script Spawner MERCI");
                 throw new System.ArgumentNullException();
             }
         }
@@ -519,33 +526,6 @@ public class PlayerMove : MonoBehaviour
         m_timer = p_timer;
     }
 
-    /// <summary>
-    /// #_Attaque du joueur
-    /// </summary>
-    /// 
-    /// Si la condition pour tuer est validé alors on renvoi l'information
-    /// 
-    /// Condition actuellement "Être en saut"
-    /// 
-    /// <returns>Bool qui renvoi si oui ou non l'attaque est autorisé</returns>
-    public bool attackPrey(float p_regen)
-    {
-        if (m_jumped)
-        {
-            m_stam += p_regen;
-            if (m_stam > m_stamMax)
-            {
-                m_stam = m_stamMax;
-            }
-            m_stamBarre.setStam((int)Mathf.Round(m_stam));
-
-            m_spawnCp();
-
-            return true;
-        }
-        return false;
-    }
-
     public float getStam()
     {
         return m_stam;
@@ -558,11 +538,13 @@ public class PlayerMove : MonoBehaviour
             m_stam = m_stamMax;
         }
         m_stamBarre.setStam((int)Mathf.Round(m_stam));
+        m_spawner.setDeathCompter();
         return m_stam;
     }
 
     public static void beHit(bool p_deathRange)
     {
+        Debug.Log("be hit");
         if (p_deathRange)
         {
             m_life = 0;
