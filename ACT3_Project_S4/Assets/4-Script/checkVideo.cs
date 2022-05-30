@@ -21,12 +21,7 @@ public class checkVideo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
         sliderLoading.value = loadingStat / 67;
-=======
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        sliderLoading.value = loadingStat / 135;
->>>>>>> Stashed changes
         Debug.Log(loadingStat);
         if(loadingStat < 135) {loadingStat += Time.deltaTime;}
         if(loadingStat > 67) { text.SetActive(true); if (Input.GetKeyDown("space")) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); } ; }
