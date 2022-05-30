@@ -542,20 +542,19 @@ public class PlayerMove : MonoBehaviour
         return m_stam;
     }
 
-    public static void beHit(bool p_deathRange)
+    public static void lifeMinus()
     {
-        Debug.Log("be hit");
-        if (p_deathRange)
+        m_life -= 1;
+        if (m_life == 0)
         {
-            m_life = 0;
+            SceneManager.LoadScene(0);
         }
-        else
-        {
-            if (Random.Range(0, 100) > m_dodge)
-            {
-                m_life--;
-            }
-        }
+    }
+
+    public static void beHit()
+    {
+
+        m_life = 0;
 
         if (m_life == 0)
         {
@@ -564,7 +563,5 @@ public class PlayerMove : MonoBehaviour
             // Temporaire
             SceneManager.LoadScene(0);
         }
-        
-        
     }
 }

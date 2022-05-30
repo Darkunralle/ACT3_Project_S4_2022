@@ -53,12 +53,15 @@ public class AiTutoriel : AiState
             agent.arFiring.Play(0);
             agent.arImpact.Play(0);
             agent.muzzleFlash.Play();
-            Debug.Log("je touche " + hit.transform.name);
-            if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
-            {
-                Debug.Log("Hited");
 
-                PlayerMove.beHit(agent.sensor.playerInDeathRange);
+            if (!agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
+            {
+                PlayerMove.lifeMinus();
+            }
+
+            if (agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
+            {
+                PlayerMove.beHit();
             }
         }
     }

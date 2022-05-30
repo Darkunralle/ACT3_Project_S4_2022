@@ -12761,7 +12761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8487881819550931690, guid: b938cdfe7d15c5e469940f4945ed1dde, type: 3}
       propertyPath: initialState
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8487881819550931692, guid: b938cdfe7d15c5e469940f4945ed1dde, type: 3}
       propertyPath: m_RootOrder
@@ -67843,6 +67843,10 @@ PrefabInstance:
     - target: {fileID: 4575381162466029795, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096856959215026115, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96375a29fcf08d74b8e807d342526601, type: 3}

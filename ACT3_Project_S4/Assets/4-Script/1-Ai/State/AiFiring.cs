@@ -58,11 +58,15 @@ public class AiFiring : AiState
             agent.arFiring.Play(0);
             agent.arImpact.Play(0);
             agent.muzzleFlash.Play();
-            //Debug.Log("je touche " + hit.transform.name);
-            if (hit.transform.name == "Player" && agent.sensor.playerInEngagmentRange)
+
+            if (!agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
             {
-                
-                PlayerMove.beHit(agent.sensor.playerInDeathRange);
+                PlayerMove.lifeMinus();
+            }
+
+            if (agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
+            {
+                PlayerMove.beHit();
             }
         }
     }
