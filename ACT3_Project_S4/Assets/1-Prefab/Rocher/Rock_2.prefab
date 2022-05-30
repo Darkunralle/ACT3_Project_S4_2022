@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3921257142593476199}
+  - component: {fileID: -1126872064761384651}
   m_Layer: 0
   m_Name: Rock_2
   m_TagString: Untagged
@@ -23,14 +24,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4404742764207475933}
-  m_LocalRotation: {x: 0.50727326, y: -0.492347, z: -0.50523853, w: -0.49497718}
+  m_LocalRotation: {x: 0.5072693, y: -0.49235103, z: -0.5052374, w: -0.49497825}
   m_LocalPosition: {x: 191.92, y: 29.8, z: 24.93}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4475221965752395583}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -91.443, y: -268.779, z: -1.4880066}
+--- !u!64 &-1126872064761384651
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404742764207475933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4660383202168042500
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +57,7 @@ GameObject:
   - component: {fileID: 4475221965752395583}
   - component: {fileID: 1642690122783678069}
   - component: {fileID: 2876036371463764705}
+  - component: {fileID: 5570260803925721332}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -112,3 +128,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5570260803925721332
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660383202168042500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2432090755550338912, guid: 004ba76148606c04fbab1e16de67deaa, type: 3}
