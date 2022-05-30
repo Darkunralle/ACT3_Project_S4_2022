@@ -3739,7 +3739,7 @@ MonoBehaviour:
   m_groundCheckRange: 0.4
   m_groundMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 192
   m_secondeBeforeRegen: 2
   m_pourcentageRegStam: 50
   m_stamPerSec: 10
@@ -3784,9 +3784,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_numberOfDeath: 2
   m_spawningNumber: 3
-  m_agentPrefab: {fileID: 8487881819550931686, guid: b938cdfe7d15c5e469940f4945ed1dde, type: 3}
+  m_agentPrefab: {fileID: 0}
   m_deathCompter: 0
-  m_listeSpawnT: []
+  m_listeSpawnT:
+  - {fileID: 0}
 --- !u!1 &4804272051833613563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5168,6 +5169,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1054417342110304235}
     m_Modifications:
+    - target: {fileID: 503620148913846941, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
+      propertyPath: field of view
+      value: 65
+      objectReference: {fileID: 0}
     - target: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_Name
       value: PlayerCam

@@ -60,7 +60,6 @@ public class AiTutoriel : AiState
 
                 PlayerMove.beHit(agent.sensor.playerInDeathRange);
             }
-            //Debug.Log("je touche " + hit.transform.name);
         }
     }
 }
