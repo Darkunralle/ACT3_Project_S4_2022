@@ -167,6 +167,15 @@ public class PlayerMove : MonoBehaviour
     /// Vérification de la présence des gameobject et leur récupération
     private void Start()
     {
+        if (PlayerPrefs.HasKey("sensitive"))
+        {
+            m_sensitivity = PlayerPrefs.GetFloat("sensitive");
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("sensitive", m_sensitivity);
+        }
+
         m_stamBarre.setMaxStam((int)Mathf.Round(m_stamMax));
 
         m_speed = m_speedMin;
@@ -452,6 +461,14 @@ public class PlayerMove : MonoBehaviour
     /// Déplacement du joueur et ensuite applique la gravité (séparé pour évité quelque problème de compréhension ou autre)
     void Update()
     {
+        if (PlayerPrefs.HasKey("sensitive"))
+        {
+            m_sensitivity = PlayerPrefs.GetFloat("sensitive");
+        }
+        else
+        {
+            //Debug.Log("Impossible de trouver les playerprefs lié a la sensibilité ",this);
+        }
         Vector2 move = playerInput.Player.Move.ReadValue<Vector2>();
 
         if (isGrounded())
