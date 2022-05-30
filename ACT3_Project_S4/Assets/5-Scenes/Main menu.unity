@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 123852911}
   - component: {fileID: 123852912}
   m_Layer: 5
-  m_Name: Sound
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -351,9 +351,9 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_FillRect: {fileID: 0}
-  m_HandleRect: {fileID: 0}
+  m_TargetGraphic: {fileID: 1231210864}
+  m_FillRect: {fileID: 1337476109}
+  m_HandleRect: {fileID: 1581161578}
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
@@ -1788,7 +1788,7 @@ GameObject:
   - component: {fileID: 523700698}
   - component: {fileID: 523700697}
   m_Layer: 8
-  m_Name: RawImage (4)
+  m_Name: Subtitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2366,7 +2366,7 @@ GameObject:
   - component: {fileID: 729129799}
   - component: {fileID: 729129800}
   m_Layer: 5
-  m_Name: Music
+  m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3049,8 +3049,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1105978289}
   - component: {fileID: 1105978288}
+  - component: {fileID: 1105978291}
+  - component: {fileID: 1105978290}
   m_Layer: 0
-  m_Name: sond
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3081,6 +3083,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1105978290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105978287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3a868147c5b0a4fa7d64ec173f2590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_musique:
+  - {fileID: 1736460733}
+  m_bruitage:
+  - {fileID: 1374184240}
+  - {fileID: 1940094081}
+--- !u!114 &1105978291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105978287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c1723a52c623449ae3061bb75f06c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sensitiveSlider: {fileID: 423806678}
+  m_soundSlider: {fileID: 729129800}
+  m_musicSlider: {fileID: 123852912}
 --- !u!1 &1193202719
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,7 +3327,7 @@ GameObject:
   - component: {fileID: 1231210865}
   - component: {fileID: 1231210864}
   m_Layer: 8
-  m_Name: RawImage (1)
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3977,7 +4011,7 @@ GameObject:
   - component: {fileID: 1432295824}
   - component: {fileID: 1432295823}
   m_Layer: 8
-  m_Name: RawImage (2)
+  m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4435,6 +4469,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1105978291}
+        m_TargetAssemblyTypeName: ParameterMenu, Assembly-CSharp
+        m_MethodName: save
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1105978291}
+        m_TargetAssemblyTypeName: ParameterMenu, Assembly-CSharp
+        m_MethodName: realTimeUpdateOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1603537112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4543,7 +4601,7 @@ GameObject:
   - component: {fileID: 1729179184}
   - component: {fileID: 1729179183}
   m_Layer: 8
-  m_Name: RawImage (5)
+  m_Name: Sensitive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4963,6 +5021,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1707962542}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: effectSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1105978291}
+        m_TargetAssemblyTypeName: ParameterMenu, Assembly-CSharp
+        m_MethodName: realTimeUpdateOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

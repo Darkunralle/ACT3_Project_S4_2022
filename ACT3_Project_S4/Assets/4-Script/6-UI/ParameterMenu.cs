@@ -16,6 +16,7 @@ public class ParameterMenu : MonoBehaviour
     private float m_soundSave = 0.5f;
     private float m_musicSave = 0.5f;
 
+    private bool m_realTimeUpdate = false;
 
     private void Start()
     {
@@ -42,6 +43,12 @@ public class ParameterMenu : MonoBehaviour
 
         m_sensitiveSlider.minValue = 0.025f;
         m_sensitiveSlider.maxValue = 1f;
+
+        m_soundSlider.minValue = 0f;
+        m_soundSlider.maxValue = 1f;
+
+        m_musicSlider.minValue = 0f;
+        m_musicSlider.maxValue = 1f;
     }
     public void save()
     {
@@ -64,9 +71,31 @@ public class ParameterMenu : MonoBehaviour
 
     private void Update()
     {
-        if (!m_sensitiveSlider.isActiveAndEnabled) m_sensitiveSlider.value = m_sensiSave;
-        if (!m_soundSlider.isActiveAndEnabled) m_soundSlider.value = m_soundSave;
-        if (!m_musicSlider.isActiveAndEnabled) m_musicSlider.value = m_musicSave;
+        if (!m_realTimeUpdate)
+        {
+            if (!m_sensitiveSlider.isActiveAndEnabled) m_sensitiveSlider.value = m_sensiSave;
+            if (!m_soundSlider.isActiveAndEnabled) m_soundSlider.value = m_soundSave;
+            if (!m_musicSlider.isActiveAndEnabled) m_musicSlider.value = m_musicSave;
+
+            Debug.Log(m_sensitiveSlider.value);
+            Debug.Log(PlayerPrefs.GetFloat("sensitive"));
+        }
+        else
+        {
+            PlayerPrefs.SetFloat("sensitive", m_sensitiveSlider.value);
+            PlayerPrefs.SetFloat("musique", m_musicSlider.value);
+            PlayerPrefs.SetFloat("sound", m_soundSlider.value);
+        }
+        
+    }
+
+    public void realTimeUpdateOn()
+    {
+        m_realTimeUpdate = true;
+    }
+    public void realTimeUpdateOff()
+    {
+        m_realTimeUpdate = false;
     }
 
 }
