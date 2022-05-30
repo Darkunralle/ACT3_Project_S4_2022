@@ -108,10 +108,10 @@ public class PauseButton : MonoBehaviour
     }
     public void effectSelect()
     {
-        select.Play(0);
+        //select.Play(0);
     }
     public void effectSelectBack()
     {
-        selectBack.Play(0);
+        //selectBack.Play(0);
     }
 }

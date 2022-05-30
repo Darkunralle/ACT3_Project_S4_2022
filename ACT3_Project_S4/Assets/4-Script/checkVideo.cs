@@ -24,7 +24,7 @@ public class checkVideo : MonoBehaviour
         sliderLoading.value = loadingStat / 67;
         Debug.Log(loadingStat);
         if(loadingStat < 135) {loadingStat += Time.deltaTime;}
-        if(loadingStat > 67) { text.SetActive(true); if (Input.GetKeyDown("space")) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); } ; }
+        if(loadingStat > 10) { text.SetActive(true); if (Input.GetKeyDown("space")) { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); } ; }
         if(loadingStat >= 135) { sliderLoading.gameObject.SetActive(false); button.SetActive(true); text.SetActive(false); }
     }
 

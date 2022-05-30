@@ -40,7 +40,7 @@ public class ParameterMenu : MonoBehaviour
         }    
         else m_soundSlider.value = m_soundSave;
 
-        m_sensitiveSlider.minValue = 0.1f;
+        m_sensitiveSlider.minValue = 0.025f;
         m_sensitiveSlider.maxValue = 1f;
     }
     public void save()
