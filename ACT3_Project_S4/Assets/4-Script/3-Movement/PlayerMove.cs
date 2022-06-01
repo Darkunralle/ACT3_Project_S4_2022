@@ -570,7 +570,6 @@ public class PlayerMove : MonoBehaviour
 
     private void updateBloodScreen()
     {
-        Debug.Log(m_life);
         if (m_life == 2)
         {
             m_bloodScreen.gameObject.SetActive(true);

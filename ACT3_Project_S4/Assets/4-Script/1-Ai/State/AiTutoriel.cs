@@ -47,7 +47,7 @@ public class AiTutoriel : AiState
     {
         Debug.Log("Poke");
         RaycastHit hit;
-        if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
+        if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range) && !PauseButton.m_timeToStop)
         {
             
             agent.arFiring.Play(0);

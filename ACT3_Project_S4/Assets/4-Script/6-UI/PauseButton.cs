@@ -25,6 +25,7 @@ public class PauseButton : MonoBehaviour
         {
             isPaused();
         }
+        Debug.Log(m_timeToStop);
     }
 
     private void Start()
