@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1946088017}
   - component: {fileID: 1946088016}
   - component: {fileID: 2935886851675198028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 5286876887203889045}
   - component: {fileID: 8681665359027215105}
   - component: {fileID: 2703338425207359187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7636374244320720775}
   - component: {fileID: 3188939711543690531}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocher_GR7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

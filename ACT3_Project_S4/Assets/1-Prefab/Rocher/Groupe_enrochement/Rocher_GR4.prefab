@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1551186002575931305}
   - component: {fileID: -5521255316637434050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocher_GR4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1551186002575931305
 Transform:
@@ -58,12 +58,12 @@ GameObject:
   - component: {fileID: 3828605167829761979}
   - component: {fileID: 289437900084648751}
   - component: {fileID: 6907498254369005198}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2159158545370941169
 Transform:
