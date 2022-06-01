@@ -5141,7 +5141,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 115116480577560172}
-  m_LocalRotation: {x: 0.024630437, y: -0.042445134, z: 0.0010467038, w: 0.9987946}
+  m_LocalRotation: {x: 0.017939482, y: 0.08050454, z: -0.0014491505, w: 0.9965918}
   m_LocalPosition: {x: 0.467, y: 0.13823, z: 0.22}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.47893387}
   m_Children:
@@ -5382,8 +5382,8 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95830667, b: 0.4764151, a: 1}
-  m_Intensity: 50
+  m_Color: {r: 1, g: 0.9841242, b: 0.8066038, a: 1}
+  m_Intensity: 100
   m_Range: 30
   m_SpotAngle: 35
   m_InnerSpotAngle: 1
@@ -5473,7 +5473,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5470372448043871181}
   - component: {fileID: 4662733304146251640}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5519,7 +5519,7 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -228.5, y: -29.130001, z: -36.34}
+  offset: {x: -99.76712, y: -9.185167, z: 56.550568}
   engagmentZone: 0.211
   playerInEngagmentRange: 0
   deathZone: 0.05
@@ -5679,7 +5679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6260b785bb40705468805111b7799ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialState: 1
+  initialState: 4
   navMeshAgent: {fileID: 0}
   config: {fileID: 11400000, guid: bb077b09c83166b4695848faf05fddab, type: 2}
   playerTransform: {fileID: 0}
@@ -5699,9 +5699,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 06dbc624e6113cd41975e0ca009f9b95, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 3e543f6932edd8349bb053b41ca890e1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.45
   m_Pitch: 2
   Loop: 0
   Mute: 0
@@ -5745,7 +5745,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

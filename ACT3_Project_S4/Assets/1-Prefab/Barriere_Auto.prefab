@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 6060568319155938910}
   - component: {fileID: 1572091353946645387}
   - component: {fileID: 4393917132799874532}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barriere_Auto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6060568319155938910
 Transform:
@@ -117,6 +117,30 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
       propertyPath: m_Name
       value: "LD_Barri\xE8re"
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8af759c3b1eb1544b8375e3ddbe6350, type: 3}

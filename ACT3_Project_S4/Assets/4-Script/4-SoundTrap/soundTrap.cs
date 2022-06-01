@@ -9,9 +9,12 @@ public class soundTrap : MonoBehaviour
 
     private PlayerMove m_collider;
 
+    public AudioSource crick;
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Crack");
+        crick.Play(0);
 
         if (other.name == "Player")
         {
