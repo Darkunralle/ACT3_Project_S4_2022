@@ -29,6 +29,7 @@ public class AiPatrol : AiState
         //Debug.Log(agent.sensor.Objects.Count);
         if (!agent.navMeshAgent.hasPath)
         {
+            agent.walk.Play(0);
             WorldBound worldBounds = GameObject.FindObjectOfType<WorldBound>();
             Vector3 min = worldBounds.minBound.position;
             Vector3 max = worldBounds.maxBound.position;

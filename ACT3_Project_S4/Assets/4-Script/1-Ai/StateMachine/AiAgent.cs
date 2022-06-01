@@ -25,6 +25,8 @@ public class AiAgent : MonoBehaviour
 
     public AudioSource arImpact;
 
+    public AudioSource walk;
+
     public ParticleSystem muzzleFlash;
 
     // Start is called before the first frame update
