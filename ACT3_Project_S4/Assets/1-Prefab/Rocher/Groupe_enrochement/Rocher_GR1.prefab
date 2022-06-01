@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8986981440728854212}
   - component: {fileID: 5592791377773120080}
   - component: {fileID: 694962380858977175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6638085328668518102}
   - component: {fileID: 8349583752107699406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rocher_GR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
