@@ -17,6 +17,8 @@ public class PauseButton : MonoBehaviour
     public AudioSource select;
     public AudioSource selectBack;
 
+    public static bool m_timeToStop;
+
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -62,6 +64,7 @@ public class PauseButton : MonoBehaviour
         if (gameIsPaused)
         {
             Time.timeScale = 0f;
+            m_timeToStop = true;
 
             Cursor.visible = true;
             stamina.SetActive(false);
@@ -73,6 +76,7 @@ public class PauseButton : MonoBehaviour
         else
         {
             Time.timeScale = 1f;
+            m_timeToStop = false;
 
             Cursor.visible = false;
             stamina.SetActive(true);
