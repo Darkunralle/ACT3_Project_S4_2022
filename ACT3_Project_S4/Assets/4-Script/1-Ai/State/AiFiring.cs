@@ -53,7 +53,7 @@ public class AiFiring : AiState
     {
         RaycastHit hit;
         //implementer les dégats -- adapter les damage fonction de la check sphere (playerInEngagmentRange et/ou playerInDeathRange)
-        if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range))
+        if (Physics.Raycast(agent.sensor.cannon.transform.position, agent.transform.forward, out hit, agent.config.range) && !PauseButton.m_timeToStop)
         {
             agent.arFiring.Play(0);
             agent.arImpact.Play(0);
@@ -61,12 +61,12 @@ public class AiFiring : AiState
 
             if (!agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
             {
-                PlayerMove.lifeMinus();
+                PlayerMove.beHit(false);
             }
 
             if (agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
             {
-                PlayerMove.beHit();
+                PlayerMove.beHit(true);
             }
         }
     }

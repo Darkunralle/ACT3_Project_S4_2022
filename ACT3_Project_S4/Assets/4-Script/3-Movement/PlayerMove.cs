@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -8,15 +9,22 @@ public class PlayerMove : MonoBehaviour
     private PauseButton m_zawarudo;
     private IaSpawner m_spawner;
 
+    [Header("Manual integration")]
     [SerializeField, Tooltip("Camera du joueur")]
     private GameObject m_camera;
+    [SerializeField, Tooltip("Barre de stamina")]
+    private StamBarre m_stamBarre;
+    [SerializeField, Tooltip("Blood Screen")]
+    private Graphic m_bloodScreen;
 
+    [Header("Sphere bruit")]
     [SerializeField, Tooltip("Sphere radius marche")]
     private float m_sphereRadWalk = 1f;
 
     [SerializeField, Tooltip("Sphere radius course")]
     private float m_sphereRadRun = 8f;
 
+    [Header("Déplacement")]
     [SerializeField, Tooltip("Vitesse max m/s")]
     private float m_speedMax = 8f;
 
@@ -29,46 +37,31 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Temps avant de revenir a la vitesse minimal")]
     private float m_timeForSpeedMin = 0.4f;
 
-    //Speed atuelle du joueur
-    private float m_speed;
-
-    [SerializeField, Tooltip("La gravité gravité terrestre : -9,8 m/s²")]
-    private float m_gravity = -9.81f;
-
-    [SerializeField, Tooltip("Hauteur du saut en m")]
-    private float m_jumpHeight = 2.5f;
-
-    [SerializeField, Tooltip("Coût du saut en stamina")]
-    private float m_jumpCost = 10;
-
     [SerializeField, Tooltip("Multiplicateur de vitesse pour le sprint (1 = vitesse de base) Float ")]
     private float m_speedMulti = 2f;
 
-    [SerializeField, Tooltip("Coût par seconde du sprint")]
-    private float m_sprintCost = 5f;
-
     [SerializeField, Tooltip("Multiplicateur de vitesse pour la marche arrière (1 = vitesse de base // 0.5 = 50% de la vitesse de base) Float ")]
     private float m_speedBackReduce = 0.5f;
+
+    //Speed atuelle du joueur
+    private float m_speed;
+
+    [Header("Saut")]
+    [SerializeField, Tooltip("Hauteur du saut en m")]
+    private float m_jumpHeight = 2.5f;
+
+    [Header("Endurance")]
+    [SerializeField, Tooltip("Coût du saut en stamina")]
+    private float m_jumpCost = 10;
+
+    [SerializeField, Tooltip("Coût par seconde du sprint")]
+    private float m_sprintCost = 5f;
 
     [SerializeField, Tooltip("Quantité d'endurance maximal")]
     private float m_stamMax = 100f;
 
     [SerializeField, Tooltip("Quantité d'endurance Float au start")]
     private float m_stam = 100f;
-
-    private Transform m_groundCheck;
-
-    [SerializeField, Tooltip("Float gerant le radius de la sphere GroundCheck")]
-    private float m_groundCheckRange = 0.5f;
-
-    [SerializeField, Tooltip("LayerMask du sol")]
-    private LayerMask m_groundMask;
-
-    // Calcule l'effet de la gravité dans un nouveau vecteur
-    private Vector3 m_gravityEffect;
-
-    // Initialise la variable de mouvement
-    private Vector3 movement = new Vector3(0, 0, 0);
 
     [SerializeField, Tooltip("Temps en seconde avant de commencer a regen de la stamina sans bouger")]
     private float m_secondeBeforeRegen = 2f;
@@ -82,6 +75,25 @@ public class PlayerMove : MonoBehaviour
     [SerializeField, Tooltip("Pourcentage de stamina regen en marche 0.5 = 50 %")]
     private float m_stamPercentWalk = 0.5f;
 
+    [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
+    private float m_regenOnKill = 100;
+
+    [Header("Gravité")]
+    [SerializeField, Tooltip("La gravité gravité terrestre : -9,8 m/s²")]
+    private float m_gravity = -9.81f;
+
+    [SerializeField, Tooltip("Float gerant le radius de la sphere GroundCheck")]
+    private float m_groundCheckRange = 0.5f;
+
+    [SerializeField, Tooltip("LayerMask du sol")]
+    private LayerMask m_groundMask;
+
+    // Calcule l'effet de la gravité dans un nouveau vecteur
+    private Vector3 m_gravityEffect;
+
+    // Initialise la variable de mouvement
+    private Vector3 movement = new Vector3(0, 0, 0);
+
     // temps passer immobile initialiser a 0 car bah voila
     private float m_timePassed = 0;
 
@@ -94,21 +106,17 @@ public class PlayerMove : MonoBehaviour
     //Détermine la diminution de la vitesse chaque seconde;
     private float m_speedReducePerSec;
 
+    private Transform m_groundCheck;
 
-    [SerializeField, Tooltip("Barre de stamina")]
-    private StamBarre m_stamBarre;
-
-    [SerializeField, Tooltip("Combien de point d'endurance seront régénéré lors qu'on dévore un chasseur")]
-    private float m_regenOnKill = 100;
-
+    [Header("Santé")]
     [SerializeField, Tooltip("Nombre de balle que le joueur peut encaisser sans mourir")]
     private int m_lifeMax = 3;
 
-    // vie actuelle du joueur
-    static private int m_life;
-
     [SerializeField, Tooltip("Chance que le joueur a d'esquivé (30 = 30 % etc ...)")]
     static private int m_dodge = 30;
+
+    // vie actuelle du joueur
+    static private int m_life;
 
     // Timer pour empecher l'actualisation  du radius de la sphere de son via sa fonction private
     private float m_timer = 0;
@@ -121,11 +129,9 @@ public class PlayerMove : MonoBehaviour
 
     // *************************************************************** //
 
+    [Header("Caméra")]
     [SerializeField, Tooltip("Blocage camaré Vertical en Degré")]
     private int m_blockAngleY = 30;
-
-    [SerializeField, Tooltip("Blocage camaré Horizontal en Degré")]
-    private int m_blockAngleX = 60;
 
     [SerializeField, Tooltip("Réglage de la sensibilité du regard")]
     private float m_sensitivity = 0.5f;
@@ -167,6 +173,7 @@ public class PlayerMove : MonoBehaviour
     /// Vérification de la présence des gameobject et leur récupération
     private void Start()
     {
+        m_bloodScreen.gameObject.SetActive(false);
         if (PlayerPrefs.HasKey("sensitive"))
         {
             m_sensitivity = PlayerPrefs.GetFloat("sensitive");
@@ -498,6 +505,8 @@ public class PlayerMove : MonoBehaviour
         //Application de la gravité
         m_characterController.Move(m_gravityEffect * Time.deltaTime);
 
+        updateBloodScreen();
+
         //Debug.Log(m_stam);
     }
     /// <summary>
@@ -559,25 +568,37 @@ public class PlayerMove : MonoBehaviour
         return m_stam;
     }
 
-    public static void lifeMinus()
+    private void updateBloodScreen()
     {
-        m_life -= 1;
-        if (m_life == 0)
+        Debug.Log(m_life);
+        if (m_life == 2)
         {
-            SceneManager.LoadScene(0);
+            m_bloodScreen.gameObject.SetActive(true);
+        }
+        else if (m_life == 1)
+        {
+            m_bloodScreen.color = new Color(m_bloodScreen.color.r, m_bloodScreen.color.g, m_bloodScreen.color.b, 200f);
         }
     }
 
-    public static void beHit()
+    public static void beHit(bool p_os)
     {
-
-        m_life = 0;
+        if (p_os)
+        {
+            m_life = 0;
+        }
+        else
+        {
+            if (Random.Range(0, 100) > m_dodge)
+            {
+                m_life -= 1;
+            }
+            else Debug.Log("Dodge");
+            
+        }
 
         if (m_life == 0)
         {
-            //m_zawarudo.isPaused();
-
-            // Temporaire
             SceneManager.LoadScene(0);
         }
     }

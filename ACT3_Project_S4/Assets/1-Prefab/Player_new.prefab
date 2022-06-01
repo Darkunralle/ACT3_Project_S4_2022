@@ -170,7 +170,7 @@ RectTransform:
   - {fileID: 7076838415978976520}
   - {fileID: 580339451019095633}
   m_Father: {fileID: 364007661}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -732,6 +732,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 362315234903413878}
   - {fileID: 1913225171874881843}
   - {fileID: 2085385329}
   - {fileID: 40474691}
@@ -1928,7 +1929,7 @@ RectTransform:
   - {fileID: 369779886}
   - {fileID: 266785478}
   m_Father: {fileID: 364007661}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2394,7 +2395,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 364007661}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2751,12 +2752,12 @@ GameObject:
   - component: {fileID: 4106360736604010008}
   - component: {fileID: 6683720863102019004}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: BloodScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &362315234903413878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2765,16 +2766,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454295843740882970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.000019962268}
-  m_LocalScale: {x: 0.051572096, y: 0.23697332, z: 0.18268509}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00011824228}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1913225171874881843}
-  m_RootOrder: 3
+  m_Father: {fileID: 364007661}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0003270032, y: 68.24829}
-  m_SizeDelta: {x: 1916.4, y: 1080}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.0063476562, y: -0.00012207031}
+  m_SizeDelta: {x: 86.551636, y: 49.14514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4106360736604010008
 CanvasRenderer:
@@ -2797,7 +2798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
+  m_Color: {r: 0.6862745, g: 0.6862745, b: 0.6862745, a: 0.4745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3510,9 +3511,8 @@ RectTransform:
   - {fileID: 315958575}
   - {fileID: 3525773366323354355}
   - {fileID: 6651825842271073405}
-  - {fileID: 362315234903413878}
   m_Father: {fileID: 364007661}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3795,30 +3795,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_camera: {fileID: 5944237121792688103}
+  m_stamBarre: {fileID: 7433786056552248423}
+  m_bloodScreen: {fileID: 6683720863102019004}
   m_sphereRadWalk: 0
   m_sphereRadRun: 6
   m_speedMax: 4.5
   m_speedMin: 1
   m_timeForSpeedMax: 2
   m_timeForSpeedMin: 0.4
-  m_gravity: -9.81
+  m_speedMulti: 1.75
+  m_speedBackReduce: 0.75
   m_jumpHeight: 1.5
   m_jumpCost: 20
-  m_speedMulti: 1.75
   m_sprintCost: 5
-  m_speedBackReduce: 0.75
   m_stamMax: 100
   m_stam: 100
-  m_groundCheckRange: 0.4
-  m_groundMask:
-    serializedVersion: 2
-    m_Bits: 192
   m_secondeBeforeRegen: 2
   m_pourcentageRegStam: 50
   m_stamPerSec: 10
   m_stamPercentWalk: 0.5
-  m_stamBarre: {fileID: 7433786056552248423}
   m_regenOnKill: 100
+  m_gravity: -9.81
+  m_groundCheckRange: 0.4
+  m_groundMask:
+    serializedVersion: 2
+    m_Bits: 192
   m_lifeMax: 3
   m_blockAngleY: 30
   m_blockAngleX: 60
@@ -4563,6 +4564,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 835344735906211651}
+        m_TargetAssemblyTypeName: PauseButton, Assembly-CSharp
+        m_MethodName: back
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6398810638685627865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,7 +5265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6983048988318424767, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8704755350580190563, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
       propertyPath: m_RootOrder

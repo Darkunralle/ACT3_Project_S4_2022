@@ -56,12 +56,12 @@ public class AiTutoriel : AiState
 
             if (!agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
             {
-                PlayerMove.lifeMinus();
+                PlayerMove.beHit(false);
             }
 
             if (agent.sensor.playerInDeathRange && agent.sensor.playerInEngagmentRange)
             {
-                PlayerMove.beHit();
+                PlayerMove.beHit(true);
             }
         }
     }

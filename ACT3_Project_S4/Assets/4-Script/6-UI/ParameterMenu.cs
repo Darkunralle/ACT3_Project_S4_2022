@@ -76,9 +76,6 @@ public class ParameterMenu : MonoBehaviour
             if (!m_sensitiveSlider.isActiveAndEnabled) m_sensitiveSlider.value = m_sensiSave;
             if (!m_soundSlider.isActiveAndEnabled) m_soundSlider.value = m_soundSave;
             if (!m_musicSlider.isActiveAndEnabled) m_musicSlider.value = m_musicSave;
-
-            Debug.Log(m_sensitiveSlider.value);
-            Debug.Log(PlayerPrefs.GetFloat("sensitive"));
         }
         else
         {

@@ -20,6 +20,13 @@ public class MainMenu : MonoBehaviour
         //Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+
+        Debug.Log($"{Cursor.visible} & {Cursor.lockState}");
+    }
     public void Setting()
     {
         settings.SetActive(true);
