@@ -7,7 +7,7 @@ public class AiChasePlayerState : AiState
 {
     public Transform playerTransform;
     float timer = 0f;
-    float countDown = 5f;
+    float countDown;
 
     public AiStateId GetId()
     {
@@ -16,10 +16,11 @@ public class AiChasePlayerState : AiState
 
     public void Enter(AiAgent agent)
     {
-        
+        countDown = 10f;
     }
     public void Update(AiAgent agent)
     {
+        countDown -= Time.deltaTime;
         //Debug.Log(timer);
         if (!agent.enabled)
         {
@@ -47,6 +48,9 @@ public class AiChasePlayerState : AiState
 
             timer = agent.config.maxTime;
         }
+
+        if (countDown <= 0) { agent.stateMachine.ChangeState(AiStateId.Patrol);}
+
     
         //passage en etat de tire
         if (agent.sensor.playerInEngagmentRange == true && agent.sensor.Objects.Count > 0)
