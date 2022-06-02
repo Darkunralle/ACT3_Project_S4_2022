@@ -113,7 +113,7 @@ public class PlayerMove : MonoBehaviour
     private int m_lifeMax = 3;
 
     [SerializeField, Tooltip("Chance que le joueur a d'esquivé (30 = 30 % etc ...)")]
-    static private int m_dodge = 30;
+    static private int m_dodge = 50;
 
     // vie actuelle du joueur
     static private int m_life;
