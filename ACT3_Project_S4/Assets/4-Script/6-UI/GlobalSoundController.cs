@@ -18,6 +18,7 @@ public class GlobalSoundController : MonoBehaviour
     private static List<AudioSource> m_staticBruitage = new List<AudioSource>();
     private List<AudioSource> m_staticMusique = new List<AudioSource>();
 
+    // Potentiel problème de list qui se surcharge mais jugé négligeable
     public static void addMusicToList(AudioSource p_toAdd)
     {
         m_staticBruitage.Add(p_toAdd);

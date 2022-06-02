@@ -52,6 +52,12 @@ public class AiAgent : MonoBehaviour
         stateMachine.ChangeState(initialState);
     }
 
+
+    public void spawnChasing()
+    {
+        stateMachine.ChangeState(AiStateId.ChasePlayer);
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -23,6 +23,8 @@ public class IaSpawner : MonoBehaviour
     // Same mais les passe en vecteur3
     private List<Vector3> m_listeSpawnV = new List<Vector3>();
 
+    private GameObject m_spawnedObject;
+    private AiAgent m_agentSpawned;
 
     private void Start()
     {
@@ -51,7 +53,11 @@ public class IaSpawner : MonoBehaviour
             for (int i = 0; i < m_spawningNumber; i++)
             {
                 Debug.Log("SPAWN");
-                Instantiate(m_agentPrefab, getAPosForAgent(), Quaternion.identity);
+
+                m_spawnedObject = Instantiate(m_agentPrefab, getAPosForAgent(), Quaternion.identity);
+                m_agentSpawned = m_spawnedObject.GetComponent<AiAgent>();
+                m_agentSpawned.spawnChasing();
+
             }
             
         }
