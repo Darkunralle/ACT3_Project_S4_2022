@@ -2766,7 +2766,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454295843740882970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00011824228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 364007661}
@@ -2774,8 +2774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0063476562, y: -0.00012207031}
-  m_SizeDelta: {x: 86.551636, y: 49.14514}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4106360736604010008
 CanvasRenderer:
@@ -3822,7 +3822,6 @@ MonoBehaviour:
     m_Bits: 192
   m_lifeMax: 3
   m_blockAngleY: 30
-  m_blockAngleX: 60
   m_sensitivity: 0.5
   m_smoothing: 1.5
 --- !u!114 &835344735906211651
@@ -5311,7 +5310,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8249425218124296774, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 797a0f43a6f56de4b8527464f53271cb, type: 3}
 --- !u!4 &5357993806429502523 stripped
 Transform:
