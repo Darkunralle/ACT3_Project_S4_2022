@@ -127,6 +127,8 @@ public class PlayerMove : MonoBehaviour
     // Class contenant les input du joueur
     private PlayerInput playerInput;
 
+    private bool m_camLock = false;
+
     // *************************************************************** //
 
     [Header("Caméra")]
@@ -434,23 +436,28 @@ public class PlayerMove : MonoBehaviour
     {
         if (!PauseButton.getGameIsPaused())
         {
-            delta = playerInput.Player.Look.ReadValue<Vector2>();
+            if (!m_camLock)
+            {
+                Debug.Log(m_camLock);
+                delta = playerInput.Player.Look.ReadValue<Vector2>();
 
-            delta.y = -delta.y;
+                delta.y = -delta.y;
 
-            Vector2 rawFrameVelocity = Vector2.Scale(delta, Vector2.one * m_sensitivity);
-            m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
-            m_velocity += m_frameVelocity;
+                Vector2 rawFrameVelocity = Vector2.Scale(delta, Vector2.one * m_sensitivity);
+                m_frameVelocity = Vector2.Lerp(m_frameVelocity, rawFrameVelocity, 1 / m_smoothing);
+                m_velocity += m_frameVelocity;
 
-            // Blocage axe Y
-            m_velocity.y = Mathf.Clamp(m_velocity.y, -m_blockAngleY, m_blockAngleY);
+                // Blocage axe Y
+                m_velocity.y = Mathf.Clamp(m_velocity.y, -m_blockAngleY, m_blockAngleY);
 
-            // NE pas appliquer l'axe Y ici sinon fait faire une rotation au joueur sur cette axe
-            // Rotation X du joueur
-            m_characterController.transform.localRotation = Quaternion.Euler(0, m_velocity.x, 0);
+                // NE pas appliquer l'axe Y ici sinon fait faire une rotation au joueur sur cette axe
+                // Rotation X du joueur
+                m_characterController.transform.localRotation = Quaternion.Euler(0, m_velocity.x, 0);
 
-            // Rotation X de la caméra
-            m_camera.transform.localRotation = Quaternion.Euler(m_velocity.y, 0, 0);
+                // Rotation X de la caméra
+                m_camera.transform.localRotation = Quaternion.Euler(m_velocity.y, 0, 0);
+            }
+            
         }
     }
 
@@ -600,5 +607,10 @@ public class PlayerMove : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+
+    public void setCamLock(bool p_value)
+    {
+        m_camLock = p_value;
     }
 }
