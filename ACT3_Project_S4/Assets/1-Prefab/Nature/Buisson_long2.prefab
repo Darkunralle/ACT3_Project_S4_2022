@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6558652810538329040}
   - component: {fileID: 3833257901290288956}
+  - component: {fileID: 8821041599869950670}
   m_Layer: 0
   m_Name: Buisson_long2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &6558652810538329040
 Transform:
@@ -56,6 +57,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4323092851193464089}
   m_Enabled: 1
+--- !u!65 &8821041599869950670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5786794946060188010}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6519566, y: 3, z: 8.206339}
+  m_Center: {x: 0.19558716, y: 0, z: 0.1629889}
 --- !u!1001 &3312026138428804724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,9 +129,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Buisson_long2_LOD1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 079d101022fbf1647819a0ada5c1909d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 079d101022fbf1647819a0ada5c1909d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 079d101022fbf1647819a0ada5c1909d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 079d101022fbf1647819a0ada5c1909d, type: 3}
@@ -189,6 +211,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7d02a0b9346cb0f46b21723dad5d0e34, type: 3}
       propertyPath: m_Name
       value: Buisson_long2_LOD0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7d02a0b9346cb0f46b21723dad5d0e34, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 7d02a0b9346cb0f46b21723dad5d0e34, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d02a0b9346cb0f46b21723dad5d0e34, type: 3}
