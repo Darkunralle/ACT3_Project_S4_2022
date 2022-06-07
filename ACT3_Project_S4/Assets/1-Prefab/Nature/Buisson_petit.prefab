@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5142472092362789095}
   - component: {fileID: 69059442568974967}
-  m_Layer: 0
+  - component: {fileID: 3931858590756902504}
+  m_Layer: 7
   m_Name: Buisson_petit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +57,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4525456289126209051}
   m_Enabled: 1
+--- !u!135 &3931858590756902504
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5482688015699839581}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.77
+  m_Center: {x: 0, y: 0, z: -0.05}
 --- !u!1001 &671165111980812066
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,8 +130,16 @@ PrefabInstance:
       value: Buisson_petit_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9eff69216a89ebf46b07b308f8fe6905, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eff69216a89ebf46b07b308f8fe6905, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 9eff69216a89ebf46b07b308f8fe6905, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 9eff69216a89ebf46b07b308f8fe6905, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -195,8 +217,16 @@ PrefabInstance:
       value: Buisson_petit_LOD1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 5c446a159680d9a4fbfb72501268c045, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5c446a159680d9a4fbfb72501268c045, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 5c446a159680d9a4fbfb72501268c045, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 5c446a159680d9a4fbfb72501268c045, type: 3}
       propertyPath: m_StaticEditorFlags

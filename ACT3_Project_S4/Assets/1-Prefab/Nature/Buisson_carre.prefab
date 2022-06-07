@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7854958675571040906}
   - component: {fileID: 4752729222814826732}
-  m_Layer: 0
+  - component: {fileID: 7144380019865386898}
+  m_Layer: 7
   m_Name: Buisson_carre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +57,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3499824924294488569}
   m_Enabled: 1
+--- !u!65 &7144380019865386898
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7370628839480277040}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.6978993, y: 4.017286, z: 3.541442}
+  m_Center: {x: 0.059480727, y: 0.98953986, z: -0.037851095}
 --- !u!1001 &1642567699240712895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,8 +130,16 @@ PrefabInstance:
       value: Buisson_carre_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 54612b9129537bb418826c530ecb45c7, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 54612b9129537bb418826c530ecb45c7, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 54612b9129537bb418826c530ecb45c7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 54612b9129537bb418826c530ecb45c7, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -195,8 +217,16 @@ PrefabInstance:
       value: Buisson_carre_LOD1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4fe78ac7897d9244da6bb3efba779466, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4fe78ac7897d9244da6bb3efba779466, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 4fe78ac7897d9244da6bb3efba779466, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4fe78ac7897d9244da6bb3efba779466, type: 3}
       propertyPath: m_StaticEditorFlags

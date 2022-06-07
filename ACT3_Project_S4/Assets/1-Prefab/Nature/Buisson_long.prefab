@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3021307641095726822}
   - component: {fileID: 702649026601921620}
-  m_Layer: 0
+  - component: {fileID: 8754998931504951683}
+  - component: {fileID: 3773567335786781130}
+  m_Layer: 7
   m_Name: Buisson_long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,6 +58,32 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6947156489079982442}
   m_Enabled: 1
+--- !u!65 &8754998931504951683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496691729359404124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.806054, y: 4.0682793, z: 7.944826}
+  m_Center: {x: 0.044902086, y: 0.9753604, z: 0.22949886}
+--- !u!135 &3773567335786781130
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496691729359404124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2
+  m_Center: {x: 1.38, y: 0, z: 3.11}
 --- !u!1001 &2719591373455756268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -116,8 +144,16 @@ PrefabInstance:
       value: Buisson_long_LOD0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 07965b3619319d641b252dbd082173cb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07965b3619319d641b252dbd082173cb, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 07965b3619319d641b252dbd082173cb, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 07965b3619319d641b252dbd082173cb, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -195,8 +231,16 @@ PrefabInstance:
       value: Buisson_long_LOD1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1b15c39c6553a2f4bb6792092a18f274, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1b15c39c6553a2f4bb6792092a18f274, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 1b15c39c6553a2f4bb6792092a18f274, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 1b15c39c6553a2f4bb6792092a18f274, type: 3}
       propertyPath: m_StaticEditorFlags
