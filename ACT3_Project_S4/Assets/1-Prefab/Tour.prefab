@@ -20,7 +20,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4562291858594770081
 Transform:
@@ -193,9 +193,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2130d259045ffd439b31435576b710d, type: 2}
+    - target: {fileID: -1330134162319104099, guid: 1cade9988230ba543878bede9de6f6ac, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1cade9988230ba543878bede9de6f6ac, type: 3}
       propertyPath: m_Name
       value: LD_Tour_LOD_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1cade9988230ba543878bede9de6f6ac, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7269844177721978955, guid: 1cade9988230ba543878bede9de6f6ac, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cade9988230ba543878bede9de6f6ac, type: 3}
@@ -269,14 +281,26 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2ed7102a4c1d6e6408de35ed0a1ad288, type: 2}
+    - target: {fileID: -634914118769919039, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
       propertyPath: m_Name
       value: LD_Tour_LOD_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4331082390903365880, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2130d259045ffd439b31435576b710d, type: 2}
+    - target: {fileID: 4955456110559101880, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88a3ee99082bea24a8eb4433730d0376, type: 3}
 --- !u!4 &3965938813092962598 stripped
@@ -345,9 +369,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6862553167529019351, guid: 88fbfc6499a97d0428d652563843517f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 88fbfc6499a97d0428d652563843517f, type: 3}
       propertyPath: m_Name
       value: LD_Tour_LOD_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 88fbfc6499a97d0428d652563843517f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2292309233253564005, guid: 88fbfc6499a97d0428d652563843517f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 4477420249104484411, guid: 88fbfc6499a97d0428d652563843517f, type: 3}
       propertyPath: m_Materials.Array.data[0]
