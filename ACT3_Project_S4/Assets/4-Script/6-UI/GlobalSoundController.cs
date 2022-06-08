@@ -8,11 +8,12 @@ public class GlobalSoundController : MonoBehaviour
     private List<AudioSource> m_musique;
 
     private float m_musiqueValue;
+    private float m_bruitageValue;
 
     [SerializeField, Tooltip("Liste des effets sonores")]
     private List<AudioSource> m_bruitage;
 
-    private float m_bruitageValue;
+    
 
     // Pour les cas ou l'audio se trouve dans des prefab
     private static List<AudioSource> m_staticBruitage = new List<AudioSource>();
@@ -112,6 +113,11 @@ public class GlobalSoundController : MonoBehaviour
                     }
                 }
             }
+        }
+
+        foreach (AudioSource row in m_staticMusique)
+        {
+            Debug.Log(row);
         }
     }
 }

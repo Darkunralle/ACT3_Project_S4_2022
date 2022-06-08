@@ -11,7 +11,7 @@ public class AiWaiting : AiState
 
     public void Enter(AiAgent agent)
     {
-        
+        agent.animator.Play("Idle", 0, 0.25f);
     }
     public void Update(AiAgent agent)
     {

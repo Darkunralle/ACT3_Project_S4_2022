@@ -22,6 +22,7 @@ public class AiPatrol : AiState
     public void Enter(AiAgent agent)
     {
         sound = false;
+        agent.animator.Play("Marche", 0, 0.25f);
     }
 
     public void Update(AiAgent agent)

@@ -12,11 +12,13 @@ public class AiTutoriel : AiState
     public void Enter(AiAgent agent)
     {
         sound = false;
+        agent.animator.Play("Idle", 0, 0.25f);
     }
     public void Update(AiAgent agent)
     {
         if (agent.sensor.IsInSight(agent.playerTransform.gameObject))
         {
+            agent.animator.Play("Tir", 0, 0.25f);
             if (agent.sensor.Objects.Count > 0)
             {
                 if (!sound) { agent.detection.Play(0); sound = true; }

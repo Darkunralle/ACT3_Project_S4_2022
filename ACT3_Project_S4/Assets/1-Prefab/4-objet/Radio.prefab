@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491368758217164362}
   - component: {fileID: 2014192776}
+  - component: {fileID: 8642687933389000051}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -128,6 +129,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8642687933389000051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2304074270748581104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd71ed5a55eb9948b15e75684708755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioListEffect:
+  - {fileID: 2014192776}
+  m_audioListMusic: []
 --- !u!1 &7094432439341507625
 GameObject:
   m_ObjectHideFlags: 0

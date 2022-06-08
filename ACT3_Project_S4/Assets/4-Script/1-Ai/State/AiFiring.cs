@@ -10,6 +10,7 @@ public class AiFiring : AiState
     }
     public void Enter(AiAgent agent)
     {
+        agent.animator.Play("Tir",0,0.25f);
     }
     public void Update(AiAgent agent)
     {

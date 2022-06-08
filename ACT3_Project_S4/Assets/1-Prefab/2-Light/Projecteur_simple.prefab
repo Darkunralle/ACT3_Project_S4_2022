@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7333500832886241514}
   - component: {fileID: -7865246807735663247}
+  - component: {fileID: -2297751462851325683}
   m_Layer: 0
   m_Name: Projecteur_simple
   m_TagString: Untagged
@@ -210,6 +211,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2297751462851325683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7966309788907168336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd71ed5a55eb9948b15e75684708755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioListEffect:
+  - {fileID: -7865246807735663247}
+  m_audioListMusic: []
 --- !u!1 &9055073560607015063
 GameObject:
   m_ObjectHideFlags: 0

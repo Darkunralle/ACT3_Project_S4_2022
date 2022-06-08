@@ -5518,9 +5518,9 @@ MonoBehaviour:
   occlusionLayers:
     serializedVersion: 2
     m_Bits: 64
-  target: {fileID: 1054417342110304235, guid: 96375a29fcf08d74b8e807d342526601, type: 3}
+  target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -162.406, y: -25.973001, z: -81.379}
+  offset: {x: -227.38, y: -29.522001, z: -23.464}
   engagmentZone: 0.211
   playerInEngagmentRange: 0
   deathZone: 0.05
@@ -5777,6 +5777,7 @@ MonoBehaviour:
   arImpact: {fileID: 795566345564414828}
   walk: {fileID: 5844955238733854535}
   muzzleFlash: {fileID: 550094350}
+  animator: {fileID: 3950160789897128792}
 --- !u!82 &3670804031079148497
 AudioSource:
   m_ObjectHideFlags: 0
