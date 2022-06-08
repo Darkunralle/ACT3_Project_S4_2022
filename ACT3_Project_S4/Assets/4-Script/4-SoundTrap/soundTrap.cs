@@ -11,6 +11,12 @@ public class soundTrap : MonoBehaviour
 
     public AudioSource crick;
 
+    private void Start()
+    {
+        GlobalSoundController.addSonoreEffectToList(crick);
+        GlobalSoundController.forceUpdateSonoreEffect(crick);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Crack");
