@@ -32,6 +32,15 @@ public class AiAgent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalSoundController.addSonoreEffectToList(detection);
+        GlobalSoundController.forceUpdateSonoreEffect(detection);
+        GlobalSoundController.addSonoreEffectToList(arFiring);
+        GlobalSoundController.forceUpdateSonoreEffect(arFiring);
+        GlobalSoundController.addSonoreEffectToList(arImpact);
+        GlobalSoundController.forceUpdateSonoreEffect(arImpact);
+        GlobalSoundController.addSonoreEffectToList(walk);
+        GlobalSoundController.forceUpdateSonoreEffect(walk);
+
         playerTransform = GameObject.Find("Player").transform;
 
         //detection = FindObjectOfType<AudioSource>(GameObject.Find("Detected"));
