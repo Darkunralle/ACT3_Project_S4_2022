@@ -17,6 +17,7 @@ public class AiChasePlayerState : AiState
     public void Enter(AiAgent agent)
     {
         countDown = 10f;
+        agent.animator.Play("Marche", 0, 0.25f);
     }
     public void Update(AiAgent agent)
     {

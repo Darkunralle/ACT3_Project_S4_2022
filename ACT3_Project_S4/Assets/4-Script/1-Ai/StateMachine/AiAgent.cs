@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class AiAgent : MonoBehaviour
 {
     public AiStateMachine stateMachine;
-
+    [Header("Module State Machine")]
     public AiStateId initialState;
 
     public NavMeshAgent navMeshAgent;
@@ -19,6 +19,7 @@ public class AiAgent : MonoBehaviour
 
     public switchToPatrol switchstate;
 
+    [Header("Module Audio")]
     public AudioSource detection;
 
     public AudioSource arFiring;
@@ -27,7 +28,11 @@ public class AiAgent : MonoBehaviour
 
     public AudioSource walk;
 
+    [Header("Module Particule")]
     public ParticleSystem muzzleFlash;
+
+    [Header("Module Animation")]
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
