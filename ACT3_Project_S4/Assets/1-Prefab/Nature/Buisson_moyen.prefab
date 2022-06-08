@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3738777288570572884}
   - component: {fileID: 4831740887797709944}
   - component: {fileID: 7342742269852674741}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Buisson_moyen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c55e997cbce142d4bb44a23c5425c0f9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: c55e997cbce142d4bb44a23c5425c0f9, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -139,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: c55e997cbce142d4bb44a23c5425c0f9, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: c55e997cbce142d4bb44a23c5425c0f9, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -218,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4c031ffe5a9a5c04d93e41ed07cf2a4d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4c031ffe5a9a5c04d93e41ed07cf2a4d, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4c031ffe5a9a5c04d93e41ed07cf2a4d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8164078558771037576, guid: 4c031ffe5a9a5c04d93e41ed07cf2a4d, type: 3}
       propertyPath: m_StaticEditorFlags
