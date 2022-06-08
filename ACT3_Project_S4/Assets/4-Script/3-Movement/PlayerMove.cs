@@ -2,6 +2,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Stve Morbius frérot
+/// https://cdn.discordapp.com/attachments/844451551949881357/977413827975069746/full-1.webm
+/// </summary>
+
+
 public class PlayerMove : MonoBehaviour
 {
     private CharacterController m_characterController;
@@ -487,13 +493,27 @@ public class PlayerMove : MonoBehaviour
 
         if (isGrounded())
         {
-            // Rotation du joueur
-            //m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
-            look();
+            if (!m_camLock)
+            {
+                // Rotation du joueur
+                //m_characterController.transform.Rotate(0, move.x * m_rotateSpeed * Time.deltaTime, 0);
+                look();
+                movementCalc(move);
+                jump(move);
+
+            }
+            else
+            {
+                if (move.x == 0 && move.y == 1)
+                {
+                    movement = transform.right * move.x * m_speed + transform.forward * move.y * m_speed;
+                }
+                
+            }
+                
 
 
-            movementCalc(move);
-            jump(move);
+
             // Gestion de l'endurance et des accélération déccélération
             stamAndSpeedControl(move);
 
