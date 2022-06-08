@@ -58,7 +58,7 @@ AnimatorStateMachine:
     m_Position: {x: 270, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1143130084025374634}
-    m_Position: {x: 30, y: 250, z: 0}
+    m_Position: {x: 30, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8836325093238657539}
     m_Position: {x: -160, y: 480, z: 0}
@@ -125,6 +125,12 @@ AnimatorController:
   - m_Name: OnIdle
     m_Type: 4
     m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Blend
+    m_Type: 1
+    m_DefaultFloat: 1
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
