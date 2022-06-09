@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7806888413542356936}
   - component: {fileID: 4936100197394296450}
   - component: {fileID: 8477242188085791254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7216903593901893264}
-  m_Layer: 0
+  - component: {fileID: 7575202953358728413}
+  m_Layer: 6
   m_Name: Mur_F_3c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,3 +113,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7575202953358728413
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8028870543391554602}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}

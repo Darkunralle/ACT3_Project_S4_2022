@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1061924943437485817}
   - component: {fileID: 1369054729350172953}
   - component: {fileID: 4020073472049198671}
-  m_Layer: 0
+  - component: {fileID: -6038354293189208127}
+  m_Layer: 6
   m_Name: Mur_F_2c
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +74,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 0.1, z: 3}
   m_Center: {x: -1.5, y: 3, z: 1.5}
+--- !u!64 &-6038354293189208127
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703597786453791750}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &8380747648142355679
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,7 +99,7 @@ GameObject:
   - component: {fileID: 790464109163921380}
   - component: {fileID: 2463299358004283054}
   - component: {fileID: 1372154872361132602}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
