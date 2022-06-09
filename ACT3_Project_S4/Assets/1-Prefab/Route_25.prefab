@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637354575591761821}
   - component: {fileID: 8543268404468523019}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Route_25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 47396298312177349}
   - component: {fileID: 2918136789626711951}
   - component: {fileID: 1827045088372575003}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
