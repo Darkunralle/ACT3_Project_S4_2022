@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 8444042646013355434}
   - component: {fileID: 6771280031441362144}
   - component: {fileID: 7844656409250707572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8444042646013355434
 Transform:
@@ -91,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 9034062793303463154}
   - component: {fileID: -8324297979859575490}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LD_Ventilation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &9034062793303463154
 Transform:

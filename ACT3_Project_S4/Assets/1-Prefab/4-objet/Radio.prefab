@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1491368758217164362}
   - component: {fileID: 2014192776}
   - component: {fileID: 8642687933389000051}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 2072310902642407186}
   - component: {fileID: 3753042844060307032}
   - component: {fileID: 374017245965871820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}

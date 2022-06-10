@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118689342733614746}
   - component: {fileID: 7359839938502204269}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3573003071456923749}
   - component: {fileID: 6268038085304011965}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7074476695793825951}
   - component: {fileID: 5402833351414628821}
   - component: {fileID: 8925855665810892097}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,7 +277,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4152645472761515229}
   - component: {fileID: 7712656757718459915}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2844193410252103051}
   - component: {fileID: 5557982376572765224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -463,7 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7664461499462371783}
   - component: {fileID: 6953613986140725087}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LD_Outpost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7755564741803815310}
   - component: {fileID: 4234447135464275363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

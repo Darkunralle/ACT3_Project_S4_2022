@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 376397097265123195}
   - component: {fileID: 8387519484970614961}
   - component: {fileID: 6708776621001956323}
-  - component: {fileID: -8752773778104523364}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Face_Ang_90
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,20 +59,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 0.1}
   m_Center: {x: -1.5, y: 1.5, z: 3}
---- !u!64 &-8752773778104523364
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041153428766168513}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!1 &8358435059097333016
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +70,7 @@ GameObject:
   - component: {fileID: 957312995211673123}
   - component: {fileID: 2710639504323430249}
   - component: {fileID: 1493957462535300093}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
