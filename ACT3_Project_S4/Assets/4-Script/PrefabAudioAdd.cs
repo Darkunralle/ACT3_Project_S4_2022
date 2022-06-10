@@ -17,25 +17,6 @@ public class PrefabAudioAdd : MonoBehaviour
 
     void Start()
     {
-        /*
-        if (m_audioListEffect.Count != 0)
-        {
-            foreach (AudioSource row in m_audioListEffect)
-            {
-                GlobalSoundController.addSonoreEffectToList(row);
-                GlobalSoundController.forceUpdateSonoreEffect(row);
-            }
-        }
-
-            if (m_audioListMusic.Count !=0)
-        {
-            foreach (AudioSource row in m_audioListMusic)
-            {
-                GlobalSoundController.addMusicToList(row);
-                GlobalSoundController.forceUpdateMusic(row);
-            }
-        }   */
-
         if (PlayerPrefs.HasKey("musique"))
         {
             m_musiqueValue = PlayerPrefs.GetFloat("musique");
@@ -61,8 +42,6 @@ public class PrefabAudioAdd : MonoBehaviour
                         row.volume = m_musiqueValue;
                     }
                 }
-                
-
             }
         }
         if (PlayerPrefs.HasKey("sound"))
