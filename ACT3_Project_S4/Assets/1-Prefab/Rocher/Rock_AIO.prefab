@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2778150215978438757}
   - component: {fileID: -144389956796088623}
+  - component: {fileID: 9084134766640592236}
   m_Layer: 6
   m_Name: Rock_AIO
   m_TagString: Untagged
@@ -46,6 +47,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!205 &9084134766640592236
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298368077244238559}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0.10381222, y: 0.11318445, z: 0.0793668}
+  m_Size: 7.88657
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.12022063
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3967488379374664931}
+  m_Enabled: 1
 --- !u!1 &5785968466230178310
 GameObject:
   m_ObjectHideFlags: 0

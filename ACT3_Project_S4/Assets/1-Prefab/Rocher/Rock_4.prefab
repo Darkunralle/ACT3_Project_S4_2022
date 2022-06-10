@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4395152476851236158}
   - component: {fileID: 7249499235900520245}
+  - component: {fileID: 3113921644914810750}
   m_Layer: 6
   m_Name: Rock_4
   m_TagString: Untagged
@@ -46,6 +47,25 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!205 &3113921644914810750
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4014228205007615876}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.21521378, y: -0.43921542, z: -0.0069292784}
+  m_Size: 10.211355
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.11840461
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7951949196936878788}
+  m_Enabled: 1
 --- !u!1001 &8670246887004131753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -115,6 +135,11 @@ Transform:
 --- !u!1 &657039196304643105 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 131140dbcb55f0e449e11609d5005074, type: 3}
+  m_PrefabInstance: {fileID: 8670246887004131753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7951949196936878788 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7635826562936255635, guid: 131140dbcb55f0e449e11609d5005074, type: 3}
   m_PrefabInstance: {fileID: 8670246887004131753}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &2859192492046213859
