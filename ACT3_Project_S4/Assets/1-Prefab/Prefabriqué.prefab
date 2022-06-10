@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8444827979148182986}
   - component: {fileID: 3818439393136150897}
   - component: {fileID: 4612934826919824099}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box001_OK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7241985283324893881}
   - component: {fileID: 2075155950177670884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,8 +183,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7918422580271614300}
-  - component: {fileID: 6703289509616737729}
-  m_Layer: 0
+  - component: {fileID: -3647717883490639071}
+  m_Layer: 6
   m_Name: "Prefabriqu\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6703289509616737729
+--- !u!65 &-3647717883490639071
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,8 +219,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.1301262, y: 3.0563576, z: 6.138225}
-  m_Center: {x: -0.0046113133, y: 0.004609823, z: 0.040521026}
+  m_Size: {x: 3, y: 3, z: 6.059222}
+  m_Center: {x: 0, y: 0, z: 0.029610494}
 --- !u!1 &7933263804107159565
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3930517284519589734}
   - component: {fileID: 1516576576541323744}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5668,9 +5668,9 @@ GameObject:
   - component: {fileID: 3848218288563691537}
   - component: {fileID: 8487881819550931690}
   - component: {fileID: 3670804031079148497}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Agent
-  m_TagString: Untagged
+  m_TagString: Agent
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

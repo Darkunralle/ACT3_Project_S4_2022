@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7427108623186185524}
   - component: {fileID: 5748084806972011646}
   - component: {fileID: 9142578326676820202}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8026073983370525804}
   - component: {fileID: 4797512330683067419}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LD_Pipe_Region_6-7
   m_TagString: Untagged
   m_Icon: {fileID: 0}

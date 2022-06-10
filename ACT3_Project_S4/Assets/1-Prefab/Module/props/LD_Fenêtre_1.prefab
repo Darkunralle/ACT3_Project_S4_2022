@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 7361766673106864791}
   - component: {fileID: 5691723734977229789}
   - component: {fileID: 9212300734842345289}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7361766673106864791
 Transform:
@@ -91,12 +91,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7951681261978074063}
   - component: {fileID: 4494386329247545709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "LD_Fen\xEAtre_1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7951681261978074063
 Transform:

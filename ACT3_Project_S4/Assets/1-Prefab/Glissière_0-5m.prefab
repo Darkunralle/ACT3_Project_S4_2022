@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4472123828696241586}
   - component: {fileID: 4803606774019738436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "Glissi\xE8re_0-5m"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 3918159022916822250}
   - component: {fileID: 2213298779355930016}
   - component: {fileID: 3427957995251956020}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
