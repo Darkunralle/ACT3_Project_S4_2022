@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 7918422580271614300}
   - component: {fileID: -3647717883490639071}
   m_Layer: 6
-  m_Name: "Prefabriqu\xE9"
+  m_Name: "batiment temporaire pr\xE9construite \xE0 intention g\xE9n\xE9rale"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

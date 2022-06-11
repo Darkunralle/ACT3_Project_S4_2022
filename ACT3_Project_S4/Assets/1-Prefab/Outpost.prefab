@@ -464,7 +464,7 @@ GameObject:
   - component: {fileID: 7664461499462371783}
   - component: {fileID: 6953613986140725087}
   m_Layer: 6
-  m_Name: LD_Outpost
+  m_Name: Outpost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

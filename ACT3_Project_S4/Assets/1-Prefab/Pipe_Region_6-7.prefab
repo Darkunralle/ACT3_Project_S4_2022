@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8026073983370525804}
   - component: {fileID: 4797512330683067419}
   m_Layer: 6
-  m_Name: LD_Pipe_Region_6-7
+  m_Name: Pipe_Region_6-7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
