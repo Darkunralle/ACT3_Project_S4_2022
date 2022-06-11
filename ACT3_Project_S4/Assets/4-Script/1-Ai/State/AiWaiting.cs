@@ -17,6 +17,7 @@ public class AiWaiting : AiState
     {
         if (agent.sensor.Objects.Count > 0)
         {
+            agent.emmissive.SetColor("_EmissionColor", Color.red);
             agent.detection.Play(0);
             Debug.Log("njkvernyu");
             agent.stateMachine.ChangeState(AiStateId.ChasePlayer);

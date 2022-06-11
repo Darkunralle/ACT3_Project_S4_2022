@@ -8,12 +8,14 @@ public class PauseButton : MonoBehaviour
 
     private static bool gameIsPaused = false;
 
+    [Header("Element UI")]
     public GameObject pause;
     public GameObject resume;
     public GameObject panel;
     public GameObject stamina;
     public GameObject settings;
 
+    [Header ("Audio")]
     public AudioSource select;
     public AudioSource selectBack;
 
@@ -100,22 +102,16 @@ public class PauseButton : MonoBehaviour
         pause.SetActive(true);
     }
 
-    public void backToMenu()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
-    }
-
     public static bool getGameIsPaused()
     {
         return gameIsPaused;
     }
     public void effectSelect()
     {
-        //select.Play(0);
+        select.Play(0);
     }
     public void effectSelectBack()
     {
-        //selectBack.Play(0);
+        selectBack.Play(0);
     }
 }

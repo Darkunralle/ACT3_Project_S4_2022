@@ -5489,8 +5489,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3874473516593485506}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.13, z: 0}
-  m_LocalScale: {x: 1, y: 1.7216, z: 1}
+  m_LocalPosition: {x: 0, y: -2.41, z: 0}
+  m_LocalScale: {x: 1, y: 1.3861462, z: 1}
   m_Children: []
   m_Father: {fileID: 8487881819550931692}
   m_RootOrder: 0
@@ -5508,8 +5508,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 15
-  angle: 20
-  height: 4.3
+  angle: 30
+  height: 3.07
   meshColor: {r: 0, g: 1, b: 0, a: 0.25}
   scanFrequency: 10
   Player:
@@ -5520,7 +5520,7 @@ MonoBehaviour:
     m_Bits: 64
   target: {fileID: 0}
   cannon: {fileID: 115116480577560172}
-  offset: {x: -227.38, y: -28.372002, z: -23.464}
+  offset: {x: -227.38, y: -27.652, z: -23.464}
   engagmentZone: 0.211
   playerInEngagmentRange: 0
   deathZone: 0.05
@@ -5778,6 +5778,7 @@ MonoBehaviour:
   walk: {fileID: 5844955238733854535}
   muzzleFlash: {fileID: 550094350}
   animator: {fileID: 3950160789897128792}
+  emmissive: {fileID: 2100000, guid: a2cc3a15829afcb40a7e9651d08cebf6, type: 2}
 --- !u!82 &3670804031079148497
 AudioSource:
   m_ObjectHideFlags: 0

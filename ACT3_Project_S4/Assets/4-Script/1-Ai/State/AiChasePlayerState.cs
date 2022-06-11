@@ -16,11 +16,13 @@ public class AiChasePlayerState : AiState
 
     public void Enter(AiAgent agent)
     {
+        
         countDown = 10f;
         agent.animator.Play("Marche", 0, 0.25f);
     }
     public void Update(AiAgent agent)
     {
+        agent.emmissive.SetColor("_EmissionColor", new Color(0.2f, 0.3f, 0.4f));
         countDown -= Time.deltaTime;
         //Debug.Log(timer);
         if (!agent.enabled)

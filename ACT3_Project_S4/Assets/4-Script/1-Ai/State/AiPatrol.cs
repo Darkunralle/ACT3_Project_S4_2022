@@ -21,12 +21,14 @@ public class AiPatrol : AiState
 
     public void Enter(AiAgent agent)
     {
+        
         sound = false;
         agent.animator.Play("Marche", 0, 0.25f);
     }
 
     public void Update(AiAgent agent)
     {
+        agent.emmissive.SetColor("_EmissionColor", Color.green) ;
         //Debug.Log(agent.sensor.Objects.Count);
         if (!agent.navMeshAgent.hasPath)
         {

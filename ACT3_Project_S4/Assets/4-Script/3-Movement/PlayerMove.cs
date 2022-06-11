@@ -625,7 +625,7 @@ public class PlayerMove : MonoBehaviour
 
         if (m_life == 0)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(4);
         }
     }
 

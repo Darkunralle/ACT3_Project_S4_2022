@@ -8,11 +8,13 @@ public class AiTutoriel : AiState
     public AiStateId GetId()
     {
         return AiStateId.Tutoriel;
+        
     }
     public void Enter(AiAgent agent)
     {
         sound = false;
         agent.animator.Play("Idle", 0, 0.25f);
+        agent.emmissive.SetColor("_EmissionColor", Color.green);
     }
     public void Update(AiAgent agent)
     {
@@ -21,6 +23,7 @@ public class AiTutoriel : AiState
             agent.animator.Play("Tir", 0, 0.25f);
             if (agent.sensor.Objects.Count > 0)
             {
+                agent.emmissive.SetColor("_EmissionColor", Color.red);
                 if (!sound) { agent.detection.Play(0); sound = true; }
                 agent.sensor.offset += Random.insideUnitSphere * agent.config.inacuracy;
                     //Debug.Log(agent.config.currentTimeRecovery);  

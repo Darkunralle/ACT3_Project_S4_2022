@@ -34,6 +34,9 @@ public class AiAgent : MonoBehaviour
     [Header("Module Animation")]
     public Animator animator;
 
+    [Header("Module Texture")]
+    public Material emmissive;
+
     // Start is called before the first frame update
     void Start()
     {

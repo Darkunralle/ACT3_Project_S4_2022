@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/5-Scenes/LoadingScreenEnd.unity
     guid: 9b58e6d28b59ca84ab7cc5f3f682f528
+  - enabled: 1
+    path: Assets/5-Scenes/death.unity
+    guid: aa35ea608ebbc8c41b50bdb6de668594
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e7ea1d37c789b1643b0fc7f97330911f, type: 2}
