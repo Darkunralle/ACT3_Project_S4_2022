@@ -102,6 +102,12 @@ public class PauseButton : MonoBehaviour
         pause.SetActive(true);
     }
 
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+
     public static bool getGameIsPaused()
     {
         return gameIsPaused;

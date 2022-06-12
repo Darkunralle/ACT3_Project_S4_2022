@@ -4850,6 +4850,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 8487881819550931686}
+  neck: {fileID: 0}
 --- !u!65 &1104233859
 BoxCollider:
   m_ObjectHideFlags: 0
