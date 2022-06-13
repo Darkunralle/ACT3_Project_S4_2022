@@ -8,7 +8,6 @@ public class checkVideo : MonoBehaviour
 {
     public Slider sliderLoading;
     public float loadingStat;
-    public GameObject button;
     public GameObject text;
 
     AsyncOperation asyncOperation;
@@ -16,9 +15,9 @@ public class checkVideo : MonoBehaviour
     void Start()
     {
         loadingStat = 0;
-        button.SetActive(false);
         text.SetActive(false);
         asyncOperation = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        asyncOperation.allowSceneActivation = false;
     }
 
     // Update is called once per frame
@@ -29,16 +28,10 @@ public class checkVideo : MonoBehaviour
             asyncOperation.allowSceneActivation = false;
         }
         
-        sliderLoading.value = loadingStat / 67;
+        sliderLoading.value = loadingStat / 135;
         Debug.Log(loadingStat);
-        if(loadingStat < 135) {loadingStat += Time.deltaTime;}
+        loadingStat += Time.deltaTime;
         if(loadingStat > 10) { text.SetActive(true); if (Input.GetKeyDown("space")) { asyncOperation.allowSceneActivation = true; } ; }
-        if(loadingStat >= 135) { sliderLoading.gameObject.SetActive(false); button.SetActive(true); text.SetActive(false); }
-    }
-
-    public void PlayGame()
-    {
-        asyncOperation.allowSceneActivation = true;
-        Cursor.lockState = CursorLockMode.Locked;
+        if(loadingStat >= 135) { sliderLoading.gameObject.SetActive(false);text.SetActive(false); }
     }
 }

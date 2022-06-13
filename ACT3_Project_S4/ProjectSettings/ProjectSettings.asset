@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: 0ff2b89b9f1968748b56d9ed23df61db, type: 3}
+  - logo: {fileID: 21300000, guid: 88e63b515ad43684c9bc4a724496f4b8, type: 3}
     duration: 2
   - logo: {fileID: 21300000, guid: 4764b5c0b02e4e149a38667b416f6d3a, type: 3}
     duration: 2
@@ -141,7 +141,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.9
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 11400000, guid: e7ea1d37c789b1643b0fc7f97330911f, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -159,7 +160,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.ACT3ProjectS4
+    Standalone: com.A.C.TIII.Piteraq
   buildNumber:
     Standalone: 0
     iPhone: 0
