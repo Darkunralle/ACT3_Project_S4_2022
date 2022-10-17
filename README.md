@@ -19,6 +19,7 @@ Prog :
 		Menu
 		
 Artiste 3D :
+Texturing 
 	Tanguy Barbaray :
 		Modélisation des assets et intégration
 		Lighting
