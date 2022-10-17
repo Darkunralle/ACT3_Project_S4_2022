@@ -19,6 +19,7 @@ Equipe :
 		Menu
 		Shader
 		Lvl design
+		Narrative design
 		
 	Tanguy Barbaray :
 		Modélisation des assets et intégration
@@ -40,3 +41,4 @@ Equipe :
 		Texturing Neige
 		Modélisation de l'ia
 		Lvl design
+		Narrative design
