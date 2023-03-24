@@ -3,6 +3,11 @@ Projet Semestre 4 ETPA Groupe ACT3 / Jeu Thriller / Horreur
 
 Unity : 2020.3.30f1 (URP)
 
+Nom : Piteraq
+
+Il s'agit d'un jeu d'horreur à la première personne dans lequel vous incarnez une petite créature qui vient de s'échapper d'un laboratoire canadien. Parviendrez-vous à vous en sortir vivant malgré les nombreux soldats qui gardent la forêt ?
+
+
 Equipe :
 
 	Aymeric Magnier :
